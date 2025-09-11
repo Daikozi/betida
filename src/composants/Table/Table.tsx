@@ -1,0 +1,217 @@
+import {
+  TableBody,
+  TableCell,
+  tableCellClasses,
+  tableRowClasses,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+  Stack,
+  Box,
+} from "@mui/material";
+import MUITable from "@mui/material/Table";
+import { styled } from "@mui/material/styles";
+import Image from "next/image";
+
+import bitcoin from "@/assets/svg/bitcoin.svg";
+import etherium from "@/assets/svg/etherium.svg";
+import coin from "@/assets/svg/coin.svg";
+import dummy from "@/assets/svg/dummy.svg";
+
+const StyledTableCell = styled(TableCell)(() => ({
+  [`&.${tableCellClasses.root}`]: {
+    fontSize: 16,
+    padding: "14px 16px",
+    border: "none",
+  },
+  [`&.${tableCellClasses.body}`]: {
+    color: "#FFFFFF",
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(() => ({
+  [`&.${tableRowClasses.root}`]: {
+    "&:nth-of-type(odd)": {
+      backgroundColor: "#252427",
+    },
+  },
+
+  [`&.${tableRowClasses.head}`]: {
+    backgroundColor: "#0F0F10 !important",
+  },
+}));
+
+const getCurrencyIcon = (currency: string) => {
+  switch (currency) {
+    case "bitcoin":
+      return bitcoin;
+    case "etherium":
+      return etherium;
+    default:
+      return coin;
+  }
+};
+
+function createData(
+  game: string,
+  user: string,
+  time: string,
+  betAmount: string,
+  multiplier: string,
+  payout: string,
+  currency: string = "bitcoin"
+) {
+  return { game, user, time, betAmount, multiplier, payout, currency };
+}
+
+const rows = [
+  createData(
+    "Keno",
+    "Hidden",
+    "10:31 PM",
+    "$1,995.30",
+    "10:31 PM",
+    "-$1,995.30",
+    "bitcoin"
+  ),
+  createData(
+    "Stake Roulette",
+    "Hidden",
+    "10:31 PM",
+    "$4,800.00",
+    "10:31 PM",
+    "$28,800.00",
+    "etherium"
+  ),
+  createData(
+    "Big Bass Halloween",
+    "Hidden",
+    "10:31 PM",
+    "$1,172.19",
+    "10:31 PM",
+    "-$586.10",
+    "coin"
+  ),
+  createData(
+    "Keno",
+    "Hidden",
+    "10:31 PM",
+    "$1,995.30",
+    "10:31 PM",
+    "-$1,995.30",
+    "bitcoin"
+  ),
+  createData(
+    "Stake Roulette",
+    "Hidden",
+    "10:31 PM",
+    "$4,800.00",
+    "10:31 PM",
+    "$28,800.00",
+    "etherium"
+  ),
+  createData(
+    "Big Bass Halloween",
+    "Hidden",
+    "10:31 PM",
+    "$1,172.19",
+    "10:31 PM",
+    "-$586.10",
+    "coin"
+  ),
+  createData(
+    "Keno",
+    "Hidden",
+    "10:31 PM",
+    "$1,995.30",
+    "10:31 PM",
+    "-$1,995.30",
+    "bitcoin"
+  ),
+  createData(
+    "Stake Roulette",
+    "Hidden",
+    "10:31 PM",
+    "$4,800.00",
+    "10:31 PM",
+    "$28,800.00",
+    "etherium"
+  ),
+  createData(
+    "Big Bass Halloween",
+    "Hidden",
+    "10:31 PM",
+    "$1,172.19",
+    "10:31 PM",
+    "-$586.10",
+    "coin"
+  ),
+];
+
+const Table = () => {
+  return (
+    <TableContainer sx={{ mb: "36px" }}>
+      <MUITable sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <StyledTableRow>
+            <StyledTableCell>Game</StyledTableCell>
+            <StyledTableCell>User</StyledTableCell>
+            <StyledTableCell>Time</StyledTableCell>
+            <StyledTableCell>Bet Amount</StyledTableCell>
+            <StyledTableCell>Multiplier</StyledTableCell>
+            <StyledTableCell align="right">Payout</StyledTableCell>
+          </StyledTableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row, index) => (
+            <StyledTableRow
+              key={row.game + index}
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+              <StyledTableCell component="th" scope="row">
+                <Stack direction="row" alignItems="center" spacing="10px">
+                  <Image src={dummy} alt="Game Icon" />
+                  <Box>{row.game}</Box>
+                </Stack>
+              </StyledTableCell>
+              <StyledTableCell>
+                <Stack direction="row" alignItems="center" spacing="10px">
+                  <Image src={dummy} alt="Game Icon" />
+                  <Box>{row.user}</Box>
+                </Stack>
+              </StyledTableCell>
+              <StyledTableCell>{row.time}</StyledTableCell>
+              <StyledTableCell>
+                <Stack direction="row" alignItems="center" spacing="10px">
+                  <Box>{row.betAmount}</Box>
+                  <Image src={getCurrencyIcon(row.currency)} alt="Game Icon" />
+                </Stack>
+              </StyledTableCell>
+              <StyledTableCell>{row.multiplier}</StyledTableCell>
+              <StyledTableCell align="right">
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  spacing="10px"
+                  justifyContent={"flex-end"}>
+                  <Typography
+                    sx={{ lineHeight: 1 }}
+                    color={
+                      row.payout.startsWith("-")
+                        ? "text.secondary"
+                        : "success.main"
+                    }>
+                    {row.payout}
+                  </Typography>
+                  <Image src={getCurrencyIcon(row.currency)} alt="Game Icon" />
+                </Stack>
+              </StyledTableCell>
+            </StyledTableRow>
+          ))}
+        </TableBody>
+      </MUITable>
+    </TableContainer>
+  );
+};
+
+export default Table;

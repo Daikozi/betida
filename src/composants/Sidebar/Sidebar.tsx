@@ -62,15 +62,21 @@ const Sidebar = () => {
             borderRadius: "10px",
             mb: 2,
           }}>
-          <List>
+          <List disablePadding>
             {["Promotions", "Affiliate", "VIP Club", "Blog", "Forum"].map(
               (text) => (
-                <ListItem key={text} disablePadding>
-                  <ListItemButton>
-                    <ListItemIcon>
-                      {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
+                <ListItem key={text} disablePadding disableGutters>
+                  <ListItemButton
+                    sx={{
+                      padding: "10px",
+                    }}>
+                    {/* <ListItemIcon> */}
+                    {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+                    {/* </ListItemIcon> */}
+                    <ListItemText
+                      primary={text}
+                      sx={{ color: "text.secondary", margin: 0 }}
+                    />
                   </ListItemButton>
                 </ListItem>
               )
@@ -83,7 +89,7 @@ const Sidebar = () => {
             borderRadius: "10px",
             mb: 2,
           }}>
-          <List>
+          <List disablePadding>
             {[
               "Sponsorships",
               "Responsible Gambling",
@@ -91,11 +97,17 @@ const Sidebar = () => {
               "Language English",
             ].map((text) => (
               <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
+                <ListItemButton
+                  sx={{
+                    padding: "10px",
+                  }}>
+                  {/* <ListItemIcon> */}
+                  {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+                  {/* </ListItemIcon> */}
+                  <ListItemText
+                    primary={text}
+                    sx={{ color: "text.secondary", margin: 0 }}
+                  />
                 </ListItemButton>
               </ListItem>
             ))}

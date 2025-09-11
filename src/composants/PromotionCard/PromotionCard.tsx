@@ -1,0 +1,92 @@
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Chip,
+  Link,
+  Stack,
+  Typography,
+} from "@mui/material";
+import React, { FC } from "react";
+
+type PromotionCardProps = {
+  chipLabel: string;
+  title: string;
+  subtitle: string;
+  image: string;
+};
+
+const PromotionCard: FC<PromotionCardProps> = ({
+  chipLabel,
+  title,
+  subtitle,
+  image,
+}) => {
+  return (
+    <Card
+      sx={{
+        borderRadius: "10px",
+        padding: 2,
+        display: "flex",
+        flex: 1,
+        justifyContent: "space-between",
+        gap: 2,
+      }}>
+      <Stack
+        direction="column"
+        justifyContent="space-between"
+        sx={{ height: "100%" }}>
+        <CardContent
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            padding: 0,
+          }}>
+          <Chip
+            label={chipLabel}
+            sx={{
+              backgroundColor: "#464547",
+              color: "white",
+              maxWidth: "fit-content",
+              fontSize: "0.75rem",
+              fontWeight: 500,
+              height: 24,
+              mb: 1.5,
+            }}
+          />
+          <Typography
+            variant="subtitle1"
+            sx={{ color: "text.secondary" }}
+            fontWeight={600}>
+            {title}
+          </Typography>
+          <Typography variant="body2" sx={{ color: "text.primary" }}>
+            {subtitle}
+          </Typography>
+        </CardContent>
+        <CardActions sx={{ padding: 0, marginTop: "auto" }}>
+          <Link
+            href="#"
+            sx={{
+              fontSize: "0.875rem",
+              color: "white",
+              textDecoration: "none",
+              fontWeight: 600,
+            }}>
+            Read More
+          </Link>
+        </CardActions>
+      </Stack>
+      <CardMedia
+        sx={{ height: 140, width: 140, borderRadius: "10px", flexShrink: 0 }}
+        image={image}
+        title={title}
+      />
+    </Card>
+  );
+};
+
+export default PromotionCard;

@@ -1,5 +1,8 @@
-import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, Stack, Toolbar, Typography } from "@mui/material";
 import React from "react";
+
+import Image from "next/image";
+import logo from "@/assets/svg/logo.svg";
 
 const drawerWidth = 240;
 
@@ -18,14 +21,22 @@ const Header = () => {
           maxWidth: "1200px",
           margin: "0 auto",
           width: "100%",
-          padding: "16px",
+          padding: "16px 0 !important",
         }}>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
-          MUI
-        </Typography>
+        <Stack
+          direction="row"
+          alignItems="center"
+          gap={1.5}
+          sx={{ flexGrow: 1 }}>
+          <Image src={logo} alt="Logo" />
+          <Typography
+            variant="subtitle1"
+            component="div"
+            fontWeight={600}
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
+            BRAND NAME
+          </Typography>
+        </Stack>
         <Box sx={{ display: { xs: "none", sm: "flex" }, gap: 2 }}>
           <Button
             sx={{

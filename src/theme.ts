@@ -42,7 +42,7 @@ const theme = createTheme({
           borderRadius: "10px",
           padding: "14px 10px",
           height: "44px",
-          width: "81px",
+          minWidth: "81px",
           "&.Mui-selected": {
             background: "linear-gradient(180deg, #26C5F3 0%, #B429F9 100%);",
             color: "#FFFFFF",
@@ -51,12 +51,19 @@ const theme = createTheme({
               backgroundColor: "rgba(255, 255, 255, 0.25)",
             },
           },
+
           "&:hover": {
             backgroundColor: "rgba(255, 255, 255, 0.1)",
           },
+
           "&.MuiToggleButtonGroup-firstButton": {
             borderRadius: "10px",
           },
+
+          "&.MuiToggleButtonGroup-middleButton": {
+            borderRadius: "10px",
+          },
+
           "&.MuiToggleButtonGroup-lastButton": {
             borderRadius: "10px",
           },
