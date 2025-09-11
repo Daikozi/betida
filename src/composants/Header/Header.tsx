@@ -3,6 +3,7 @@ import React from "react";
 
 import Image from "next/image";
 import logo from "@/assets/svg/logo.svg";
+import theme from "@/theme";
 
 const drawerWidth = 240;
 
@@ -15,13 +16,17 @@ const Header = () => {
         width: `calc(100% - ${drawerWidth}px)`,
         ml: `${drawerWidth}px`,
         borderBottom: "1px solid rgba(255, 255, 255, 0.12)",
+        [theme.breakpoints.down("md")]: {
+          width: "100%",
+          ml: 0,
+        },
       }}>
       <Toolbar
         sx={{
           maxWidth: "1200px",
           margin: "0 auto",
           width: "100%",
-          padding: "16px 0 !important",
+          p: "16px !important",
         }}>
         <Stack
           direction="row"
@@ -37,7 +42,7 @@ const Header = () => {
             BRAND NAME
           </Typography>
         </Stack>
-        <Box sx={{ display: { xs: "none", sm: "flex" }, gap: 2 }}>
+        <Box sx={{ display: "flex", gap: 2 }}>
           <Button
             sx={{
               color: "#fff",

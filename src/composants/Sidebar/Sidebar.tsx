@@ -16,6 +16,7 @@ import {
   Toolbar,
 } from "@mui/material";
 import ToggleButtonGroupp from "../ToggleButtonGroup/ToggleButtonGroup";
+import theme from "@/theme";
 
 const drawerWidth = 240;
 
@@ -30,6 +31,7 @@ const Sidebar = () => {
           width: drawerWidth,
           boxSizing: "border-box",
         },
+        [theme.breakpoints.down("md")]: { display: "none" },
       }}
       variant="permanent"
       anchor="left">

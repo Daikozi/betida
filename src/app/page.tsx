@@ -1,6 +1,8 @@
 "use client";
 import {
   Box,
+  Grid,
+  IconButton,
   MenuItem,
   Stack,
   ToggleButton,
@@ -8,21 +10,21 @@ import {
   Typography,
 } from "@mui/material";
 import Image from "next/image";
-import casino from "@/assets/images/casino.png";
-import sport from "@/assets/images/sport.png";
 import info from "@/assets/svg/info.svg";
+import next from "@/assets/svg/next.svg";
+import back_light from "@/assets/svg/back_light.svg";
 import none from "@/assets/svg/none.svg";
 import bronze from "@/assets/svg/bronze.svg";
 import arrow_right from "@/assets/svg/arrow_right.svg";
-import ellipse from "@/assets/svg/Ellipse 1.svg";
 import ProgressBar from "@/composants/ProgressBar/ProgressBar";
 import CustomSelect from "@/composants/Select/Select";
-import { ChangeEvent, KeyboardEvent, useState } from "react";
+import { useState } from "react";
 import SearchBar from "@/composants/SearchBar/SearchBar";
 import TrendingCard from "@/composants/TrendingCard/TrendingCard";
 import PromotionCard from "@/composants/PromotionCard/PromotionCard";
 import Accordion from "@/composants/Accordion/Accordion";
 import Table from "@/composants/Table/Table";
+import LargeTrendingCard from "@/composants/LargeTrendingCard/LargeTrendingCard";
 
 export default function Home() {
   const [betType, setBetType] = useState<"Casino" | "Sport">("Casino");
@@ -40,12 +42,6 @@ export default function Home() {
     src: `/assets/images/trending_sports_${i + 1}.png`,
     rank: i + 1,
   }));
-
-  const handleChange = (
-    event: ChangeEvent<KeyboardEvent<HTMLInputElement>>
-  ) => {
-    setBetType(event.target.value as "Casino" | "Sport");
-  };
   return (
     <Box
       sx={{
@@ -53,201 +49,120 @@ export default function Home() {
         display: "flex",
         justifyContent: "center",
       }}>
-      <Box sx={{ maxWidth: 1200, marginTop: 4 }}>
-        <Stack
-          direction="row"
-          alignItems="center"
-          justifyContent="space-between"
-          gap={2}
-          mb={4.5}>
-          <Box
-            sx={{
-              maxWidth: 360,
-              width: "33%",
-            }}>
-            <Typography variant="h5" color="text.secondary" mb={4}>
-              Mon1453
-            </Typography>
-            <Stack
-              direction="row"
-              alignItems="center"
-              justifyContent="space-between"
-              spacing={1}
-              mb={2}
-              sx={{ position: "relative", width: "100%" }}>
-              <Typography color="text.secondary" sx={{ fontWeight: "500" }}>
-                Your VIP Progress
+      <Box sx={{ width: "100%", maxWidth: 1200, p: 2 }}>
+        <Grid container spacing={2} my={4.5}>
+          <Grid size={{ xs: 12, sm: 12, md: 4 }}>
+            <Box>
+              <Typography variant="h5" color="text.secondary" mb={4}>
+                Mon1453
               </Typography>
-              <Box
-                sx={{
-                  position: "absolute",
-                  transform: "translate(50%, -40%)",
-                  top: "50%",
-                  right: "50%",
-                }}>
-                <Image src={arrow_right} alt="info" />
-              </Box>
-              <Stack direction="row" spacing={0.5} alignItems="center">
-                <Typography color="text.secondary">50.00%</Typography>
-                <Image src={info} alt="info" />
+              <Stack
+                direction="row"
+                alignItems="center"
+                justifyContent="space-between"
+                spacing={1}
+                mb={2}
+                sx={{ position: "relative" }}>
+                <Typography color="text.secondary" sx={{ fontWeight: "500" }}>
+                  Your VIP Progress
+                </Typography>
+                <Box
+                  sx={{
+                    position: "absolute",
+                    transform: "translate(50%, -40%)",
+                    top: "50%",
+                    right: "50%",
+                  }}>
+                  <Image src={arrow_right} alt="info" />
+                </Box>
+                <Stack direction="row" spacing={0.5} alignItems="center">
+                  <Typography color="text.secondary">50.00%</Typography>
+                  <Image src={info} alt="info" />
+                </Stack>
               </Stack>
-            </Stack>
 
-            <ProgressBar variant="determinate" value={50} />
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              alignItems="center"
-              mt={3}
-              sx={{ position: "relative", width: "100%" }}>
-              <Stack direction="row" spacing={1} alignItems="center">
-                <Image src={none} alt="info" />
-                <Typography variant="body2" color="text.secondary">
-                  None
-                </Typography>
+              <ProgressBar variant="determinate" value={50} />
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+                mt={3}
+                sx={{ position: "relative", width: "100%" }}>
+                <Stack direction="row" spacing={1} alignItems="center">
+                  <Image src={none} alt="info" />
+                  <Typography variant="body2" color="text.secondary">
+                    None
+                  </Typography>
+                </Stack>
+                <Box
+                  sx={{
+                    position: "absolute",
+                    transform: "translate(50%, -40%)",
+                    top: "50%",
+                    right: "50%",
+                  }}>
+                  <Image src={arrow_right} alt="info" />
+                </Box>
+                <Stack direction="row" spacing={1} alignItems="center">
+                  <Typography variant="body2" color="text.secondary">
+                    Bronze
+                  </Typography>
+                  <Image src={bronze} alt="info" />
+                </Stack>
               </Stack>
-              <Box
-                sx={{
-                  position: "absolute",
-                  transform: "translate(50%, -40%)",
-                  top: "50%",
-                  right: "50%",
-                }}>
-                <Image src={arrow_right} alt="info" />
-              </Box>
-              <Stack direction="row" spacing={1} alignItems="center">
-                <Typography variant="body2" color="text.secondary">
-                  Bronze
-                </Typography>
-                <Image src={bronze} alt="info" />
-              </Stack>
-            </Stack>
-          </Box>
-          <Box
-            sx={{
-              height: 268,
-              maxWidth: 360,
-              width: "33%",
-              borderRadius: "10px",
-            }}>
-            <Box
-              sx={{
-                borderRadius: "10px",
-                overflow: "hidden",
-                transition: "all 0.3s cubic-bezier(.4,0,.2,1)",
-                border: "2px solid transparent",
-                "> img": {
-                  border: "2px solid transparent",
-                  scale: 1.1,
-                  transition: "all 0.3s cubic-bezier(.4,0,.2,1)",
-                },
-                "&:hover": {
-                  border: "2px solid #0A5DB4",
-                },
-              }}>
-              <Image
-                src={casino}
-                alt="Casino"
-                style={{
-                  objectFit: "contain",
-                  borderRadius: "10px",
-                  width: "100%",
-                }}
-              />
             </Box>
-            <Stack
-              direction="row"
-              alignItems="center"
-              justifyContent="space-between">
-              <Typography
-                variant="caption"
-                color="text.secondary"
-                sx={{ fontWeight: "600" }}>
-                Casino
-              </Typography>
-              <Stack direction="row" spacing={0.5} alignItems="center">
-                <Image src={ellipse} alt="info" />
-                <Typography
-                  variant="caption"
-                  color="text.secondary"
-                  sx={{ fontWeight: "600" }}>
-                  348
-                </Typography>
-                <Typography variant="caption">playing</Typography>
-              </Stack>
-            </Stack>
-          </Box>
-          <Box
-            sx={{
-              height: 268,
-              maxWidth: 360,
-              width: "33%",
-              borderRadius: "10px",
-            }}>
-            <Box
-              sx={{
-                borderRadius: "10px",
-                overflow: "hidden",
-                transition: "all 0.3s cubic-bezier(.4,0,.2,1)",
-                border: "2px solid transparent",
-                "> img": {
-                  border: "2px solid transparent",
-                  scale: 1.1,
-                  transition: "all 0.3s cubic-bezier(.4,0,.2,1)",
-                },
-                "&:hover": {
-                  border: "2px solid #63F274",
-                },
-              }}>
-              <Image
-                src={sport}
-                alt="Sport"
-                style={{
-                  objectFit: "contain",
-                  borderRadius: "10px",
-                  width: "100%",
-                }}
-              />
-            </Box>
-            <Stack
-              direction="row"
-              alignItems="center"
-              justifyContent="space-between">
-              <Typography
-                variant="caption"
-                color="text.secondary"
-                sx={{ fontWeight: "600" }}>
-                Sports
-              </Typography>
-              <Stack direction="row" spacing={0.5} alignItems="center">
-                <Image src={ellipse} alt="info" />
-                <Typography
-                  variant="caption"
-                  color="text.secondary"
-                  sx={{ fontWeight: "600" }}>
-                  348
-                </Typography>
-                <Typography variant="caption">playing</Typography>
-              </Stack>
-            </Stack>
-          </Box>
-        </Stack>
+          </Grid>
+          <Grid size={{ xs: 6, sm: 6, md: 4 }}>
+            <LargeTrendingCard
+              image="casino.png"
+              quantityPlaying={365}
+              rank={1}
+              title="Casino"
+              highlightColor="#3B82F6"
+            />
+          </Grid>
+          <Grid size={{ xs: 6, sm: 6, md: 4 }}>
+            <LargeTrendingCard
+              image="sport.png"
+              quantityPlaying={365}
+              rank={1}
+              title="Sports"
+              highlightColor="#10B981"
+            />
+          </Grid>
+        </Grid>
         <Stack direction="row" spacing={2} mb={3} alignItems="center">
           <CustomSelect
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={betType}
             label="Bet Type"
-            onChange={handleChange}>
+            onChange={(event) =>
+              setBetType(event.target.value as "Casino" | "Sport")
+            }>
             <MenuItem value="Casino">Casino</MenuItem>
             <MenuItem value="Sport">Sport</MenuItem>
           </CustomSelect>
           <SearchBar />
         </Stack>
-        <Stack>
-          <Typography variant="subtitle1" mb={2} fontWeight={600}>
-            Trending Games
-          </Typography>
+        <Box>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+            mb={2}>
+            <Typography variant="subtitle1" fontWeight={600}>
+              Trending Games
+            </Typography>
+            <Stack direction="row" spacing={1} alignItems="center">
+              <IconButton aria-label="delete" size="small">
+                <Image src={back_light} alt="back" />
+              </IconButton>
+              <IconButton aria-label="delete" size="small">
+                <Image src={next} alt="next" />
+              </IconButton>
+            </Stack>
+          </Stack>
           <Stack direction="row" spacing="7px" mb={4.5}>
             {trendingGames.map((game) => (
               <TrendingCard
@@ -258,7 +173,7 @@ export default function Home() {
               />
             ))}
           </Stack>
-        </Stack>
+        </Box>
         <Stack>
           <Typography variant="subtitle1" mb={2} fontWeight={600}>
             Trending Sports

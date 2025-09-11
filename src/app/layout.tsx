@@ -27,7 +27,7 @@ export default function RootLayout({
               sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}>
               <Toolbar />
               {children}
-              <Footer />
+              {/* <Footer /> */}
             </Box>
           </Box>
         </Providers>
