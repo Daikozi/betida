@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
+import { styled, Theme, CSSObject } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
@@ -130,7 +130,7 @@ const secondMenuItems = [
 ];
 
 const SideMenu: React.FC = () => {
-  const theme = useTheme();
+  // const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [promotionsOpen, setPromotionsOpen] = React.useState(false);
   const [sponsorshipsOpen, setSponsorshipsOpen] = React.useState(false);
@@ -244,7 +244,7 @@ const SideMenu: React.FC = () => {
               {subitems && subitems.length > 0 && (
                 <Collapse in={promotionsOpen} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
-                    {subitems.map(({ text, link }, index, { length }) => (
+                    {subitems.map(({ text }, index, { length }) => (
                       <ListItemButton
                         key={text}
                         sx={{ height: 24, px: "10px", py: 0 }}>
@@ -352,7 +352,7 @@ const SideMenu: React.FC = () => {
               {subitems && subitems.length > 0 && (
                 <Collapse in={sponsorshipsOpen} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
-                    {subitems.map(({ text, link }, index, { length }) => (
+                    {subitems.map(({ text }, index, { length }) => (
                       <ListItemButton
                         key={text}
                         sx={{ height: 24, px: "10px", py: 0 }}>
