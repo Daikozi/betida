@@ -4,6 +4,8 @@ import { Box, Toolbar } from "@mui/material";
 import Sidebar from "@/composants/Sidebar/Sidebar";
 import Header from "@/composants/Header/Header";
 import Footer from "@/composants/Footer/Footer";
+import BottomBar from "@/composants/BottomBar/BottomBar";
+import SideMenu from "@/composants/NewSidemenu/SideMenu";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,20 +22,24 @@ export default function RootLayout({
       <body>
         <Providers>
           <Box sx={{ display: "flex" }}>
-            <Header />
-            <Sidebar />
+            {/* <Sidebar /> */}
+            <SideMenu />
             <Box
               component="main"
               sx={{
                 flexGrow: 1,
                 bgcolor: "background.default",
-                p: 3,
                 width: "calc(100vw - (100vw - 100%))",
+                minHeight: { sx: "100vh" },
+                overflowY: "auto",
               }}>
+              <Header />
               <Toolbar />
               {children}
+              {/* <Toolbar /> */}
               {/* <Footer /> */}
             </Box>
+            <BottomBar />
           </Box>
         </Providers>
       </body>

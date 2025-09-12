@@ -5,16 +5,20 @@ import Image from "next/image";
 import logo from "@/assets/svg/logo.svg";
 import theme from "@/theme";
 
-const drawerWidth = 240;
+// const drawerWidth = 240;
 
 const Header = () => {
   return (
     <AppBar
       component="nav"
-      position="fixed"
+      position="sticky"
       sx={{
-        width: `calc(100% - ${drawerWidth}px)`,
-        ml: `${drawerWidth}px`,
+        top: 0,
+        left: 0,
+        right: 0,
+        // width: `calc(100% - ${drawerWidth}px)`,
+        // ml: `${drawerWidth}px`,
+        width: "100%",
         borderBottom: "1px solid rgba(255, 255, 255, 0.12)",
         [theme.breakpoints.down("md")]: {
           width: "100%",

@@ -64,6 +64,7 @@ export default function Home() {
       sx={{
         display: "flex",
         justifyContent: "center",
+        p: 2,
       }}>
       <Box sx={{ width: "100%", maxWidth: 1200 }}>
         <Grid container spacing={2} my={4.5}>
