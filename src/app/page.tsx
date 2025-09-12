@@ -161,25 +161,7 @@ export default function Home() {
           </CustomSelect>
           <SearchBar />
         </Stack>
-        {/* <Box>
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            mb={2}>
-            <Typography variant="subtitle1" fontWeight={600}>
-              Trending Games
-            </Typography>
-            <Stack direction="row" spacing={1} alignItems="center">
-              <IconButton aria-label="delete" size="small">
-                <Image src={back_light} alt="back" />
-              </IconButton>
-              <IconButton aria-label="delete" size="small">
-                <Image src={next} alt="next" />
-              </IconButton>
-            </Stack>
-          </Stack> */}
-        <Carousel>
+        <Carousel title="Trending Games" mb={4}>
           {trendingGames.map((game) => (
             <TrendingCard
               key={game.rank}
@@ -189,69 +171,31 @@ export default function Home() {
             />
           ))}
         </Carousel>
-        {/* <Box
-            ref={carouselBoxRef}
-            sx={{
-              overflow: "hidden",
-              // overflowX: "auto",
-              // width: "100%",
-            }}>
-            <Stack
-              ref={carouselStackRef}
-              direction="row"
-              spacing="8px"
-              sx={{ overflow: "hidden", scrollbarColor: "transparent" }}
-              mb={4.5}>
-              {trendingGames.map((game) => (
-                <TrendingCard
-                  key={game.rank}
-                  image={game.src}
-                  rank={game.rank}
-                  quantityPlaying={game.quantityPlaying}
-                />
-              ))}
-            </Stack>
-          </Box> */}
-        {/* </Box> */}
-        {/* <Stack>
-          <Typography variant="subtitle1" mb={2} fontWeight={600}>
-            Trending Sports
-          </Typography>
-          <Stack direction="row" spacing="7px" mb={4.5}>
-            {trendingSports.map((game) => (
-              <TrendingCard key={game.rank} image={game.src} rank={game.rank} />
-            ))}
-          </Stack>
-        </Stack>
-        <Stack>
-          <Typography variant="subtitle1" mb={2} fontWeight={600}>
-            Promotions
-          </Typography>
-          <Stack
-            direction="row"
-            spacing={1.5}
-            mb={4.5}
-            justifyContent={"space-between"}>
-            <PromotionCard
-              chipLabel="Promotion"
-              title="Team Vitality"
-              subtitle="Kill Target Prize Pool"
-              image="/assets/images/promotions_1.png"
-            />
-            <PromotionCard
-              chipLabel="New releases"
-              title="Angel vs Sinner"
-              subtitle="New Enhanced RTP game!"
-              image="/assets/images/promotions_2.png"
-            />
-            <PromotionCard
-              chipLabel="Promotion"
-              title="Frankie's Ebor Raffle"
-              subtitle="Share in $40,000"
-              image="/assets/images/promotions_3.png"
-            />
-          </Stack>
-        </Stack>
+        <Carousel title="Trending Sports" mb={4}>
+          {trendingSports.map((game) => (
+            <TrendingCard key={game.rank} image={game.src} rank={game.rank} />
+          ))}
+        </Carousel>
+        <Carousel title="Trending Sports" mb={4}>
+          <PromotionCard
+            chipLabel="Promotion"
+            title="Team Vitality"
+            subtitle="Kill Target Prize Pool"
+            image="/assets/images/promotions_1.png"
+          />
+          <PromotionCard
+            chipLabel="New releases"
+            title="Angel vs Sinner"
+            subtitle="New Enhanced RTP game!"
+            image="/assets/images/promotions_2.png"
+          />
+          <PromotionCard
+            chipLabel="Promotion"
+            title="Frankie's Ebor Raffle"
+            subtitle="Share in $40,000"
+            image="/assets/images/promotions_3.png"
+          />
+        </Carousel>
         <Box
           sx={{
             backgroundColor: "#252427",
@@ -323,7 +267,7 @@ export default function Home() {
               },
             ]}
           />
-        </Stack> */}
+        </Stack>
       </Box>
     </Box>
   );

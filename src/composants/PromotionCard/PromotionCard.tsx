@@ -34,6 +34,7 @@ const PromotionCard: FC<PromotionCardProps> = ({
         flex: 1,
         justifyContent: "space-between",
         gap: 2,
+        minWidth: { xs: "100%", sm: "calc(50% - 4px)", md: "calc(33% - 8px)" },
       }}>
       <Stack
         direction="column"

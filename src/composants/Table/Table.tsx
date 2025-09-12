@@ -152,14 +152,22 @@ const rows = [
 const Table = () => {
   return (
     <TableContainer sx={{ mb: "36px" }}>
-      <MUITable sx={{ minWidth: 650 }} aria-label="simple table">
+      <MUITable aria-label="simple table">
         <TableHead>
           <StyledTableRow>
             <StyledTableCell>Game</StyledTableCell>
-            <StyledTableCell>User</StyledTableCell>
-            <StyledTableCell>Time</StyledTableCell>
-            <StyledTableCell>Bet Amount</StyledTableCell>
-            <StyledTableCell>Multiplier</StyledTableCell>
+            <StyledTableCell sx={{ display: { xs: "none", md: "table-cell" } }}>
+              User
+            </StyledTableCell>
+            <StyledTableCell sx={{ display: { xs: "none", md: "table-cell" } }}>
+              Time
+            </StyledTableCell>
+            <StyledTableCell sx={{ display: { xs: "none", md: "table-cell" } }}>
+              Bet Amount
+            </StyledTableCell>
+            <StyledTableCell sx={{ display: { xs: "none", md: "table-cell" } }}>
+              Multiplier
+            </StyledTableCell>
             <StyledTableCell align="right">Payout</StyledTableCell>
           </StyledTableRow>
         </TableHead>
@@ -174,20 +182,28 @@ const Table = () => {
                   <Box>{row.game}</Box>
                 </Stack>
               </StyledTableCell>
-              <StyledTableCell>
+              <StyledTableCell
+                sx={{ display: { xs: "none", md: "table-cell" } }}>
                 <Stack direction="row" alignItems="center" spacing="10px">
                   <Image src={dummy} alt="Game Icon" />
                   <Box>{row.user}</Box>
                 </Stack>
               </StyledTableCell>
-              <StyledTableCell>{row.time}</StyledTableCell>
-              <StyledTableCell>
+              <StyledTableCell
+                sx={{ display: { xs: "none", md: "table-cell" } }}>
+                {row.time}
+              </StyledTableCell>
+              <StyledTableCell
+                sx={{ display: { xs: "none", md: "table-cell" } }}>
                 <Stack direction="row" alignItems="center" spacing="10px">
                   <Box>{row.betAmount}</Box>
                   <Image src={getCurrencyIcon(row.currency)} alt="Game Icon" />
                 </Stack>
               </StyledTableCell>
-              <StyledTableCell>{row.multiplier}</StyledTableCell>
+              <StyledTableCell
+                sx={{ display: { xs: "none", md: "table-cell" } }}>
+                {row.multiplier}
+              </StyledTableCell>
               <StyledTableCell align="right">
                 <Stack
                   direction="row"
