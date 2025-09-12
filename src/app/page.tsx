@@ -18,19 +18,23 @@ import bronze from "@/assets/svg/bronze.svg";
 import arrow_right from "@/assets/svg/arrow_right.svg";
 import ProgressBar from "@/composants/ProgressBar/ProgressBar";
 import CustomSelect from "@/composants/Select/Select";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SearchBar from "@/composants/SearchBar/SearchBar";
 import TrendingCard from "@/composants/TrendingCard/TrendingCard";
 import PromotionCard from "@/composants/PromotionCard/PromotionCard";
 import Accordion from "@/composants/Accordion/Accordion";
 import Table from "@/composants/Table/Table";
 import LargeTrendingCard from "@/composants/LargeTrendingCard/LargeTrendingCard";
+import Carousel from "@/composants/Carousel/Carousel";
 
 export default function Home() {
   const [betType, setBetType] = useState<"Casino" | "Sport">("Casino");
   const [tableView, setTableView] = useState<
     "Casino Bets" | "Sport Bets" | "Race Leaderboard"
   >("Casino Bets");
+
+  const carouselBoxRef = useRef<HTMLDivElement>(null);
+  const carouselStackRef = useRef<HTMLDivElement>(null);
 
   const trendingGames = Array.from({ length: 8 }, (_, i) => ({
     src: `/assets/images/trending_games_${i + 1}.png`,
@@ -42,14 +46,26 @@ export default function Home() {
     src: `/assets/images/trending_sports_${i + 1}.png`,
     rank: i + 1,
   }));
+
+  useEffect(() => {
+    const box = carouselBoxRef.current;
+    const stack = carouselStackRef.current;
+
+    if (box && stack) {
+      const boxWidth = box.offsetWidth;
+      const stackWidth = stack.scrollWidth;
+
+      console.log({ boxWidth, stackWidth });
+    }
+  }, []);
+
   return (
     <Box
       sx={{
-        width: "100%",
         display: "flex",
         justifyContent: "center",
       }}>
-      <Box sx={{ width: "100%", maxWidth: 1200, p: 2 }}>
+      <Box sx={{ width: "100%", maxWidth: 1200 }}>
         <Grid container spacing={2} my={4.5}>
           <Grid size={{ xs: 12, sm: 12, md: 4 }}>
             <Box>
@@ -145,7 +161,7 @@ export default function Home() {
           </CustomSelect>
           <SearchBar />
         </Stack>
-        <Box>
+        {/* <Box>
           <Stack
             direction="row"
             justifyContent="space-between"
@@ -162,19 +178,42 @@ export default function Home() {
                 <Image src={next} alt="next" />
               </IconButton>
             </Stack>
-          </Stack>
-          <Stack direction="row" spacing="7px" mb={4.5}>
-            {trendingGames.map((game) => (
-              <TrendingCard
-                key={game.rank}
-                image={game.src}
-                rank={game.rank}
-                quantityPlaying={game.quantityPlaying}
-              />
-            ))}
-          </Stack>
-        </Box>
-        <Stack>
+          </Stack> */}
+        <Carousel>
+          {trendingGames.map((game) => (
+            <TrendingCard
+              key={game.rank}
+              image={game.src}
+              rank={game.rank}
+              quantityPlaying={game.quantityPlaying}
+            />
+          ))}
+        </Carousel>
+        {/* <Box
+            ref={carouselBoxRef}
+            sx={{
+              overflow: "hidden",
+              // overflowX: "auto",
+              // width: "100%",
+            }}>
+            <Stack
+              ref={carouselStackRef}
+              direction="row"
+              spacing="8px"
+              sx={{ overflow: "hidden", scrollbarColor: "transparent" }}
+              mb={4.5}>
+              {trendingGames.map((game) => (
+                <TrendingCard
+                  key={game.rank}
+                  image={game.src}
+                  rank={game.rank}
+                  quantityPlaying={game.quantityPlaying}
+                />
+              ))}
+            </Stack>
+          </Box> */}
+        {/* </Box> */}
+        {/* <Stack>
           <Typography variant="subtitle1" mb={2} fontWeight={600}>
             Trending Sports
           </Typography>
@@ -284,7 +323,7 @@ export default function Home() {
               },
             ]}
           />
-        </Stack>
+        </Stack> */}
       </Box>
     </Box>
   );

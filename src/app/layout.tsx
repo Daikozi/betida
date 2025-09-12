@@ -24,7 +24,12 @@ export default function RootLayout({
             <Sidebar />
             <Box
               component="main"
-              sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}>
+              sx={{
+                flexGrow: 1,
+                bgcolor: "background.default",
+                p: 3,
+                width: "calc(100vw - (100vw - 100%))",
+              }}>
               <Toolbar />
               {children}
               {/* <Footer /> */}
