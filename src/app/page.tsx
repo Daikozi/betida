@@ -6,17 +6,19 @@ import arrow_right from '@/assets/svg/arrow_right.svg'
 import bronze from '@/assets/svg/bronze.svg'
 import info from '@/assets/svg/info.svg'
 import none from '@/assets/svg/none.svg'
-import Carousel from '@/composants/Carousel/Carousel'
-import FAQ from '@/composants/FAQ/FAQ'
-import LargeTrendingCard from '@/composants/LargeTrendingCard/LargeTrendingCard'
-import ProgressBar from '@/composants/ProgressBar/ProgressBar'
-import PromotionCard from '@/composants/PromotionCard/PromotionCard'
-import SearchBar from '@/composants/SearchBar/SearchBar'
-import Table from '@/composants/Table/Table'
-import ToggleButtonGroup from '@/composants/ToggleButtonGroup/ToggleButtonGroup'
-import TrendingCard from '@/composants/TrendingCard/TrendingCard'
-import { Box, Grid, InputLabel, MenuItem, Select, Stack, ToggleButton, Typography } from '@mui/material'
+import { Box, InputLabel, MenuItem, Select, Stack, ToggleButton, Typography } from '@mui/material'
+import dynamic from 'next/dynamic'
 import Image, { StaticImageData } from 'next/image'
+
+const Carousel = dynamic(() => import('@/composants/Carousel/Carousel'))
+const FAQ = dynamic(() => import('@/composants/FAQ/FAQ'))
+const Table = dynamic(() => import('@/composants/Table/Table'))
+const LargeTrendingCard = dynamic(() => import('@/composants/LargeTrendingCard/LargeTrendingCard'))
+const ProgressBar = dynamic(() => import('@/composants/ProgressBar/ProgressBar'))
+const PromotionCard = dynamic(() => import('@/composants/PromotionCard/PromotionCard'))
+const SearchBar = dynamic(() => import('@/composants/SearchBar/SearchBar'))
+const ToggleButtonGroup = dynamic(() => import('@/composants/ToggleButtonGroup/ToggleButtonGroup'))
+const TrendingCard = dynamic(() => import('@/composants/TrendingCard/TrendingCard'))
 
 const Home: FC = () => {
   const [betType, setBetType] = useState<'Casino' | 'Sport'>('Casino')
@@ -42,73 +44,60 @@ const Home: FC = () => {
       }}
     >
       <Box sx={{ width: '100%', maxWidth: 1200 }}>
-        <Grid container spacing={2} mb={4.5} alignItems="center">
-          <Grid size={{ xs: 12, sm: 12, md: 4 }}>
-            <Box>
-              <Typography variant="h5" color="text.secondary" mb={4}>
-                Mon1453
+        <div style={{ display: 'flex', gap: 16, marginBottom: '36px', alignItems: 'center' }}>
+          <section style={{ flex: 1 }}>
+            <Typography variant="h5" color="text.secondary" mb={4}>
+              Mon1453
+            </Typography>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                position: 'relative',
+                marginBottom: 16,
+              }}
+            >
+              <Typography color="text.secondary" style={{ fontWeight: 500 }}>
+                Your VIP Progress
               </Typography>
-              <Stack
-                direction="row"
-                alignItems="center"
-                justifyContent="space-between"
-                spacing={1}
-                mb={2}
-                sx={{ position: 'relative' }}
-              >
-                <Typography color="text.secondary" sx={{ fontWeight: '500' }}>
-                  Your VIP Progress
+              <span style={{ position: 'absolute', transform: 'translate(50%, -40%)', top: '50%', right: '50%' }}>
+                <Image src={arrow_right as StaticImageData} alt="info" />
+              </span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                <Typography color="text.secondary">50.00%</Typography>
+                <Image src={info as StaticImageData} alt="info" />
+              </span>
+            </div>
+            <ProgressBar variant="determinate" value={50} aria-label="Progression VIP utilisateur" />
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                marginTop: 24,
+                position: 'relative',
+                width: '100%',
+              }}
+            >
+              <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                <Image src={none as StaticImageData} alt="info" />
+                <Typography variant="body2" color="text.secondary">
+                  None
                 </Typography>
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    transform: 'translate(50%, -40%)',
-                    top: '50%',
-                    right: '50%',
-                  }}
-                >
-                  <Image src={arrow_right as StaticImageData} alt="info" />
-                </Box>
-                <Stack direction="row" spacing={0.5} alignItems="center">
-                  <Typography color="text.secondary">50.00%</Typography>
-                  <Image src={info as StaticImageData} alt="info" />
-                </Stack>
-              </Stack>
-
-              <ProgressBar variant="determinate" value={50} aria-label="Progression VIP utilisateur" />
-              <Stack
-                direction="row"
-                justifyContent="space-between"
-                alignItems="center"
-                mt={3}
-                sx={{ position: 'relative', width: '100%' }}
-              >
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <Image src={none as StaticImageData} alt="info" />
-                  <Typography variant="body2" color="text.secondary">
-                    None
-                  </Typography>
-                </Stack>
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    transform: 'translate(50%, -40%)',
-                    top: '50%',
-                    right: '50%',
-                  }}
-                >
-                  <Image src={arrow_right as StaticImageData} alt="info" />
-                </Box>
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <Typography variant="body2" color="text.secondary">
-                    Bronze
-                  </Typography>
-                  <Image src={bronze as StaticImageData} alt="info" />
-                </Stack>
-              </Stack>
-            </Box>
-          </Grid>
-          <Grid size={{ xs: 6, sm: 6, md: 4 }}>
+              </span>
+              <span style={{ position: 'absolute', transform: 'translate(50%, -40%)', top: '50%', right: '50%' }}>
+                <Image src={arrow_right as StaticImageData} alt="info" />
+              </span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                <Typography variant="body2" color="text.secondary">
+                  Bronze
+                </Typography>
+                <Image src={bronze as StaticImageData} alt="info" />
+              </span>
+            </div>
+          </section>
+          <section style={{ flex: 1 }}>
             <LargeTrendingCard
               image="casino.webp"
               quantityPlaying={365}
@@ -116,8 +105,8 @@ const Home: FC = () => {
               title="Casino"
               highlightColor="#3B82F6"
             />
-          </Grid>
-          <Grid size={{ xs: 6, sm: 6, md: 4 }}>
+          </section>
+          <section style={{ flex: 1 }}>
             <LargeTrendingCard
               image="sport.webp"
               quantityPlaying={365}
@@ -125,8 +114,8 @@ const Home: FC = () => {
               title="Sports"
               highlightColor="#10B981"
             />
-          </Grid>
-        </Grid>
+          </section>
+        </div>
         <Stack direction="row" spacing={2} mb={3} alignItems="center">
           <Select
             id="betType-select"
