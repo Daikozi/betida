@@ -2,30 +2,27 @@
 import {
   Box,
   Grid,
-  IconButton,
   MenuItem,
+  Select,
   Stack,
   ToggleButton,
-  ToggleButtonGroup,
   Typography,
 } from "@mui/material";
 import Image from "next/image";
 import info from "@/assets/svg/info.svg";
-import next from "@/assets/svg/next.svg";
-import back_light from "@/assets/svg/back_light.svg";
 import none from "@/assets/svg/none.svg";
 import bronze from "@/assets/svg/bronze.svg";
 import arrow_right from "@/assets/svg/arrow_right.svg";
 import ProgressBar from "@/composants/ProgressBar/ProgressBar";
-import CustomSelect from "@/composants/Select/Select";
 import { useEffect, useRef, useState } from "react";
 import SearchBar from "@/composants/SearchBar/SearchBar";
 import TrendingCard from "@/composants/TrendingCard/TrendingCard";
 import PromotionCard from "@/composants/PromotionCard/PromotionCard";
-import Accordion from "@/composants/Accordion/Accordion";
+import FAQ from "@/composants/FAQ/FAQ";
 import Table from "@/composants/Table/Table";
 import LargeTrendingCard from "@/composants/LargeTrendingCard/LargeTrendingCard";
 import Carousel from "@/composants/Carousel/Carousel";
+import ToggleButtonGroup from "@/composants/ToggleButtonGroup/ToggleButtonGroup";
 
 export default function Home() {
   const [betType, setBetType] = useState<"Casino" | "Sport">("Casino");
@@ -67,7 +64,7 @@ export default function Home() {
         p: 2,
       }}>
       <Box sx={{ width: "100%", maxWidth: 1200 }}>
-        <Grid container spacing={2} my={4.5}>
+        <Grid container spacing={2} mb={4.5}>
           <Grid size={{ xs: 12, sm: 12, md: 4 }}>
             <Box>
               <Typography variant="h5" color="text.secondary" mb={4}>
@@ -149,9 +146,8 @@ export default function Home() {
           </Grid>
         </Grid>
         <Stack direction="row" spacing={2} mb={3} alignItems="center">
-          <CustomSelect
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
+          <Select
+            sx={{ minWidth: 100 }}
             value={betType}
             label="Bet Type"
             onChange={(event) =>
@@ -159,7 +155,7 @@ export default function Home() {
             }>
             <MenuItem value="Casino">Casino</MenuItem>
             <MenuItem value="Sport">Sport</MenuItem>
-          </CustomSelect>
+          </Select>
           <SearchBar />
         </Stack>
         <Carousel title="Trending Games" mb={4}>
@@ -203,6 +199,7 @@ export default function Home() {
             borderRadius: "10px",
             p: 1,
             mb: 1,
+            overflowX: "auto",
           }}>
           <ToggleButtonGroup
             value={tableView}
@@ -229,7 +226,7 @@ export default function Home() {
           <Typography variant="subtitle1" mb={2} fontWeight={600}>
             Still Have Questions?
           </Typography>
-          <Accordion
+          <FAQ
             accordionItems={[
               {
                 title: "Who is Brand Name",

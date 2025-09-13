@@ -30,6 +30,7 @@ import carat_up_light from "@/assets/svg/carat_up_light.svg";
 
 import { Box, Collapse } from "@mui/material";
 import ToggleButtonGroupp from "../ToggleButtonGroup/ToggleButtonGroup";
+import ViewModeSelector from "../ViewModeSelector/ViewModeSelector";
 
 const drawerWidth = 240;
 
@@ -147,21 +148,7 @@ const SideMenu: React.FC = () => {
           sx={{ mr: open ? 2 : 0, p: 0 }}>
           <Image src={menu} alt="Menu" />
         </IconButton>
-        {open && (
-          <ToggleButtonGroupp
-            value={displayMode}
-            onChange={(_, value) => {
-              if (value !== null) {
-                setDisplayMode(value);
-              }
-            }}
-            ariaLabel="Display Mode"
-            toggleButtons={[
-              { value: "casino", label: "Casino" },
-              { value: "sports", label: "Sports" },
-            ]}
-          />
-        )}
+        {open && <ViewModeSelector />}
       </DrawerHeader>
       <Divider />
       <Box

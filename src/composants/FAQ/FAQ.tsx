@@ -6,31 +6,21 @@ import {
   Typography,
 } from "@mui/material";
 import MUIAccordion from "@mui/material/Accordion";
-import { styled } from "@mui/material/styles";
 import Image from "next/image";
 import React, { FC, useState } from "react";
 import carat_down_dark from "@/assets/svg/carat_down_dark.svg";
 import carat_down_light from "@/assets/svg/carat_down_light.svg";
 
-type AccordionItem = {
+type FAQItem = {
   title: string;
   content: string;
 };
 
-type AccordionProps = {
-  accordionItems: AccordionItem[];
+type FAQProps = {
+  accordionItems: FAQItem[];
 } & StackProps;
 
-const Accordion: FC<AccordionProps> = ({ accordionItems, ...stackProps }) => {
-  const CustomAccordion = styled(MUIAccordion)(() => ({
-    "&.MuiAccordion-root": {
-      borderRadius: "10px",
-      "&:before": {
-        display: "none",
-      },
-    },
-  }));
-
+const FAQ: FC<FAQProps> = ({ accordionItems, ...stackProps }) => {
   const [isExpanded, setIsExpanded] = useState<boolean[]>(
     Array(accordionItems.length).fill(false)
   );
@@ -38,7 +28,7 @@ const Accordion: FC<AccordionProps> = ({ accordionItems, ...stackProps }) => {
   return (
     <Stack spacing="10px" {...stackProps}>
       {accordionItems.map(({ title, content }, index) => (
-        <CustomAccordion
+        <MUIAccordion
           disableGutters
           key={title}
           expanded={isExpanded[index]}
@@ -67,10 +57,10 @@ const Accordion: FC<AccordionProps> = ({ accordionItems, ...stackProps }) => {
           <AccordionDetails sx={{ pt: 0 }}>
             <Typography fontSize={14}>{content}</Typography>
           </AccordionDetails>
-        </CustomAccordion>
+        </MUIAccordion>
       ))}
     </Stack>
   );
 };
 
-export default Accordion;
+export default FAQ;

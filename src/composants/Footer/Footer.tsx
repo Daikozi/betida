@@ -1,5 +1,12 @@
+"use client";
+
 import {
+  Accordion,
+  AccordionActions,
+  AccordionDetails,
+  AccordionSummary,
   Box,
+  Button,
   Divider,
   Grid,
   IconButton,
@@ -10,7 +17,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 
 import social_1 from "@/assets/svg/Social Icons-1.svg";
 import social_2 from "@/assets/svg/Social Icons-2.svg";
@@ -19,10 +26,16 @@ import social_4 from "@/assets/svg/Social Icons-4.svg";
 import social_5 from "@/assets/svg/Social Icons-5.svg";
 import social_6 from "@/assets/svg/Social Icons-6.svg";
 import social_7 from "@/assets/svg/Social Icons-7.svg";
+import carat_down_dark from "@/assets/svg/carat_down_dark.svg";
+import carat_down_light from "@/assets/svg/carat_down_light.svg";
+import logo from "@/assets/svg/logo.svg";
 import Image from "next/image";
 import { footerContent } from "./Footer.content";
 
 const Footer = () => {
+  const [isExpanded, setIsExpanded] = useState<boolean[]>(
+    Array(footerContent.length).fill(false)
+  );
   return (
     <Box
       component="footer"
@@ -30,12 +43,29 @@ const Footer = () => {
         width: "100%",
         display: "flex",
         justifyContent: "center",
+        marginTop: 3,
+        mb: 6,
       }}>
-      <Box sx={{ maxWidth: 1200, width: "100%", marginTop: 4 }}>
-        <Grid container spacing={2}>
+      <Box
+        sx={{
+          maxWidth: 1200,
+          width: "100%",
+          bgcolor: { lg: "background.paper", xs: "transparent" },
+          padding: { xs: 0, lg: 3 },
+          pb: { xs: 0, lg: 2 },
+          borderRadius: "10px",
+          mx: 2,
+        }}>
+        <Grid
+          container
+          spacing={2}
+          sx={{ display: { xs: "none", lg: "flex" } }}>
           {footerContent.map(({ links, title }) => (
-            <Grid size={2} key={title}>
-              <Typography variant="body2" color="text.secondary" mt={2}>
+            <Grid size={{ sm: 6, md: 4, lg: 2 }} key={title}>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                fontWeight={600}>
                 {title}
               </Typography>
               <List dense>
@@ -52,12 +82,79 @@ const Footer = () => {
             </Grid>
           ))}
         </Grid>
-        <Divider sx={{ my: 2 }} />
+        <Divider sx={{ mt: 2, mb: 1, display: { xs: "none", lg: "block" } }} />
         <Stack
-          direction="row"
+          alignItems="center"
+          spacing={3}
+          sx={{ mb: 3, display: { xs: "flex", lg: "none" } }}>
+          <Stack
+            direction="row"
+            alignItems="center"
+            gap={1.5}
+            sx={{ flexGrow: 1 }}>
+            <Image src={logo} alt="Logo" />
+            <Typography
+              variant="subtitle1"
+              component="div"
+              fontWeight={600}
+              sx={{ color: "white" }}>
+              BRAND NAME
+            </Typography>
+          </Stack>
+
+          <Stack spacing="10px" sx={{ width: "100%" }}>
+            {footerContent.map(({ title, links }, index) => (
+              <Accordion key={title} disableGutters>
+                <AccordionSummary
+                  expandIcon={
+                    isExpanded[index] ? (
+                      <Image src={carat_down_light} alt="Expand" />
+                    ) : (
+                      <Image src={carat_down_dark} alt="Expand" />
+                    )
+                  }
+                  aria-controls="panel1-content"
+                  id="panel1-header">
+                  <Typography
+                    component="span"
+                    color={
+                      isExpanded[index] ? "text.secondary" : "text.primary"
+                    }
+                    fontWeight={600}>
+                    {title}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails sx={{ pt: 0 }}>
+                  <List dense>
+                    {links.map(({ label, url }) => (
+                      <ListItem sx={{ p: 0 }} key={label}>
+                        <Link
+                          href={url}
+                          sx={{
+                            textDecoration: "none",
+                            color: "text.primary",
+                          }}>
+                          <ListItemText primary={label} />
+                        </Link>
+                      </ListItem>
+                    ))}
+                  </List>
+                </AccordionDetails>
+              </Accordion>
+            ))}
+          </Stack>
+        </Stack>
+        <Stack
+          direction={{ xs: "column", lg: "row" }}
           justifyContent="space-between"
+          spacing={2}
           alignItems="center">
-          <Stack direction="row" spacing={1}>
+          <Stack
+            direction="row"
+            spacing={1}
+            alignItems="center"
+            justifyContent="space-evenly"
+            sx={{ width: { xs: "100%", lg: "auto" } }}>
             <IconButton aria-label="delete">
               <Image src={social_1} alt="Social Icon 1" />
             </IconButton>

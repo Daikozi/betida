@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Providers } from "@/providers";
 import { Box, Toolbar } from "@mui/material";
-import Sidebar from "@/composants/Sidebar/Sidebar";
 import Header from "@/composants/Header/Header";
 import Footer from "@/composants/Footer/Footer";
 import BottomBar from "@/composants/BottomBar/BottomBar";
@@ -22,7 +21,6 @@ export default function RootLayout({
       <body>
         <Providers>
           <Box sx={{ display: "flex" }}>
-            {/* <Sidebar /> */}
             <SideMenu />
             <Box
               component="main"
@@ -34,10 +32,19 @@ export default function RootLayout({
                 overflowY: "auto",
               }}>
               <Header />
-              <Toolbar />
+              <Toolbar
+                sx={{
+                  height: "76px",
+                }}
+              />
               {children}
-              {/* <Toolbar /> */}
-              {/* <Footer /> */}
+              <Footer />
+              <Toolbar
+                sx={{
+                  height: "76px",
+                  display: { xs: "block", md: "none" },
+                }}
+              />
             </Box>
             <BottomBar />
           </Box>

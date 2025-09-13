@@ -1,36 +1,33 @@
+"use client";
+
 import { AppBar, Box, Button, Stack, Toolbar, Typography } from "@mui/material";
 import React from "react";
 
 import Image from "next/image";
 import logo from "@/assets/svg/logo.svg";
-import theme from "@/theme";
 
-// const drawerWidth = 240;
+const drawerWidth = 64;
 
 const Header = () => {
   return (
     <AppBar
       component="nav"
-      position="sticky"
+      position="fixed"
       sx={{
         top: 0,
-        left: 0,
+        left: drawerWidth,
         right: 0,
-        // width: `calc(100% - ${drawerWidth}px)`,
-        // ml: `${drawerWidth}px`,
-        width: "100%",
+        width: `calc(100% - ${drawerWidth}px)`,
+        px: "16px",
         borderBottom: "1px solid rgba(255, 255, 255, 0.12)",
-        [theme.breakpoints.down("md")]: {
-          width: "100%",
-          ml: 0,
-        },
       }}>
       <Toolbar
         sx={{
           maxWidth: "1200px",
           margin: "0 auto",
           width: "100%",
-          p: "16px !important",
+          height: "76px",
+          p: "0 !important",
         }}>
         <Stack
           direction="row"

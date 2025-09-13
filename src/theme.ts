@@ -21,55 +21,50 @@ const theme = createTheme({
   typography: {
     fontFamily: "Inter, Arial, sans-serif",
   },
+  shape: {
+    borderRadius: 10,
+  },
   components: {
-    MuiToggleButtonGroup: {
+    MuiSelect: {
       styleOverrides: {
         root: {
-          gap: "1rem",
-          "&.MuiToggleButtonGroup-firstButton": {
-            borderRadius: "10px",
+          backgroundColor: "#39373E",
+          fontSize: "14px",
+          color: "white",
+          height: "40px",
+          border: "1px solid transparent",
+          "& > fieldset": {
+            display: "none",
           },
+          "&:hover": {
+            border: "1px solid #a6a5a8",
+          },
+        },
+        select: {
+          padding: "8px",
+          paddingLeft: "12px",
+          paddingRight: "42px !important",
+        },
+        icon: {
+          color: "white",
+          right: "8px",
         },
       },
     },
-    MuiToggleButton: {
+    MuiButtonBase: {
       styleOverrides: {
         root: {
-          textTransform: "none",
-          color: "rgba(255, 255, 255, 0.55)",
-          background: "#39373E",
-          border: "none",
+          color: "white",
+          fontSize: "14px",
+        },
+      },
+    },
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
           borderRadius: "10px",
-          padding: "14px 10px",
-          height: "44px",
-          minWidth: "81px",
-          "&.Mui-selected": {
-            background: "linear-gradient(180deg, #26C5F3 0%, #B429F9 100%);",
-            color: "#FFFFFF",
-
-            "&:hover": {
-              backgroundColor: "rgba(255, 255, 255, 0.25)",
-            },
-          },
-
-          "&:hover": {
-            backgroundColor: "rgba(255, 255, 255, 0.1)",
-          },
-
-          "&.MuiToggleButtonGroup-firstButton": {
-            borderRadius: "10px",
-          },
-
-          "&.MuiToggleButtonGroup-middleButton": {
-            borderRadius: "10px",
-          },
-
-          "&.MuiToggleButtonGroup-lastButton": {
-            borderRadius: "10px",
-          },
-          "& p": {
-            fontWeight: 700,
-            lineHeight: "16px",
+          "&:before": {
+            display: "none",
           },
         },
       },
