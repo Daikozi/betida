@@ -113,8 +113,8 @@ const Footer = () => {
                       <Image src={carat_down_dark} alt="Expand" />
                     )
                   }
-                  aria-controls="panel1-content"
-                  id="panel1-header">
+                  aria-controls={`panel${index}-content`}
+                  id={`panel${index}-header`}>
                   <Typography
                     component="span"
                     color={

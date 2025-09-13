@@ -24,6 +24,7 @@ const SearchBar = () => {
       id="outlined-basic"
       variant="outlined"
       placeholder="Search your game"
+      aria-label="Rechercher un jeu"
       slotProps={{
         input: {
           startAdornment: (

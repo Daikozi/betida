@@ -95,7 +95,11 @@ export default function Home() {
                 </Stack>
               </Stack>
 
-              <ProgressBar variant="determinate" value={50} />
+              <ProgressBar
+                variant="determinate"
+                value={50}
+                aria-label="Progression VIP utilisateur"
+              />
               <Stack
                 direction="row"
                 justifyContent="space-between"
@@ -150,6 +154,7 @@ export default function Home() {
             sx={{ minWidth: 100 }}
             value={betType}
             label="Bet Type"
+            aria-label="Type de pari"
             onChange={(event) =>
               setBetType(event.target.value as "Casino" | "Sport")
             }>

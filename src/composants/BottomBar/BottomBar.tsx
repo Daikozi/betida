@@ -49,9 +49,7 @@ const BottomBar = () => {
               "&.Mui-selected": { color: theme.palette.text.secondary },
             },
           }}
-          icon={
-            <Image src={value === 0 ? browse_selected : browse} alt="Browse" />
-          }
+          icon={<Image src={value === 0 ? browse_selected : browse} alt="" />}
         />
         <BottomNavigationAction
           label="Casino"
@@ -65,9 +63,7 @@ const BottomBar = () => {
               "&.Mui-selected": { color: theme.palette.text.secondary },
             },
           }}
-          icon={
-            <Image src={value === 1 ? casino_selected : casino} alt="Casino" />
-          }
+          icon={<Image src={value === 1 ? casino_selected : casino} alt="" />}
         />
         <BottomNavigationAction
           label="Bets"

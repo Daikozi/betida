@@ -45,8 +45,8 @@ const FAQ: FC<FAQProps> = ({ accordionItems, ...stackProps }) => {
                 <Image src={carat_down_dark} alt="Expand" />
               )
             }
-            aria-controls="panel1-content"
-            id="panel1-header">
+            aria-controls={`panel${index}-content`}
+            id={`panel${index}-header`}>
             <Typography
               component="span"
               color={isExpanded[index] ? "text.secondary" : "text.primary"}
