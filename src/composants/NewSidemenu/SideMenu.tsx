@@ -29,9 +29,9 @@ import carat_down_dark from "@/assets/svg/carat_down_dark.svg";
 import carat_up_light from "@/assets/svg/carat_up_light.svg";
 
 import { Box, Collapse } from "@mui/material";
-import ToggleButtonGroupp from "../ToggleButtonGroup/ToggleButtonGroup";
 import ViewModeSelector from "../ViewModeSelector/ViewModeSelector";
 import { useDrawerStore } from "@/store/drawerStore";
+import { useDisplayMode } from "@/store/displayModeStore";
 
 const drawerWidth = 240;
 
@@ -135,7 +135,7 @@ const SideMenu: React.FC = () => {
   const { open, setOpen } = useDrawerStore();
   const [promotionsOpen, setPromotionsOpen] = React.useState(false);
   const [sponsorshipsOpen, setSponsorshipsOpen] = React.useState(false);
-  const [displayMode, setDisplayMode] = React.useState("casino");
+  const { displayMode, setDisplayMode } = useDisplayMode();
 
   return (
     <Drawer

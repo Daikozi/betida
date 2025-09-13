@@ -1,7 +1,6 @@
 "use client";
 
 import { AppBar, Box, Button, Stack, Toolbar, Typography } from "@mui/material";
-import { useTheme, useMediaQuery } from "@mui/material";
 import React from "react";
 import Image from "next/image";
 import logo from "@/assets/svg/logo.svg";
@@ -9,11 +8,7 @@ import { useDrawerStore } from "@/store/drawerStore";
 
 const Header = () => {
   const { open } = useDrawerStore();
-  const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
-  let drawerWidth = 0;
-  if (isDesktop && !open) drawerWidth = 64;
-  if (isDesktop && open) drawerWidth = 240;
+  const drawerWidth = open ? 240 : 64;
 
   return (
     <AppBar
@@ -21,12 +16,12 @@ const Header = () => {
       position="fixed"
       sx={{
         top: 0,
-        left: drawerWidth,
+        left: { xs: 0, md: drawerWidth },
         right: 0,
-        width: `calc(100% - ${drawerWidth}px)`,
+        width: { xs: "100%", md: `calc(100% - ${drawerWidth}px)` },
         px: "16px",
         borderBottom: "1px solid rgba(255, 255, 255, 0.12)",
-        transition: "left 0.225s, width 0.225s",
+        transition: { xs: "none", md: "left 0.225s, width 0.225s" },
       }}>
       <Toolbar
         sx={{
