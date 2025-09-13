@@ -31,6 +31,7 @@ import carat_up_light from "@/assets/svg/carat_up_light.svg";
 import { Box, Collapse } from "@mui/material";
 import ToggleButtonGroupp from "../ToggleButtonGroup/ToggleButtonGroup";
 import ViewModeSelector from "../ViewModeSelector/ViewModeSelector";
+import { useDrawerStore } from "@/store/drawerStore";
 
 const drawerWidth = 240;
 
@@ -131,8 +132,7 @@ const secondMenuItems = [
 ];
 
 const SideMenu: React.FC = () => {
-  // const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const { open, setOpen } = useDrawerStore();
   const [promotionsOpen, setPromotionsOpen] = React.useState(false);
   const [sponsorshipsOpen, setSponsorshipsOpen] = React.useState(false);
   const [displayMode, setDisplayMode] = React.useState("casino");
@@ -144,7 +144,7 @@ const SideMenu: React.FC = () => {
       sx={{ display: { xs: "none", md: "block" } }}>
       <DrawerHeader sx={{ height: "76px", justifyContent: "center" }}>
         <IconButton
-          onClick={() => setOpen((prev) => !prev)}
+          onClick={() => setOpen(!open)}
           sx={{ mr: open ? 2 : 0, p: 0 }}>
           <Image src={menu} alt="Menu" />
         </IconButton>

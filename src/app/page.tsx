@@ -64,7 +64,7 @@ export default function Home() {
         p: 2,
       }}>
       <Box sx={{ width: "100%", maxWidth: 1200 }}>
-        <Grid container spacing={2} mb={4.5}>
+        <Grid container spacing={2} mb={4.5} alignItems="center">
           <Grid size={{ xs: 12, sm: 12, md: 4 }}>
             <Box>
               <Typography variant="h5" color="text.secondary" mb={4}>
