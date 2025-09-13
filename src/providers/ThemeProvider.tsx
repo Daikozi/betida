@@ -1,14 +1,15 @@
-"use client";
+'use client'
 
-import type { FC, ReactNode } from "react";
-import { ThemeProvider as MUIThemeProvider } from "@mui/material/styles";
-import { StyledEngineProvider } from "@mui/material/styles";
-import theme from "../theme";
-import { CssBaseline } from "@mui/material";
+import { FC, ReactNode } from 'react'
+
+import { CssBaseline } from '@mui/material'
+import { ThemeProvider as MUIThemeProvider, StyledEngineProvider } from '@mui/material/styles'
+
+import theme from '../theme'
 
 type ThemeProviderProps = {
-  children: ReactNode;
-};
+  children: ReactNode
+}
 
 const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => (
   <StyledEngineProvider injectFirst>
@@ -17,6 +18,6 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => (
       {children}
     </MUIThemeProvider>
   </StyledEngineProvider>
-);
+)
 
-export default ThemeProvider;
+export default ThemeProvider

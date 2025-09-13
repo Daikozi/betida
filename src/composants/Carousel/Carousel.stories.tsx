@@ -1,22 +1,22 @@
-import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import { Meta, StoryObj } from '@storybook/nextjs-vite'
 
-import Carousel from "./Carousel";
+import Carousel from './Carousel'
 
 const meta = {
-  title: "Components/Carousel",
+  title: 'Components/Carousel',
   component: Carousel,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-} satisfies Meta<typeof Carousel>;
+} satisfies Meta<typeof Carousel>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
     children: null,
-    title: "Exemple",
+    title: 'Exemple',
   },
-};
+}

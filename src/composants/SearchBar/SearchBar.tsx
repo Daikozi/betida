@@ -1,23 +1,24 @@
-import { InputAdornment, TextField } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import Image from "next/image";
-import React from "react";
-import searchIcon from "@/assets/svg/search.svg";
+import { FC } from 'react'
 
-const SearchBar = () => {
+import searchIcon from '@/assets/svg/search.svg'
+import { InputAdornment, TextField } from '@mui/material'
+import { styled } from '@mui/material/styles'
+import Image, { StaticImageData } from 'next/image'
+
+const SearchBar: FC = () => {
   const CustomTextField = styled(TextField)(() => ({
-    "& .MuiOutlinedInput-root": {
-      color: "#FFFFFF",
-      backgroundColor: "#39373E",
+    '& .MuiOutlinedInput-root': {
+      color: '#FFFFFF',
+      backgroundColor: '#39373E',
       borderRadius: 10,
       fontSize: 14,
       height: 40,
-      border: "none",
-      "& input": {
-        color: "#FFFFFF",
+      border: 'none',
+      '& input': {
+        color: '#FFFFFF',
       },
     },
-  }));
+  }))
 
   return (
     <CustomTextField
@@ -29,14 +30,14 @@ const SearchBar = () => {
         input: {
           startAdornment: (
             <InputAdornment position="start">
-              <Image src={searchIcon} alt="search" />
+              <Image src={searchIcon as StaticImageData} alt="search" />
             </InputAdornment>
           ),
         },
       }}
       fullWidth
     />
-  );
-};
+  )
+}
 
-export default SearchBar;
+export default SearchBar

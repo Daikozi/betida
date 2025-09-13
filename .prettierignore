@@ -1,0 +1,14 @@
+.next
+node_modules
+dist
+build
+coverage
+
+.storybook/public/mockServiceWorker.js
+storybook-static
+storybook-static
+
+pnpm-lock.yaml
+.pnpm-store
+
+*.generated.d.ts

@@ -1,0 +1,23 @@
+{
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "printWidth": 120,
+  "singleQuote": true,
+  "semi": false,
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrder": [
+    "^server-only$",
+    "^(react|react-dom)$",
+    "<THIRD_PARTY_MODULES>",
+    "^@(App|Constants|Components|Hooks|Images|Lib|Mocks|Models|Providers|Server|Services|Storybook|Styles)(/.*)?$",
+    "^[./]"
+  ],
+  "overrides": [
+    {
+      "files": ".gitlab-ci.yml",
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
+}

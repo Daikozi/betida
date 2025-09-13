@@ -1,23 +1,23 @@
-import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import { Meta, StoryObj } from '@storybook/nextjs-vite'
 
-import LargeTrendingCard from "./LargeTrendingCard";
+import LargeTrendingCard from './LargeTrendingCard'
 
 const meta = {
-  title: "Components/LargeTrendingCard",
+  title: 'Components/LargeTrendingCard',
   component: LargeTrendingCard,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   args: {
-    image: "/assets/images/casino.webp",
+    image: '/assets/images/casino.webp',
     quantityPlaying: 365,
     rank: 1,
-    title: "Casino",
+    title: 'Casino',
   },
-} satisfies Meta<typeof LargeTrendingCard>;
+} satisfies Meta<typeof LargeTrendingCard>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
-export const Default: Story = {};
+export const Default: Story = {}
