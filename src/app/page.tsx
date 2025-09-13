@@ -34,13 +34,13 @@ export default function Home() {
   const carouselStackRef = useRef<HTMLDivElement>(null);
 
   const trendingGames = Array.from({ length: 8 }, (_, i) => ({
-    src: `/assets/images/trending_games_${i + 1}.png`,
+    src: `/assets/images/trending_games_${i + 1}.webp`,
     rank: i + 1,
     quantityPlaying: 365,
   }));
 
   const trendingSports = Array.from({ length: 8 }, (_, i) => ({
-    src: `/assets/images/trending_sports_${i + 1}.png`,
+    src: `/assets/images/trending_sports_${i + 1}.webp`,
     rank: i + 1,
   }));
 
@@ -128,7 +128,7 @@ export default function Home() {
           </Grid>
           <Grid size={{ xs: 6, sm: 6, md: 4 }}>
             <LargeTrendingCard
-              image="casino.png"
+              image="casino.webp"
               quantityPlaying={365}
               rank={1}
               title="Casino"
@@ -137,7 +137,7 @@ export default function Home() {
           </Grid>
           <Grid size={{ xs: 6, sm: 6, md: 4 }}>
             <LargeTrendingCard
-              image="sport.png"
+              image="sport.webp"
               quantityPlaying={365}
               rank={1}
               title="Sports"
@@ -178,19 +178,19 @@ export default function Home() {
             chipLabel="Promotion"
             title="Team Vitality"
             subtitle="Kill Target Prize Pool"
-            image="/assets/images/promotions_1.png"
+            image="/assets/images/promotions_1.webp"
           />
           <PromotionCard
             chipLabel="New releases"
             title="Angel vs Sinner"
             subtitle="New Enhanced RTP game!"
-            image="/assets/images/promotions_2.png"
+            image="/assets/images/promotions_2.webp"
           />
           <PromotionCard
             chipLabel="Promotion"
             title="Frankie's Ebor Raffle"
             subtitle="Share in $40,000"
-            image="/assets/images/promotions_3.png"
+            image="/assets/images/promotions_3.webp"
           />
         </Carousel>
         <Box

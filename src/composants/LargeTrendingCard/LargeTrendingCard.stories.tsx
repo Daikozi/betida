@@ -10,7 +10,7 @@ const meta = {
     layout: "centered",
   },
   args: {
-    image: "/assets/images/casino.png",
+    image: "/assets/images/casino.webp",
     quantityPlaying: 365,
     rank: 1,
     title: "Casino",
