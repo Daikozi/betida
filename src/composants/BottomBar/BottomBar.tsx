@@ -49,7 +49,14 @@ const BottomBar = () => {
               "&.Mui-selected": { color: theme.palette.text.secondary },
             },
           }}
-          icon={<Image src={value === 0 ? browse_selected : browse} alt="" />}
+          icon={
+            <Image
+              src={value === 0 ? browse_selected : browse}
+              alt=""
+              width={24}
+              height={24}
+            />
+          }
         />
         <BottomNavigationAction
           label="Casino"
@@ -63,7 +70,14 @@ const BottomBar = () => {
               "&.Mui-selected": { color: theme.palette.text.secondary },
             },
           }}
-          icon={<Image src={value === 1 ? casino_selected : casino} alt="" />}
+          icon={
+            <Image
+              src={value === 1 ? casino_selected : casino}
+              alt=""
+              width={24}
+              height={24}
+            />
+          }
         />
         <BottomNavigationAction
           label="Bets"
@@ -77,7 +91,7 @@ const BottomBar = () => {
               "&.Mui-selected": { color: theme.palette.text.secondary },
             },
           }}
-          icon={<Image src={bets} alt="Bets" />}
+          icon={<Image src={bets} alt="Bets" width={24} height={24} />}
         />
         <BottomNavigationAction
           label="Sports"
@@ -91,7 +105,7 @@ const BottomBar = () => {
               "&.Mui-selected": { color: theme.palette.text.secondary },
             },
           }}
-          icon={<Image src={sports} alt="Sports" />}
+          icon={<Image src={sports} alt="Sports" width={24} height={24} />}
         />
         <BottomNavigationAction
           label="Chat"
@@ -105,7 +119,7 @@ const BottomBar = () => {
               "&.Mui-selected": { color: theme.palette.text.secondary },
             },
           }}
-          icon={<Image src={chat} alt="Chat" />}
+          icon={<Image src={chat} alt="Chat" width={24} height={24} />}
         />
       </BottomNavigation>
     </Box>

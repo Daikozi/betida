@@ -36,7 +36,7 @@ const Header = () => {
           alignItems="center"
           gap={1.5}
           sx={{ flexGrow: 1 }}>
-          <Image src={logo} alt="Logo" />
+          <Image src={logo} alt="Logo" width={32} height={32} />
           <Typography
             variant="subtitle1"
             component="div"

@@ -146,7 +146,7 @@ const SideMenu: React.FC = () => {
         <IconButton
           onClick={() => setOpen(!open)}
           sx={{ mr: open ? 2 : 0, p: 0 }}>
-          <Image src={menu} alt="Menu" />
+          <Image src={menu} alt="Menu" width={24} height={24} />
         </IconButton>
         {open && <ViewModeSelector />}
       </DrawerHeader>
@@ -205,7 +205,7 @@ const SideMenu: React.FC = () => {
                           mr: "0",
                         },
                   ]}>
-                  <Image src={icon} alt={text} />
+                  <Image src={icon} alt={text} width={24} height={24} />
                 </ListItemIcon>
                 <ListItemText
                   slotProps={{
@@ -225,6 +225,8 @@ const SideMenu: React.FC = () => {
                   <Image
                     src={promotionsOpen ? carat_up_light : carat_down_dark}
                     alt=""
+                    width={24}
+                    height={24}
                   />
                 )}
               </ListItemButton>
@@ -239,6 +241,8 @@ const SideMenu: React.FC = () => {
                           <Image
                             src={index === length - 1 ? branche_end : branche}
                             alt="sponsorships"
+                            width={16}
+                            height={16}
                           />
                         </ListItemIcon>
                         <ListItemText
@@ -313,7 +317,7 @@ const SideMenu: React.FC = () => {
                           mr: "0",
                         },
                   ]}>
-                  <Image src={icon} alt={text} />
+                  <Image src={icon} alt={text} width={24} height={24} />
                 </ListItemIcon>
                 <ListItemText
                   slotProps={{
@@ -333,6 +337,8 @@ const SideMenu: React.FC = () => {
                   <Image
                     src={sponsorshipsOpen ? carat_up_light : carat_down_dark}
                     alt=""
+                    width={24}
+                    height={24}
                   />
                 )}
               </ListItemButton>

@@ -178,14 +178,14 @@ const Table = () => {
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
               <StyledTableCell component="th" scope="row">
                 <Stack direction="row" alignItems="center" spacing="10px">
-                  <Image src={dummy} alt="Game Icon" />
+                  <Image src={dummy} alt="Game Icon" width={24} height={24} />
                   <Box>{row.game}</Box>
                 </Stack>
               </StyledTableCell>
               <StyledTableCell
                 sx={{ display: { xs: "none", md: "table-cell" } }}>
                 <Stack direction="row" alignItems="center" spacing="10px">
-                  <Image src={dummy} alt="Game Icon" />
+                  <Image src={dummy} alt="Game Icon" width={24} height={24} />
                   <Box>{row.user}</Box>
                 </Stack>
               </StyledTableCell>
@@ -197,7 +197,12 @@ const Table = () => {
                 sx={{ display: { xs: "none", md: "table-cell" } }}>
                 <Stack direction="row" alignItems="center" spacing="10px">
                   <Box>{row.betAmount}</Box>
-                  <Image src={getCurrencyIcon(row.currency)} alt="Game Icon" />
+                  <Image
+                    src={getCurrencyIcon(row.currency)}
+                    alt="Game Icon"
+                    width={24}
+                    height={24}
+                  />
                 </Stack>
               </StyledTableCell>
               <StyledTableCell
@@ -213,13 +218,16 @@ const Table = () => {
                   <Typography
                     sx={{ lineHeight: 1 }}
                     color={
-                      row.payout.startsWith("-")
-                        ? "text.secondary"
-                        : "success.main"
+                      row.payout.startsWith("-") ? "text.secondary" : "#20AD65"
                     }>
                     {row.payout}
                   </Typography>
-                  <Image src={getCurrencyIcon(row.currency)} alt="Game Icon" />
+                  <Image
+                    src={getCurrencyIcon(row.currency)}
+                    alt="Game Icon"
+                    width={24}
+                    height={24}
+                  />
                 </Stack>
               </StyledTableCell>
             </StyledTableRow>

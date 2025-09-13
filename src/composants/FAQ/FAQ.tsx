@@ -40,9 +40,19 @@ const FAQ: FC<FAQProps> = ({ accordionItems, ...stackProps }) => {
           <AccordionSummary
             expandIcon={
               isExpanded[index] ? (
-                <Image src={carat_down_light} alt="Expand" />
+                <Image
+                  src={carat_down_light}
+                  alt="Expand"
+                  width={24}
+                  height={24}
+                />
               ) : (
-                <Image src={carat_down_dark} alt="Expand" />
+                <Image
+                  src={carat_down_dark}
+                  alt="Expand"
+                  width={24}
+                  height={24}
+                />
               )
             }
             aria-controls={`panel${index}-content`}

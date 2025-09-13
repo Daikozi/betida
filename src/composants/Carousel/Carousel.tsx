@@ -96,10 +96,12 @@ const Carousel: FC<CarouselProps> = ({ children, title, ...boxProps }) => {
               <Image
                 src={next}
                 alt="previous"
+                width={24}
+                height={24}
                 style={{ transform: "rotate(180deg)" }}
               />
             ) : (
-              <Image src={back_light} alt="previous" />
+              <Image src={back_light} alt="previous" width={24} height={24} />
             )}
           </IconButton>
           <IconButton
@@ -108,11 +110,13 @@ const Carousel: FC<CarouselProps> = ({ children, title, ...boxProps }) => {
             onClick={handleNext}
             disabled={!canScrollNext}>
             {canScrollNext ? (
-              <Image src={next} alt="next" />
+              <Image src={next} alt="next" width={24} height={24} />
             ) : (
               <Image
                 src={back_light}
                 alt="next"
+                width={24}
+                height={24}
                 style={{ transform: "rotate(180deg)" }}
               />
             )}

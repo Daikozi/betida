@@ -2,6 +2,7 @@
 import {
   Box,
   Grid,
+  InputLabel,
   MenuItem,
   Select,
   Stack,
@@ -151,16 +152,21 @@ export default function Home() {
         </Grid>
         <Stack direction="row" spacing={2} mb={3} alignItems="center">
           <Select
+            id="betType-select"
+            labelId="betType-label"
+            name="betType"
             sx={{ minWidth: 100 }}
             value={betType}
-            label="Bet Type"
-            aria-label="Type de pari"
+            aria-labelledby="betType-label"
             onChange={(event) =>
               setBetType(event.target.value as "Casino" | "Sport")
             }>
             <MenuItem value="Casino">Casino</MenuItem>
             <MenuItem value="Sport">Sport</MenuItem>
           </Select>
+          <InputLabel id="betType-label" sx={{ display: "none" }}>
+            Type de pari
+          </InputLabel>
           <SearchBar />
         </Stack>
         <Carousel title="Trending Games" mb={4}>

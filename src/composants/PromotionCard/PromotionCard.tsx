@@ -4,12 +4,12 @@ import {
   Card,
   CardActions,
   CardContent,
-  CardMedia,
   Chip,
   Link,
   Stack,
   Typography,
 } from "@mui/material";
+import NextImage from "next/image";
 import React, { FC } from "react";
 
 type PromotionCardProps = {
@@ -81,10 +81,12 @@ const PromotionCard: FC<PromotionCardProps> = ({
           </Link>
         </CardActions>
       </Stack>
-      <CardMedia
-        sx={{ height: 140, width: 140, borderRadius: "10px", flexShrink: 0 }}
-        image={image}
-        title={title}
+      <NextImage
+        src={image}
+        alt={title}
+        width={140}
+        height={140}
+        style={{ borderRadius: "10px", flexShrink: 0, objectFit: "cover" }}
       />
     </Card>
   );

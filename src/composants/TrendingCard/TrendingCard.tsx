@@ -66,15 +66,16 @@ const TrendingCard = ({ image, quantityPlaying, rank }: TrendingCardProps) => {
           </Typography>
         </Box>
         <CardActionArea>
-          <CardMedia
-            component="img"
-            height="188.8"
-            image={
+          <NextImage
+            src={
               image.startsWith("/assets/images/")
                 ? image
                 : `/assets/images/${image}`
             }
             alt={`trending game ${rank}`}
+            width={144}
+            height={96}
+            style={{ borderRadius: "10px", width: "100%", height: "auto" }}
           />
         </CardActionArea>
       </Card>

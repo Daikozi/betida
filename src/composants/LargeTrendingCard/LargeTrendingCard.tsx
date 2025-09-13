@@ -1,11 +1,4 @@
-import {
-  // Box,
-  Card,
-  CardActionArea,
-  CardMedia,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Card, CardActionArea, Stack, Typography } from "@mui/material";
 import React from "react";
 
 import ellipse from "@/assets/svg/Ellipse 1.svg";
@@ -38,15 +31,23 @@ const LargeTrendingCard = ({
             border: `2px solid ${highlightColor}`,
           },
         }}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            image={
+        <CardActionArea
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}>
+          <NextImage
+            src={
               image.startsWith("/assets/images/")
                 ? image
                 : `/assets/images/${image}`
             }
             alt={`trending game ${rank}`}
+            width={385}
+            height={260}
+            style={{ width: "100%", height: "auto" }}
+            priority
           />
         </CardActionArea>
       </Card>
