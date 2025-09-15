@@ -9,6 +9,7 @@ import branche_end from '@/assets/svg/branche_end.svg'
 import carat_down_dark from '@/assets/svg/carat_down_dark.svg'
 import carat_up_light from '@/assets/svg/carat_up_light.svg'
 import casino_gradient from '@/assets/svg/casino_gradient.svg'
+import casino_unselected from '@/assets/svg/casino_unselected.svg'
 import forum from '@/assets/svg/forum.svg'
 import live_support from '@/assets/svg/live_support.svg'
 import menu from '@/assets/svg/menu.svg'
@@ -16,8 +17,9 @@ import promotion from '@/assets/svg/promotions.svg'
 import responsible_gambling from '@/assets/svg/responsible_gambling.svg'
 import sponsorships from '@/assets/svg/sponsorships.svg'
 import sports_gradient from '@/assets/svg/sports_gradient.svg'
+import sports_unselected from '@/assets/svg/sports_unselected.svg'
 import vip_club from '@/assets/svg/vip_club.svg'
-// import { useDisplayMode } from '@/store/displayModeStore'
+import { useDisplayMode } from '@/store/displayModeStore'
 import { useDrawerStore } from '@/store/drawerStore'
 import { Box, Collapse } from '@mui/material'
 import Divider from '@mui/material/Divider'
@@ -61,7 +63,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'flex-end',
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }))
 
@@ -91,8 +92,6 @@ const Drawer = styled(MuiDrawer, {
 }))
 
 const firstMenuItems = [
-  { text: 'Casino', icon: casino_gradient as StaticImageData, showWhenOpen: false },
-  { text: 'Sports', icon: sports_gradient as StaticImageData, showWhenOpen: false },
   {
     text: 'Promotion',
     icon: promotion as StaticImageData,
@@ -135,7 +134,20 @@ const SideMenu: React.FC = () => {
   const { open, setOpen } = useDrawerStore()
   const [promotionsOpen, setPromotionsOpen] = React.useState(false)
   const [sponsorshipsOpen, setSponsorshipsOpen] = React.useState(false)
-  // const { displayMode, setDisplayMode } = useDisplayMode()
+  const { displayMode, setDisplayMode } = useDisplayMode()
+
+  const displayModeList = [
+    {
+      text: 'Casino',
+      icon: (displayMode === 'casino' ? casino_gradient : casino_unselected) as StaticImageData,
+      showWhenOpen: false,
+    },
+    {
+      text: 'Sports',
+      icon: (displayMode === 'sports' ? sports_gradient : sports_unselected) as StaticImageData,
+      showWhenOpen: false,
+    },
+  ]
 
   return (
     <Drawer variant="permanent" open={open} sx={{ display: { xs: 'none', md: 'block' } }}>
@@ -156,6 +168,75 @@ const SideMenu: React.FC = () => {
         }}
       >
         <List sx={{ py: 0 }}>
+          {displayModeList.map(({ icon, showWhenOpen, text }) => (
+            <ListItem
+              key={text}
+              disablePadding
+              sx={{
+                display: showWhenOpen || !open ? 'block' : 'none',
+              }}
+            >
+              <ListItemButton
+                onClick={() => {
+                  setDisplayMode(text.toLowerCase() as 'casino' | 'sports')
+                }}
+                sx={[
+                  {
+                    minHeight: 44,
+                    p: '10px',
+                    borderRadius: '10px 10px 0px 0px',
+                  },
+                  open
+                    ? {
+                        justifyContent: 'initial',
+                      }
+                    : {
+                        justifyContent: 'center',
+                      },
+                ]}
+              >
+                <ListItemIcon
+                  sx={[
+                    {
+                      minWidth: 0,
+                      justifyContent: 'center',
+                    },
+                    open
+                      ? {
+                          mr: '10px',
+                        }
+                      : {
+                          mr: '0',
+                        },
+                  ]}
+                >
+                  <Image src={icon} alt={text} width={24} height={24} />
+                </ListItemIcon>
+                <ListItemText
+                  slotProps={{
+                    primary: {
+                      fontSize: 14,
+                      color: 'white',
+                    },
+                  }}
+                  primary={text}
+                  sx={{
+                    display: open ? 'block' : 'none',
+                    opacity: open ? 1 : 0,
+                    my: 0,
+                  }}
+                />
+                {text === 'Promotion' && open && (
+                  <Image
+                    src={(promotionsOpen ? carat_up_light : carat_down_dark) as StaticImageData}
+                    alt=""
+                    width={24}
+                    height={24}
+                  />
+                )}
+              </ListItemButton>
+            </ListItem>
+          ))}
           {firstMenuItems.map(({ icon, showWhenOpen, text, subitems }) => (
             <ListItem
               key={text}

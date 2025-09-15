@@ -7,12 +7,12 @@ import MUIAccordion from '@mui/material/Accordion'
 import Image, { StaticImageData } from 'next/image'
 
 type FAQItem = {
-  title: string
-  content: string
+  question: string
+  answer: string
 }
 
 type FAQProps = {
-  accordionItems: FAQItem[]
+  accordionItems: readonly FAQItem[]
 } & StackProps
 
 const FAQ: FC<FAQProps> = ({ accordionItems, ...stackProps }) => {
@@ -20,10 +20,10 @@ const FAQ: FC<FAQProps> = ({ accordionItems, ...stackProps }) => {
 
   return (
     <Stack spacing="10px" {...stackProps}>
-      {accordionItems.map(({ title, content }, index) => (
+      {accordionItems.map(({ question, answer }, index) => (
         <MUIAccordion
           disableGutters
-          key={title}
+          key={question}
           expanded={isExpanded[index]}
           onChange={() => {
             const newExpanded = [...isExpanded]
@@ -43,11 +43,11 @@ const FAQ: FC<FAQProps> = ({ accordionItems, ...stackProps }) => {
             id={`panel${index}-header`}
           >
             <Typography component="span" color={isExpanded[index] ? 'text.secondary' : 'text.primary'} fontWeight={600}>
-              {title}
+              {question}
             </Typography>
           </AccordionSummary>
           <AccordionDetails sx={{ pt: 0 }}>
-            <Typography fontSize={14}>{content}</Typography>
+            <Typography fontSize={14}>{answer}</Typography>
           </AccordionDetails>
         </MUIAccordion>
       ))}

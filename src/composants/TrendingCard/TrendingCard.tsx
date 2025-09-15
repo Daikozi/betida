@@ -7,7 +7,7 @@ import NextImage, { StaticImageData } from 'next/image'
 type TrendingCardProps = {
   image: string
   quantityPlaying?: number
-  rank: number
+  rank?: number
 }
 
 const TrendingCard: FC<TrendingCardProps> = ({ image, quantityPlaying, rank }) => (
@@ -23,43 +23,45 @@ const TrendingCard: FC<TrendingCardProps> = ({ image, quantityPlaying, rank }) =
         },
       }}
     >
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 6,
-          left: 6,
-          zIndex: 1,
-          width: 32,
-          height: 32,
-          borderRadius: '50%',
-          backgroundColor: '#0F0F10',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          overflow: 'hidden',
-        }}
-      >
+      {rank && (
         <Box
           sx={{
             position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: 24,
-            height: 24,
-            zIndex: 0,
+            top: 6,
+            left: 6,
+            zIndex: 1,
+            width: 32,
+            height: 32,
+            borderRadius: '50%',
+            backgroundColor: '#0F0F10',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            overflow: 'hidden',
           }}
-        />
-        <Typography
-          variant="subtitle1"
-          color="white"
-          textAlign="center"
-          fontWeight="bold"
-          sx={{ position: 'relative', zIndex: 1 }}
         >
-          {rank}
-        </Typography>
-      </Box>
+          <Box
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: 24,
+              height: 24,
+              zIndex: 0,
+            }}
+          />
+          <Typography
+            variant="subtitle1"
+            color="white"
+            textAlign="center"
+            fontWeight="bold"
+            sx={{ position: 'relative', zIndex: 1 }}
+          >
+            {rank}
+          </Typography>
+        </Box>
+      )}
       <CardActionArea>
         <NextImage
           src={image.startsWith('/assets/images/') ? image : `/assets/images/${image}`}

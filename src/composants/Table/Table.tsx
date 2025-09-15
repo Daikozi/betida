@@ -12,7 +12,6 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
   tableCellClasses,
   tableRowClasses,
 } from '@mui/material'
@@ -54,74 +53,83 @@ const getCurrencyIcon = (currency: string): StaticImageData => {
   }
 }
 
-const createData = (
-  game: string,
-  user: string,
-  time: string,
-  betAmount: string,
-  multiplier: string,
-  payout: string,
-  currency = 'bitcoin',
-) => ({ game, user, time, betAmount, multiplier, payout, currency })
+type Currency = 'bitcoin' | 'etherium' | 'coin'
+type DataRow = readonly [string, string, string, string, string, string, Currency]
 
-const rows = [
-  createData('Keno', 'Hidden', '10:31 PM', '$1,995.30', '10:31 PM', '-$1,995.30', 'bitcoin'),
-  createData('Stake Roulette', 'Hidden', '10:31 PM', '$4,800.00', '10:31 PM', '$28,800.00', 'etherium'),
-  createData('Big Bass Halloween', 'Hidden', '10:31 PM', '$1,172.19', '10:31 PM', '-$586.10', 'coin'),
-  createData('Keno', 'Hidden', '10:31 PM', '$1,995.30', '10:31 PM', '-$1,995.30', 'bitcoin'),
-  createData('Stake Roulette', 'Hidden', '10:31 PM', '$4,800.00', '10:31 PM', '$28,800.00', 'etherium'),
-  createData('Big Bass Halloween', 'Hidden', '10:31 PM', '$1,172.19', '10:31 PM', '-$586.10', 'coin'),
-  createData('Keno', 'Hidden', '10:31 PM', '$1,995.30', '10:31 PM', '-$1,995.30', 'bitcoin'),
-  createData('Stake Roulette', 'Hidden', '10:31 PM', '$4,800.00', '10:31 PM', '$28,800.00', 'etherium'),
-  createData('Big Bass Halloween', 'Hidden', '10:31 PM', '$1,172.19', '10:31 PM', '-$586.10', 'coin'),
-]
+type Tables = {
+  selectors: readonly { label: string; value: string }[]
+  headers: readonly string[]
+  datasets: Readonly<Record<string, readonly DataRow[]>>
+}
 
-const Table: FC = () => (
+type TableProps = {
+  tableView: 'casino_bets' | 'sports_bets' | 'race_leaderboard' | 'all_bets' | 'high_rollers'
+  tables: Tables
+}
+
+const Table: FC<TableProps> = ({ tableView, tables }) => (
   <TableContainer sx={{ mb: '36px' }}>
     <MUITable aria-label="simple table">
       <TableHead>
         <StyledTableRow>
-          <StyledTableCell>Game</StyledTableCell>
-          <StyledTableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>User</StyledTableCell>
-          <StyledTableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>Time</StyledTableCell>
-          <StyledTableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>Bet Amount</StyledTableCell>
-          <StyledTableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>Multiplier</StyledTableCell>
-          <StyledTableCell align="right">Payout</StyledTableCell>
+          {tables.headers.map((header, index) => (
+            <StyledTableCell
+              key={header}
+              align={index === tables.headers.length - 1 ? 'right' : 'left'}
+              sx={{
+                display: {
+                  xs: index !== 0 || index !== tables.headers.length - 1 ? 'none' : 'table-cell',
+                  md: 'table-cell',
+                },
+              }}
+            >
+              {header}
+            </StyledTableCell>
+          ))}
         </StyledTableRow>
       </TableHead>
       <TableBody>
-        {rows.map((row, index) => (
-          <StyledTableRow key={`${row.game} ${index}`} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-            <StyledTableCell component="th" scope="row">
-              <Stack direction="row" alignItems="center" spacing="10px">
-                <Image src={dummy as StaticImageData} alt="Game Icon" width={24} height={24} />
-                <Box>{row.game}</Box>
-              </Stack>
-            </StyledTableCell>
-            <StyledTableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>
-              <Stack direction="row" alignItems="center" spacing="10px">
-                <Image src={dummy as StaticImageData} alt="Game Icon" width={24} height={24} />
-                <Box>{row.user}</Box>
-              </Stack>
-            </StyledTableCell>
-            <StyledTableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>{row.time}</StyledTableCell>
-            <StyledTableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>
-              <Stack direction="row" alignItems="center" spacing="10px">
-                <Box>{row.betAmount}</Box>
-                <Image src={getCurrencyIcon(row.currency)} alt="Game Icon" width={24} height={24} />
-              </Stack>
-            </StyledTableCell>
-            <StyledTableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>{row.multiplier}</StyledTableCell>
-            <StyledTableCell align="right">
-              <Stack direction="row" alignItems="center" spacing="10px" justifyContent="flex-end">
-                <Typography sx={{ lineHeight: 1 }} color={row.payout.startsWith('-') ? 'text.secondary' : '#20AD65'}>
-                  {row.payout}
-                </Typography>
-                <Image src={getCurrencyIcon(row.currency)} alt="Game Icon" width={24} height={24} />
-              </Stack>
-            </StyledTableCell>
-          </StyledTableRow>
-        ))}
+        {tables.datasets[tableView].map((row, index) => {
+          const [...cells] = row.slice(0, -1)
+          const currency = row[row.length - 1]
+
+          return (
+            <StyledTableRow
+              key={`${row.join('-')} ${index}`}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              {cells.map((cell, index) => (
+                <StyledTableCell
+                  key={`${cell}-${index}`}
+                  component="th"
+                  scope="row"
+                  align={index === cells.length - 1 ? 'right' : 'left'}
+                  sx={{
+                    display: {
+                      xs: index !== 0 || index !== cells.length - 1 ? 'none' : 'table-cell',
+                      md: 'table-cell',
+                    },
+                  }}
+                >
+                  <Stack
+                    direction="row"
+                    alignItems="center"
+                    spacing="10px"
+                    justifyContent={index === cells.length - 1 ? 'flex-end' : 'flex-start'}
+                  >
+                    {(index === 0 || index === 1) && (
+                      <Image src={dummy as StaticImageData} alt="Game Icon" width={24} height={24} />
+                    )}
+                    <Box>{cell}</Box>
+                    {(index === 3 || index === 5) && (
+                      <Image src={getCurrencyIcon(currency)} alt="Game Icon" width={24} height={24} />
+                    )}
+                  </Stack>
+                </StyledTableCell>
+              ))}
+            </StyledTableRow>
+          )
+        })}
       </TableBody>
     </MUITable>
   </TableContainer>

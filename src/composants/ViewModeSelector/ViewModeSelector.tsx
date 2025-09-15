@@ -1,5 +1,6 @@
-import { FC, MouseEvent, useState } from 'react'
+import { FC, MouseEvent } from 'react'
 
+import { useDisplayMode } from '@/store/displayModeStore'
 import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup, { toggleButtonGroupClasses } from '@mui/material/ToggleButtonGroup'
 import { styled } from '@mui/material/styles'
@@ -34,15 +35,15 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(() => ({
 }))
 
 const ViewModeSelector: FC = () => {
-  const [viewMode, setViewMode] = useState<'casino' | 'sports'>('casino')
+  const { displayMode, setDisplayMode } = useDisplayMode()
 
-  const handleViewModeChange = (_event: MouseEvent<HTMLElement>, newAlignment: 'casino' | 'sports' | null) => {
-    if (newAlignment !== null) {
-      setViewMode(newAlignment)
+  const handleViewModeChange = (_event: MouseEvent<HTMLElement>, newDisplayMode: 'casino' | 'sports' | null) => {
+    if (newDisplayMode !== null) {
+      setDisplayMode(newDisplayMode)
     }
   }
   return (
-    <StyledToggleButtonGroup value={viewMode} exclusive onChange={handleViewModeChange} aria-label="view mode">
+    <StyledToggleButtonGroup value={displayMode} exclusive onChange={handleViewModeChange} aria-label="view mode">
       <ToggleButton value="casino" aria-label="casino view">
         Casino
       </ToggleButton>
