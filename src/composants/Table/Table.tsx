@@ -78,7 +78,7 @@ const Table: FC<TableProps> = ({ tableView, tables }) => (
               align={index === tables.headers.length - 1 ? 'right' : 'left'}
               sx={{
                 display: {
-                  xs: index !== 0 || index !== tables.headers.length - 1 ? 'none' : 'table-cell',
+                  xs: index !== 0 && index !== tables.headers.length - 1 ? 'none' : 'table-cell',
                   md: 'table-cell',
                 },
               }}
@@ -106,9 +106,11 @@ const Table: FC<TableProps> = ({ tableView, tables }) => (
                   align={index === cells.length - 1 ? 'right' : 'left'}
                   sx={{
                     display: {
-                      xs: index !== 0 || index !== cells.length - 1 ? 'none' : 'table-cell',
+                      xs: index !== 0 && index !== cells.length - 1 ? 'none' : 'table-cell',
                       md: 'table-cell',
                     },
+                    color:
+                      (index === 3 || index === cells.length) && cell.startsWith('-') ? 'text.secondary' : '#20AD65',
                   }}
                 >
                   <Stack

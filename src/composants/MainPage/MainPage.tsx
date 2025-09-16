@@ -16,7 +16,7 @@ import Table from '@/composants/Table/Table'
 import ToggleButtonGroup from '@/composants/ToggleButtonGroup/ToggleButtonGroup'
 import TrendingCard from '@/composants/TrendingCard/TrendingCard'
 import { main } from '@/data/main'
-import { Box, InputLabel, MenuItem, Select, Stack, ToggleButton, Typography } from '@mui/material'
+import { Box, Grid, InputLabel, MenuItem, Select, Stack, ToggleButton, Typography } from '@mui/material'
 import Image, { StaticImageData } from 'next/image'
 
 const MainPage: FC = () => {
@@ -43,64 +43,77 @@ const MainPage: FC = () => {
       }}
     >
       <Box sx={{ width: '100%', maxWidth: 1200 }}>
-        <div style={{ display: 'flex', gap: 16, marginBottom: '36px', alignItems: 'center' }}>
-          <section style={{ flex: 1 }}>
-            <Typography variant="h5" color="text.secondary" mb={4}>
-              {userInfo.userName}
-            </Typography>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                position: 'relative',
-                marginBottom: 16,
-              }}
-            >
-              <Typography color="text.secondary" style={{ fontWeight: 500 }}>
-                {userInfo.progress.label}
+        <Grid container spacing={2} mb={4.5} alignItems="center">
+          <Grid size={{ xs: 12, sm: 12, md: 4 }}>
+            <Box>
+              <Typography variant="h5" color="text.secondary" mb={4}>
+                {userInfo.userName}
               </Typography>
-              <span style={{ position: 'absolute', transform: 'translate(50%, -40%)', top: '50%', right: '50%' }}>
-                <Image src={arrow_right as StaticImageData} alt="info" />
-              </span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                <Typography color="text.secondary">{userInfo.progress.score}</Typography>
-                <Image src={info as StaticImageData} alt="info" />
-              </span>
-            </div>
-            <ProgressBar
-              variant="determinate"
-              value={(userInfo.progress.value * 100) / userInfo.progress.max}
-              aria-label="Progression VIP utilisateur"
-            />
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                marginTop: 24,
-                position: 'relative',
-                width: '100%',
-              }}
-            >
-              <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                <Image src={none as StaticImageData} alt="info" />
-                <Typography variant="body2" color="text.secondary">
-                  {userInfo.statut.current}
+              <Stack
+                direction="row"
+                alignItems="center"
+                justifyContent="space-between"
+                spacing={1}
+                mb={2}
+                sx={{ position: 'relative' }}
+              >
+                <Typography color="text.secondary" sx={{ fontWeight: '500' }}>
+                  {userInfo.progress.label}
                 </Typography>
-              </span>
-              <span style={{ position: 'absolute', transform: 'translate(50%, -40%)', top: '50%', right: '50%' }}>
-                <Image src={arrow_right as StaticImageData} alt="info" />
-              </span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                <Typography variant="body2" color="text.secondary">
-                  {userInfo.statut.next}
-                </Typography>
-                <Image src={bronze as StaticImageData} alt="info" />
-              </span>
-            </div>
-          </section>
-          <section style={{ flex: 1 }}>
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    transform: 'translate(50%, -40%)',
+                    top: '50%',
+                    right: '50%',
+                  }}
+                >
+                  <Image src={arrow_right as StaticImageData} alt="info" />
+                </Box>
+                <Stack direction="row" spacing={0.5} alignItems="center">
+                  <Typography color="text.secondary">{userInfo.progress.score}</Typography>
+                  <Image src={info as StaticImageData} alt="info" />
+                </Stack>
+              </Stack>
+
+              <ProgressBar
+                variant="determinate"
+                value={userInfo.progress.value}
+                aria-label="Progression VIP utilisateur"
+              />
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+                mt={3}
+                sx={{ position: 'relative', width: '100%' }}
+              >
+                <Stack direction="row" spacing={1} alignItems="center">
+                  <Image src={none as StaticImageData} alt="info" />
+                  <Typography variant="body2" color="text.secondary">
+                    {userInfo.statut.current}
+                  </Typography>
+                </Stack>
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    transform: 'translate(50%, -40%)',
+                    top: '50%',
+                    right: '50%',
+                  }}
+                >
+                  <Image src={arrow_right as StaticImageData} alt="info" />
+                </Box>
+                <Stack direction="row" spacing={1} alignItems="center">
+                  <Typography variant="body2" color="text.secondary">
+                    {userInfo.statut.next}
+                  </Typography>
+                  <Image src={bronze as StaticImageData} alt="info" />
+                </Stack>
+              </Stack>
+            </Box>
+          </Grid>
+          <Grid size={{ xs: 6, sm: 6, md: 4 }}>
             <LargeTrendingCard
               image={casino.image}
               quantityPlaying={casino.quantityPlaying}
@@ -108,8 +121,8 @@ const MainPage: FC = () => {
               title={casino.label}
               highlightColor={casino.highlightColor}
             />
-          </section>
-          <section style={{ flex: 1 }}>
+          </Grid>
+          <Grid size={{ xs: 6, sm: 6, md: 4 }}>
             <LargeTrendingCard
               image={sport.image}
               quantityPlaying={sport.quantityPlaying}
@@ -117,8 +130,8 @@ const MainPage: FC = () => {
               title={sport.label}
               highlightColor={sport.highlightColor}
             />
-          </section>
-        </div>
+          </Grid>
+        </Grid>
         <Stack direction="row" spacing={2} mb={3} alignItems="center">
           <Select
             id="betType-select"
