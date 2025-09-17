@@ -178,7 +178,9 @@ const SideMenu: React.FC = () => {
             >
               <ListItemButton
                 onClick={() => {
-                  setDisplayMode(text.toLowerCase() as 'casino' | 'sports')
+                  setDisplayMode(
+                    text.toLowerCase() === displayMode ? null : (text.toLowerCase() as 'sports' | 'casino'),
+                  )
                 }}
                 sx={[
                   {

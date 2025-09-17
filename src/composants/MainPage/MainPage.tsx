@@ -16,6 +16,7 @@ import Table from '@/composants/Table/Table'
 import ToggleButtonGroup from '@/composants/ToggleButtonGroup/ToggleButtonGroup'
 import TrendingCard from '@/composants/TrendingCard/TrendingCard'
 import { main } from '@/data/main'
+import { useDisplayMode } from '@/store/displayModeStore'
 import { Box, Grid, InputLabel, MenuItem, Select, Stack, ToggleButton, Typography } from '@mui/material'
 import Image, { StaticImageData } from 'next/image'
 
@@ -33,6 +34,7 @@ const MainPage: FC = () => {
 
   const [betType, setBetType] = useState<'Casino' | 'Sport'>('Casino')
   const [tableView, setTableView] = useState<'casino_bets' | 'sports_bets' | 'race_leaderboard'>('casino_bets')
+  const { displayMode, setDisplayMode } = useDisplayMode()
 
   return (
     <Box
@@ -120,6 +122,7 @@ const MainPage: FC = () => {
               rank={casino.rank}
               title={casino.label}
               highlightColor={casino.highlightColor}
+              onClick={() => setDisplayMode(displayMode === 'casino' ? null : 'casino')}
             />
           </Grid>
           <Grid size={{ xs: 6, sm: 6, md: 4 }}>
@@ -129,6 +132,7 @@ const MainPage: FC = () => {
               rank={sport.rank}
               title={sport.label}
               highlightColor={sport.highlightColor}
+              onClick={() => setDisplayMode(displayMode === 'sports' ? null : 'sports')}
             />
           </Grid>
         </Grid>

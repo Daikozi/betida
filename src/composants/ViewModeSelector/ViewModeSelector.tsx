@@ -38,10 +38,9 @@ const ViewModeSelector: FC = () => {
   const { displayMode, setDisplayMode } = useDisplayMode()
 
   const handleViewModeChange = (_event: MouseEvent<HTMLElement>, newDisplayMode: 'casino' | 'sports' | null) => {
-    if (newDisplayMode !== null) {
-      setDisplayMode(newDisplayMode)
-    }
+    setDisplayMode(newDisplayMode)
   }
+
   return (
     <StyledToggleButtonGroup value={displayMode} exclusive onChange={handleViewModeChange} aria-label="view mode">
       <ToggleButton value="casino" aria-label="casino view">
