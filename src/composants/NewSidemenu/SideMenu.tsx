@@ -504,10 +504,15 @@ const SideMenu: FC = () => {
         ModalProps={{ keepMounted: true }}
         sx={{
           display: { xs: 'block', md: 'none' },
+          zIndex: 1099,
           '& .MuiDrawer-paper': {
             width: '100vw',
             maxWidth: '100vw',
-            height: '100vh',
+            position: 'fixed',
+            top: '76px',
+            height: 'calc(100vh - 76px)',
+            zIndex: 1099,
+            pointerEvents: 'auto',
             background: '#252427',
           },
         }}
