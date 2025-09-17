@@ -1,11 +1,15 @@
 import { FC, MouseEvent } from 'react'
 
 import { useDisplayMode } from '@/store/displayModeStore'
+import {
+  ToggleButtonGroup as MUIToggleButtonGroup,
+  ToggleButtonGroupProps,
+  toggleButtonGroupClasses,
+} from '@mui/material'
 import ToggleButton from '@mui/material/ToggleButton'
-import ToggleButtonGroup, { toggleButtonGroupClasses } from '@mui/material/ToggleButtonGroup'
 import { styled } from '@mui/material/styles'
 
-const StyledToggleButtonGroup = styled(ToggleButtonGroup)(() => ({
+const ToggleButtonGroup = styled(MUIToggleButtonGroup)(() => ({
   [`& .${toggleButtonGroupClasses.grouped}`]: {
     textTransform: 'none',
     color: 'white',
@@ -34,7 +38,7 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(() => ({
   },
 }))
 
-const ViewModeSelector: FC = () => {
+const ViewModeSelector: FC<ToggleButtonGroupProps> = (props) => {
   const { displayMode, setDisplayMode } = useDisplayMode()
 
   const handleViewModeChange = (_event: MouseEvent<HTMLElement>, newDisplayMode: 'casino' | 'sports' | null) => {
@@ -42,14 +46,14 @@ const ViewModeSelector: FC = () => {
   }
 
   return (
-    <StyledToggleButtonGroup value={displayMode} exclusive onChange={handleViewModeChange} aria-label="view mode">
+    <ToggleButtonGroup value={displayMode} exclusive onChange={handleViewModeChange} aria-label="view mode" {...props}>
       <ToggleButton value="casino" aria-label="casino view">
         Casino
       </ToggleButton>
       <ToggleButton value="sports" aria-label="sports view">
         Sports
       </ToggleButton>
-    </StyledToggleButtonGroup>
+    </ToggleButtonGroup>
   )
 }
 

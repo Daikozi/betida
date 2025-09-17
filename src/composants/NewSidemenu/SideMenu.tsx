@@ -1,6 +1,6 @@
 'use client'
 
-import * as React from 'react'
+import { FC, useState } from 'react'
 
 import affiliate from '@/assets/svg/affiliate.svg'
 import blog from '@/assets/svg/blog.svg'
@@ -21,7 +21,7 @@ import sports_unselected from '@/assets/svg/sports_unselected.svg'
 import vip_club from '@/assets/svg/vip_club.svg'
 import { useDisplayMode } from '@/store/displayModeStore'
 import { useDrawerStore } from '@/store/drawerStore'
-import { Box, Collapse } from '@mui/material'
+import { Box, Collapse, InputLabel, MenuItem, Select, Stack } from '@mui/material'
 import Divider from '@mui/material/Divider'
 import MuiDrawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
@@ -30,9 +30,11 @@ import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
-import { CSSObject, Theme, styled } from '@mui/material/styles'
+import { CSSObject, Theme, styled, useTheme } from '@mui/material/styles'
+import useMediaQuery from '@mui/material/useMediaQuery'
 import Image, { StaticImageData } from 'next/image'
 
+import SearchBar from '../SearchBar/SearchBar'
 import ViewModeSelector from '../ViewModeSelector/ViewModeSelector'
 
 const drawerWidth = 240
@@ -130,11 +132,14 @@ const secondMenuItems = [
   { text: 'Live Support', icon: live_support as StaticImageData, showWhenOpen: true },
 ]
 
-const SideMenu: React.FC = () => {
+const SideMenu: FC = () => {
   const { open, setOpen } = useDrawerStore()
-  const [promotionsOpen, setPromotionsOpen] = React.useState(false)
-  const [sponsorshipsOpen, setSponsorshipsOpen] = React.useState(false)
+  const [promotionsOpen, setPromotionsOpen] = useState(false)
+  const [sponsorshipsOpen, setSponsorshipsOpen] = useState(false)
+  const [betType, setBetType] = useState<'Casino' | 'Sport'>('Casino')
   const { displayMode, setDisplayMode } = useDisplayMode()
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   const displayModeList = [
     {
@@ -149,15 +154,52 @@ const SideMenu: React.FC = () => {
     },
   ]
 
-  return (
-    <Drawer variant="permanent" open={open} sx={{ display: { xs: 'none', md: 'block' } }}>
-      <DrawerHeader sx={{ height: '76px', justifyContent: 'center' }}>
-        <IconButton onClick={() => setOpen(!open)} sx={{ mr: open ? 2 : 0, p: 0 }}>
-          <Image src={menu as StaticImageData} alt="Menu" width={24} height={24} />
-        </IconButton>
-        {open && <ViewModeSelector />}
+  const menuContent = (
+    <>
+      <DrawerHeader sx={{ height: '76px', justifyContent: 'center', px: 2, display: { xs: 'none', md: 'flex' } }}>
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent={open ? 'space-between' : 'center'}
+          sx={{ width: '100%' }}
+        >
+          <IconButton onClick={() => setOpen(!open)} sx={{ mr: open ? 2 : 0, p: 0 }}>
+            <Image src={menu as StaticImageData} alt="Menu" width={24} height={24} />
+          </IconButton>
+          {open && <ViewModeSelector />}
+        </Stack>
       </DrawerHeader>
-      <Divider />
+      <Divider sx={{ display: { xs: 'none', md: 'flex' } }} />
+      <Box sx={{ display: { xs: 'blog', md: 'none' } }}>
+        <Stack direction="row" spacing={1} alignItems="center" m={2} mb={0}>
+          <Select
+            id="betType-select"
+            labelId="betType-label"
+            name="betType"
+            sx={{ minWidth: 100 }}
+            value={betType}
+            aria-labelledby="betType-label"
+            onChange={(event) => setBetType(event.target.value)}
+          >
+            <MenuItem value="Casino">Casino</MenuItem>
+            <MenuItem value="Sport">Sport</MenuItem>
+          </Select>
+          <InputLabel id="betType-label" sx={{ display: 'none' }}>
+            Bet Type
+          </InputLabel>
+          <SearchBar />
+        </Stack>
+        <ViewModeSelector
+          sx={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'space-between',
+            p: 2,
+            pb: 0,
+            '& > *': { flex: 1 },
+          }}
+        />
+      </Box>
       <Box
         sx={{
           borderRadius: '10px',
@@ -448,6 +490,35 @@ const SideMenu: React.FC = () => {
           ))}
         </List>
       </Box>
+    </>
+  )
+
+  // Affichage Drawer permanent sur desktop, Drawer temporaire plein écran sur mobile
+  if (isMobile) {
+    return (
+      <MuiDrawer
+        anchor="left"
+        open={open}
+        onClose={() => setOpen(false)}
+        variant="temporary"
+        ModalProps={{ keepMounted: true }}
+        sx={{
+          display: { xs: 'block', md: 'none' },
+          '& .MuiDrawer-paper': {
+            width: '100vw',
+            maxWidth: '100vw',
+            height: '100vh',
+            background: '#252427',
+          },
+        }}
+      >
+        {menuContent}
+      </MuiDrawer>
+    )
+  }
+  return (
+    <Drawer variant="permanent" open={open} sx={{ display: { xs: 'none', md: 'block' } }}>
+      {menuContent}
     </Drawer>
   )
 }

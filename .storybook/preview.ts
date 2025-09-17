@@ -1,5 +1,7 @@
 import { Preview } from '@storybook/nextjs-vite'
 
+import { ThemeProviderDecorator } from './decorators'
+
 const preview: Preview = {
   parameters: {
     controls: {
@@ -10,12 +12,10 @@ const preview: Preview = {
     },
 
     a11y: {
-      // 'todo' - show a11y violations in the test UI only
-      // 'error' - fail CI on a11y violations
-      // 'off' - skip a11y checks entirely
-      test: 'todo',
+      test: 'error',
     },
   },
+  decorators: [ThemeProviderDecorator],
 }
 
 export default preview

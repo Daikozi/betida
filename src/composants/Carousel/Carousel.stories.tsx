@@ -5,7 +5,6 @@ import Carousel from './Carousel'
 const meta = {
   title: 'Components/Carousel',
   component: Carousel,
-  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
   },

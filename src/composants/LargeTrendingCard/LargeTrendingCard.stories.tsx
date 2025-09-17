@@ -5,7 +5,6 @@ import LargeTrendingCard from './LargeTrendingCard'
 const meta = {
   title: 'Components/LargeTrendingCard',
   component: LargeTrendingCard,
-  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
   },
