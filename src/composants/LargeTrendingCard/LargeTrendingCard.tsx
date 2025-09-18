@@ -26,10 +26,15 @@ const LargeTrendingCard: FC<LargeTrendingCardProps> = ({
       sx={{
         width: '100%',
         border: '2px solid transparent',
-        borderRadius: '10px',
         transition: 'all 0.3s cubic-bezier(.4,0,.2,1)',
         '&:hover': {
           border: `2px solid ${highlightColor}`,
+        },
+        '& img': {
+          transition: 'all 0.3s cubic-bezier(.4,0,.2,1)',
+        },
+        '&:hover img': {
+          transform: 'scale(1.05)',
         },
       }}
     >
@@ -39,6 +44,7 @@ const LargeTrendingCard: FC<LargeTrendingCardProps> = ({
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          padding: '0 !important',
         }}
       >
         <NextImage

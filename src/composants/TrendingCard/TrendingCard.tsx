@@ -1,8 +1,10 @@
 import { FC } from 'react'
 
 import ellipse from '@/assets/svg/Ellipse 1.svg'
-import { Box, Card, CardActionArea, Stack, Typography } from '@mui/material'
+import { Box, CardActionArea, Stack, StackProps, Typography } from '@mui/material'
 import NextImage, { StaticImageData } from 'next/image'
+
+import { Card, Rank } from './TrendingCard.styles'
 
 type TrendingCardProps = {
   image: string
@@ -10,57 +12,16 @@ type TrendingCardProps = {
   rank?: number
 }
 
-const TrendingCard: FC<TrendingCardProps> = ({ image, quantityPlaying, rank }) => (
-  <Stack spacing={1}>
-    <Card
-      sx={{
-        width: 144,
-        borderRadius: '10px',
-        position: 'relative',
-        transition: 'transform 0.3s cubic-bezier(.4,0,.2,1)',
-        '&:hover': {
-          transform: 'scale(0.95)',
-        },
-      }}
-    >
+const TrendingCard: FC<TrendingCardProps & StackProps> = ({ image, quantityPlaying, rank, ...stackProps }) => (
+  <Stack spacing={1} {...stackProps}>
+    <Card>
       {rank && (
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 6,
-            left: 6,
-            zIndex: 1,
-            width: 32,
-            height: 32,
-            borderRadius: '50%',
-            backgroundColor: '#0F0F10',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            overflow: 'hidden',
-          }}
-        >
-          <Box
-            sx={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              width: 24,
-              height: 24,
-              zIndex: 0,
-            }}
-          />
-          <Typography
-            variant="subtitle1"
-            color="white"
-            textAlign="center"
-            fontWeight="bold"
-            sx={{ position: 'relative', zIndex: 1 }}
-          >
+        <Rank>
+          <Box />
+          <Typography variant="titleLight" fontWeight="bold">
             {rank}
           </Typography>
-        </Box>
+        </Rank>
       )}
       <CardActionArea>
         <NextImage
@@ -68,17 +29,17 @@ const TrendingCard: FC<TrendingCardProps> = ({ image, quantityPlaying, rank }) =
           alt={`trending game ${rank}`}
           width={144}
           height={96}
-          style={{ borderRadius: '10px', width: '100%', height: 'auto' }}
+          style={{ width: '100%', height: 'auto' }}
         />
       </CardActionArea>
     </Card>
     {!!quantityPlaying && (
       <Stack spacing={0.5} alignItems="center" direction="row">
         <NextImage src={ellipse as StaticImageData} alt="" width={6} height={6} />
-        <Typography variant="caption" color="text.secondary" fontWeight={600}>
+        <Typography variant="captionLight" fontWeight={600}>
           {quantityPlaying}
         </Typography>
-        <Typography variant="caption">playing</Typography>
+        <Typography variant="captionDark">playing</Typography>
       </Stack>
     )}
   </Stack>

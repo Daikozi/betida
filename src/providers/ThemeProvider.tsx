@@ -5,7 +5,7 @@ import { FC, ReactNode } from 'react'
 import { CssBaseline } from '@mui/material'
 import { ThemeProvider as MUIThemeProvider, StyledEngineProvider } from '@mui/material/styles'
 
-import theme from '../theme'
+import theme from '../theme/theme'
 
 type ThemeProviderProps = {
   children: ReactNode

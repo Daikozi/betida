@@ -1,3 +1,5 @@
+import theme from '@/theme/theme'
+
 export const main = {
   casino: {
     promotions: {
@@ -310,7 +312,7 @@ export const main = {
         quantityPlaying: 348,
         playing: 'playing',
         rank: 1,
-        highlightColor: '#3B82F6',
+        highlightColor: theme.palette.casino.main,
       },
       sport: {
         image: 'sport.webp',
@@ -318,7 +320,7 @@ export const main = {
         quantityPlaying: 348,
         playing: 'playing',
         rank: 2,
-        highlightColor: '#10B981',
+        highlightColor: theme.palette.sports.main,
       },
     },
     trendingGames: {
