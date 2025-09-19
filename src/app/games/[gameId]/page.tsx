@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import GameDetail from '@/pages/GameDetail/GameDetail'
+import GameDetail from '@/composants/Pages/GameDetail/GameDetail'
 
 const GamesDetailsPage: FC = () => <GameDetail />
 

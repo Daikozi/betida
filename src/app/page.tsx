@@ -2,9 +2,9 @@
 
 import { FC } from 'react'
 
-import Casino from '@/pages/Casino/Casino'
-import Main from '@/pages/Main/Main'
-import Sport from '@/pages/Sports/Sports'
+import Casino from '@/composants/Pages/Casino/Casino'
+import Main from '@/composants/Pages/Main/Main'
+import Sport from '@/composants/Pages/Sports/Sports'
 import { useDisplayMode } from '@/store/displayModeStore'
 
 const Home: FC = () => {
