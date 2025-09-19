@@ -1,10 +1,8 @@
 import { FC, useState } from 'react'
 
-import carat_down_dark from '@/assets/svg/carat_down_dark.svg'
-import carat_down_light from '@/assets/svg/carat_down_light.svg'
 import { AccordionDetails, AccordionSummary, Stack, StackProps, Typography } from '@mui/material'
 import MUIAccordion from '@mui/material/Accordion'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 
 type FAQItem = {
   question: string
@@ -36,9 +34,9 @@ const FAQ: FC<FAQProps> = ({ accordionItems, ...stackProps }) => {
           <AccordionSummary
             expandIcon={
               isExpanded[index] ? (
-                <Image src={carat_down_light as StaticImageData} alt="Expand" width={24} height={24} />
+                <Image src="/assets/svg/carat_down_light.svg" alt="Expand" width={24} height={24} />
               ) : (
-                <Image src={carat_down_dark as StaticImageData} alt="Expand" width={24} height={24} />
+                <Image src="/assets/svg/carat_down_dark.svg" alt="Expand" width={24} height={24} />
               )
             }
             aria-controls={`panel${index}-content`}

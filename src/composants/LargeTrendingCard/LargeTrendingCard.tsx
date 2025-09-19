@@ -1,8 +1,7 @@
 import { FC } from 'react'
 
-import ellipse from '@/assets/svg/Ellipse 1.svg'
 import { Card, CardActionArea, Stack, Typography } from '@mui/material'
-import NextImage, { StaticImageData } from 'next/image'
+import NextImage from 'next/image'
 
 type LargeTrendingCardProps = {
   image: string
@@ -63,7 +62,7 @@ const LargeTrendingCard: FC<LargeTrendingCardProps> = ({
         {title}
       </Typography>
       <Stack spacing={0.5} alignItems="center" direction="row">
-        <NextImage src={ellipse as StaticImageData} alt="" width={6} height={6} />
+        <NextImage src="/assets/svg/Ellipse 1.svg" alt="" width={6} height={6} />
         <Typography variant="caption" color="text.secondary" fontWeight={600}>
           {quantityPlaying}
         </Typography>

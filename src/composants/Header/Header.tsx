@@ -2,10 +2,9 @@
 
 import { FC } from 'react'
 
-import logo from '@/assets/svg/logo.svg'
 import { useDrawerStore } from '@/store/drawerStore'
 import { AppBar, Stack, Toolbar, Typography } from '@mui/material'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 
 import { Button } from './Header.styles'
 
@@ -27,7 +26,7 @@ const Header: FC = () => {
     >
       <Toolbar>
         <Stack direction="row" alignItems="center" gap={1.5} sx={{ flexGrow: 1 }}>
-          <Image src={logo as StaticImageData} alt="Logo" width={32} height={32} />
+          <Image src="/assets/svg/logo.svg" alt="Logo" width={32} height={32} />
           <Typography variant="titleLight" component="div" sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
             BRAND NAME
           </Typography>

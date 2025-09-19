@@ -2,24 +2,22 @@
 
 import { FC, useEffect, useState } from 'react'
 
-import carat_down_dark from '@/assets/svg/carat_down_dark.svg'
-import carat_up_light from '@/assets/svg/carat_up_light.svg'
 import { useDisplayMode } from '@/store/displayModeStore'
 import { colors } from '@/theme/tokens'
 import { Collapse, List, ListItemProps } from '@mui/material'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 
 import { ListItem, ListItemButton, ListItemIcon, ListItemText, SubMenuListItemButton } from './MenuItem.styles'
 
 type MenuItemProps = {
   text: string
-  icon: StaticImageData
+  icon: string
   showWhenOpen?: boolean
   isSideMenuOpen?: boolean
   isOpen?: boolean
   isSelected?: boolean
   onClick: VoidFunction
-  subitems?: { text: string; link: string; icon: StaticImageData }[]
+  subitems?: { text: string; link: string; icon: string }[]
   gradient?: string
 } & ListItemProps
 
@@ -87,7 +85,12 @@ const MenuItem: FC<MenuItemProps> = ({
           isSideMenuOpen={isSideMenuOpen}
         />
         {hasSubMenu && isSideMenuOpen && (
-          <Image src={(isOpen ? carat_up_light : carat_down_dark) as StaticImageData} alt="" width={24} height={24} />
+          <Image
+            src={isOpen ? '/assets/svg/carat_up_light.svg' : '/assets/svg/carat_down_dark.svg'}
+            alt=""
+            width={24}
+            height={24}
+          />
         )}
       </ListItemButton>
       {hasSubMenu && (

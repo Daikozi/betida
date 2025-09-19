@@ -1,8 +1,7 @@
 import { FC } from 'react'
 
-import searchIcon from '@/assets/svg/search.svg'
 import { InputAdornment, TextFieldProps } from '@mui/material'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 
 import { TextField } from './SearchBar.styles'
 
@@ -16,7 +15,7 @@ const SearchBar: FC<TextFieldProps> = (props) => (
       input: {
         startAdornment: (
           <InputAdornment position="start">
-            <Image src={searchIcon as StaticImageData} alt="search" />
+            <Image src="/assets/svg/search.svg" alt="search" width={24} height={24} />
           </InputAdornment>
         ),
       },

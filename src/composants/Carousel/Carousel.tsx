@@ -1,9 +1,7 @@
 import { FC, MouseEvent, ReactNode, useLayoutEffect, useRef, useState } from 'react'
 
-import back_light from '@/assets/svg/back_light.svg'
-import next from '@/assets/svg/next.svg'
 import { Box, BoxProps, IconButton, Stack, Typography } from '@mui/material'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 
 import { CarouselContainer, CarouselContent, ShadowLeft, ShadowRight } from './Carousel.styles'
 
@@ -93,22 +91,22 @@ const Carousel: FC<CarouselProps> = ({ children, title, ...boxProps }) => {
           <IconButton aria-label="delete" size="small" onClick={handlePrev} disabled={!canScrollPrev}>
             {canScrollPrev ? (
               <Image
-                src={next as StaticImageData}
+                src="/assets/svg/back_light.svg"
                 alt="previous"
                 width={24}
                 height={24}
                 style={{ transform: 'rotate(180deg)' }}
               />
             ) : (
-              <Image src={back_light as StaticImageData} alt="previous" width={24} height={24} />
+              <Image src="/assets/svg/back_light.svg" alt="previous" width={24} height={24} />
             )}
           </IconButton>
           <IconButton aria-label="delete" size="small" onClick={handleNext} disabled={!canScrollNext}>
             {canScrollNext ? (
-              <Image src={next as StaticImageData} alt="next" width={24} height={24} />
+              <Image src="/assets/svg/next.svg" alt="next" width={24} height={24} />
             ) : (
               <Image
-                src={back_light as StaticImageData}
+                src="/assets/svg/back_light.svg"
                 alt="next"
                 width={24}
                 height={24}

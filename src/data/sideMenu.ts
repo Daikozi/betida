@@ -1,26 +1,10 @@
-import affiliate from '@/assets/svg/affiliate.svg'
-import blog from '@/assets/svg/blog.svg'
-import branche from '@/assets/svg/branche.svg'
-import branche_end from '@/assets/svg/branche_end.svg'
-import casino_unselected from '@/assets/svg/casino_unselected.svg'
-import forum from '@/assets/svg/forum.svg'
-import live_support from '@/assets/svg/live_support.svg'
-import menu from '@/assets/svg/menu.svg'
-import promotion from '@/assets/svg/promotions.svg'
-import responsible_gambling from '@/assets/svg/responsible_gambling.svg'
-import sponsorships from '@/assets/svg/sponsorships.svg'
-import sports_unselected from '@/assets/svg/sports_unselected.svg'
-import tr_flag from '@/assets/svg/tr_flag.svg'
-import uk_flag from '@/assets/svg/uk_flag.svg'
-import vip_club from '@/assets/svg/vip_club.svg'
 import { colors } from '@/theme/tokens'
-import { StaticImageData } from 'next/image'
 
 type SideMenu = {
   header: {
     menu: {
       text: string
-      icon: StaticImageData
+      icon: string
       showWhenOpen: boolean
     }
   }
@@ -37,10 +21,10 @@ type SideMenu = {
   }
   list: {
     text: string
-    icon: StaticImageData
+    icon: string
     gradient?: string
     showWhenOpen: boolean
-    subMenu?: { text: string; link: string; icon: StaticImageData }[]
+    subMenu?: { text: string; link: string; icon: string }[]
   }[][]
 }
 
@@ -48,7 +32,7 @@ export const sideMenu: SideMenu = {
   header: {
     menu: {
       text: 'Menu',
-      icon: menu as StaticImageData,
+      icon: '/assets/svg/menu.svg',
       showWhenOpen: false,
     },
   },
@@ -70,13 +54,13 @@ export const sideMenu: SideMenu = {
     [
       {
         text: 'Casino',
-        icon: casino_unselected as StaticImageData,
+        icon: '/assets/svg/casino_unselected.svg',
         showWhenOpen: false,
         gradient: colors.casino.gradient,
       },
       {
         text: 'Sports',
-        icon: sports_unselected as StaticImageData,
+        icon: '/assets/svg/sports_unselected.svg',
         gradient: colors.sports.gradient,
         showWhenOpen: false,
       },
@@ -84,42 +68,42 @@ export const sideMenu: SideMenu = {
     [
       {
         text: 'Promotions',
-        icon: promotion as StaticImageData,
+        icon: '/assets/svg/promotions.svg',
         showWhenOpen: true,
         subMenu: [
-          { text: '$75k Weekly Raffle', link: '#', icon: branche as StaticImageData },
-          { text: '$100k Race', link: '#', icon: branche as StaticImageData },
-          { text: 'Pragmatic Drops & Wins', link: '#', icon: branche as StaticImageData },
-          { text: 'View All', link: '#', icon: branche_end as StaticImageData },
+          { text: '$75k Weekly Raffle', link: '#', icon: '/assets/svg/branche.svg' },
+          { text: '$100k Race', link: '#', icon: '/assets/svg/branche.svg' },
+          { text: 'Pragmatic Drops & Wins', link: '#', icon: '/assets/svg/branche.svg' },
+          { text: 'View All', link: '#', icon: '/assets/svg/branche_end.svg' },
         ],
       },
-      { text: 'Affiliate', icon: affiliate as StaticImageData, showWhenOpen: true },
-      { text: 'VIP Club', icon: vip_club as StaticImageData, showWhenOpen: true },
-      { text: 'Blog', icon: blog as StaticImageData, showWhenOpen: true },
-      { text: 'Forum', icon: forum as StaticImageData, showWhenOpen: true },
+      { text: 'Affiliate', icon: '/assets/svg/affiliate.svg', showWhenOpen: true },
+      { text: 'VIP Club', icon: '/assets/svg/vip_club.svg', showWhenOpen: true },
+      { text: 'Blog', icon: '/assets/svg/blog.svg', showWhenOpen: true },
+      { text: 'Forum', icon: '/assets/svg/forum.svg', showWhenOpen: true },
     ],
     [
       {
         text: 'Sponsorships',
-        icon: sponsorships as StaticImageData,
+        icon: '/assets/svg/sponsorships.svg',
         showWhenOpen: true,
         subMenu: [
-          { text: 'sponsorships 1', link: '#', icon: branche as StaticImageData },
-          { text: 'sponsorships 2', link: '#', icon: branche as StaticImageData },
-          { text: 'sponsorships 3', link: '#', icon: branche as StaticImageData },
-          { text: 'sponsorships 4', link: '#', icon: branche as StaticImageData },
-          { text: 'sponsorships 5', link: '#', icon: branche_end as StaticImageData },
+          { text: 'sponsorships 1', link: '#', icon: '/assets/svg/branche.svg' },
+          { text: 'sponsorships 2', link: '#', icon: '/assets/svg/branche.svg' },
+          { text: 'sponsorships 3', link: '#', icon: '/assets/svg/branche.svg' },
+          { text: 'sponsorships 4', link: '#', icon: '/assets/svg/branche.svg' },
+          { text: 'sponsorships 5', link: '#', icon: '/assets/svg/branche_end.svg' },
         ],
       },
-      { text: 'Responsible Gambling', icon: responsible_gambling as StaticImageData, showWhenOpen: true },
-      { text: 'Live Support', icon: live_support as StaticImageData, showWhenOpen: true },
+      { text: 'Responsible Gambling', icon: '/assets/svg/responsible_gambling.svg', showWhenOpen: true },
+      { text: 'Live Support', icon: '/assets/svg/live_support.svg', showWhenOpen: true },
       {
         text: 'Language',
-        icon: sponsorships as StaticImageData,
+        icon: '/assets/svg/language.svg',
         showWhenOpen: true,
         subMenu: [
-          { text: 'English', link: '#', icon: uk_flag as StaticImageData },
-          { text: 'Turkish', link: '#', icon: tr_flag as StaticImageData },
+          { text: 'English', link: '#', icon: '/assets/svg/uk_flag.svg' },
+          { text: 'Turkish', link: '#', icon: '/assets/svg/tr_flag.svg' },
         ],
       },
     ],

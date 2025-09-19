@@ -1,12 +1,8 @@
 import { FC } from 'react'
 
-import arrow_right from '@/assets/svg/arrow_right.svg'
-import bronze from '@/assets/svg/bronze.svg'
-import info from '@/assets/svg/info.svg'
-import none from '@/assets/svg/none.svg'
 import { main } from '@/data/main'
 import { Box, BoxProps, LinearProgress, Stack, Typography } from '@mui/material'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 
 const UserInfoCard: FC<BoxProps> = (props) => {
   const {
@@ -39,11 +35,11 @@ const UserInfoCard: FC<BoxProps> = (props) => {
             right: '50%',
           }}
         >
-          <Image src={arrow_right as StaticImageData} alt="info" />
+          <Image src="/assets/svg/arrow_right.svg" alt="info" width={24} height={24} />
         </Box>
         <Stack direction="row" spacing={0.5} alignItems="center">
           <Typography color="text.secondary">{userInfo.progress.score}</Typography>
-          <Image src={info as StaticImageData} alt="info" />
+          <Image src="/assets/svg/info.svg" alt="info" width={24} height={24} />
         </Stack>
       </Stack>
 
@@ -56,7 +52,7 @@ const UserInfoCard: FC<BoxProps> = (props) => {
         sx={{ position: 'relative', width: '100%' }}
       >
         <Stack direction="row" spacing={1} alignItems="center">
-          <Image src={none as StaticImageData} alt="info" />
+          <Image src="/assets/svg/none.svg" alt="info" width={24} height={24} />
           <Typography variant="body2" color="text.secondary">
             {userInfo.statut.current}
           </Typography>
@@ -69,13 +65,13 @@ const UserInfoCard: FC<BoxProps> = (props) => {
             right: '50%',
           }}
         >
-          <Image src={arrow_right as StaticImageData} alt="info" />
+          <Image src="/assets/svg/arrow_right.svg" alt="info" width={24} height={24} />
         </Box>
         <Stack direction="row" spacing={1} alignItems="center">
           <Typography variant="body2" color="text.secondary">
             {userInfo.statut.next}
           </Typography>
-          <Image src={bronze as StaticImageData} alt="info" />
+          <Image src="/assets/svg/bronze.svg" alt="info" width={24} height={24} />
         </Stack>
       </Stack>
     </Box>

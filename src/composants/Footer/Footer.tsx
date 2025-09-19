@@ -2,16 +2,6 @@
 
 import { FC, useState } from 'react'
 
-import social_1 from '@/assets/svg/Social Icons-1.svg'
-import social_2 from '@/assets/svg/Social Icons-2.svg'
-import social_3 from '@/assets/svg/Social Icons-3.svg'
-import social_4 from '@/assets/svg/Social Icons-4.svg'
-import social_5 from '@/assets/svg/Social Icons-5.svg'
-import social_6 from '@/assets/svg/Social Icons-6.svg'
-import social_7 from '@/assets/svg/Social Icons-7.svg'
-import carat_down_dark from '@/assets/svg/carat_down_dark.svg'
-import carat_down_light from '@/assets/svg/carat_down_light.svg'
-import logo from '@/assets/svg/logo.svg'
 import {
   Accordion,
   AccordionDetails,
@@ -27,7 +17,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 
 import { footerContent } from './Footer.content'
 
@@ -75,7 +65,7 @@ const Footer: FC = () => {
         <Divider sx={{ mt: 2, mb: 1, display: { xs: 'none', lg: 'block' } }} />
         <Stack alignItems="center" spacing={3} sx={{ mb: 3, display: { lg: 'none' } }}>
           <Stack direction="row" alignItems="center" gap={1.5} flexGrow={1}>
-            <Image src={logo as StaticImageData} alt="Logo" />
+            <Image src="/assets/svg/logo.svg" alt="Logo" width={32} height={32} />
             <Typography variant="titleLight" component="div">
               BRAND NAME
             </Typography>
@@ -92,9 +82,9 @@ const Footer: FC = () => {
                 <AccordionSummary
                   expandIcon={
                     isExpanded[index] ? (
-                      <Image src={carat_down_light as StaticImageData} alt="Expand" />
+                      <Image src="/assets/svg/carat_down_light.svg" alt="Expand" width={24} height={24} />
                     ) : (
-                      <Image src={carat_down_dark as StaticImageData} alt="Expand" />
+                      <Image src="/assets/svg/carat_down_dark.svg" alt="Expand" width={24} height={24} />
                     )
                   }
                   aria-controls={`panel${index}-content`}
@@ -134,25 +124,25 @@ const Footer: FC = () => {
             width={{ xs: '100%', lg: 'auto' }}
           >
             <IconButton aria-label="delete">
-              <Image src={social_1 as StaticImageData} alt="Social Icon 1" />
+              <Image src="/assets/svg/Social Icons-1.svg" alt="Social Icon 1" width={16} height={16} />
             </IconButton>
             <IconButton aria-label="delete">
-              <Image src={social_2 as StaticImageData} alt="Social Icon 2" />
+              <Image src="/assets/svg/Social Icons-2.svg" alt="Social Icon 2" width={16} height={16} />
             </IconButton>
             <IconButton aria-label="delete">
-              <Image src={social_3 as StaticImageData} alt="Social Icon 3" />
+              <Image src="/assets/svg/Social Icons-3.svg" alt="Social Icon 3" width={16} height={16} />
             </IconButton>
             <IconButton aria-label="delete">
-              <Image src={social_4 as StaticImageData} alt="Social Icon 4" />
+              <Image src="/assets/svg/Social Icons-4.svg" alt="Social Icon 4" width={16} height={16} />
             </IconButton>
             <IconButton aria-label="delete">
-              <Image src={social_5 as StaticImageData} alt="Social Icon 5" />
+              <Image src="/assets/svg/Social Icons-5.svg" alt="Social Icon 5" width={16} height={16} />
             </IconButton>
             <IconButton aria-label="delete">
-              <Image src={social_6 as StaticImageData} alt="Social Icon 6" />
+              <Image src="/assets/svg/Social Icons-6.svg" alt="Social Icon 6" width={16} height={16} />
             </IconButton>
             <IconButton aria-label="delete">
-              <Image src={social_7 as StaticImageData} alt="Social Icon 7" />
+              <Image src="/assets/svg/Social Icons-7.svg" alt="Social Icon 7" width={16} height={16} />
             </IconButton>
           </Stack>
           <Stack direction="row" spacing={1}>

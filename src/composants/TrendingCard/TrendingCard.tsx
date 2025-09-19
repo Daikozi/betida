@@ -1,8 +1,7 @@
 import { FC } from 'react'
 
-import ellipse from '@/assets/svg/Ellipse 1.svg'
 import { Box, CardActionArea, Stack, StackProps, Typography } from '@mui/material'
-import NextImage, { StaticImageData } from 'next/image'
+import NextImage from 'next/image'
 
 import { Card, Rank } from './TrendingCard.styles'
 
@@ -38,7 +37,7 @@ const TrendingCard: FC<TrendingCardProps & StackProps> = ({ image, quantityPlayi
     </Card>
     {!!quantityPlaying && (
       <Stack spacing={0.5} alignItems="center" direction="row">
-        <NextImage src={ellipse as StaticImageData} alt="" width={6} height={6} />
+        <NextImage src="/assets/svg/Ellipse 1.svg" alt="" width={6} height={6} />
         <Typography variant="captionLight" fontWeight={600}>
           {quantityPlaying}
         </Typography>

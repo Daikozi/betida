@@ -1,18 +1,5 @@
 import { ChangeEvent, FC, useState } from 'react'
 
-import bitcoin from '@/assets/svg/bitcoin.svg'
-import carat_down_dark from '@/assets/svg/carat_down_dark.svg'
-import carat_down_light from '@/assets/svg/carat_down_light.svg'
-import coin from '@/assets/svg/coin.svg'
-import dollar from '@/assets/svg/dollar.svg'
-import etherium from '@/assets/svg/etherium.svg'
-import favoris from '@/assets/svg/favoris.svg'
-import fullscreen from '@/assets/svg/fullscreen.svg'
-import play from '@/assets/svg/play.svg'
-import reduce from '@/assets/svg/reduce.svg'
-import share from '@/assets/svg/share.svg'
-import stats from '@/assets/svg/stats.svg'
-import vip_club from '@/assets/svg/vip_club.svg'
 import {
   Accordion,
   AccordionDetails,
@@ -27,7 +14,7 @@ import {
   Switch,
   Typography,
 } from '@mui/material'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 
 const Game: FC<StackProps> = (props) => {
   const [isRealPlay, setIsRealPlay] = useState(false)
@@ -53,26 +40,26 @@ const Game: FC<StackProps> = (props) => {
             justifyContent: 'center',
           }}
         >
-          <Image alt="play button" width={80} height={80} src={play as StaticImageData} />
+          <Image alt="play button" width={80} height={80} src="/assets/svg/play.svg" />
         </Box>
       </Box>
       <Box bgcolor="backgroundLevels.1" py={1.5} px={2} borderRadius="10px">
         <Stack direction="row" justifyContent="space-between">
           <Stack direction="row" spacing={2}>
             <IconButton aria-label="fullscreen" sx={{ p: 0 }}>
-              <Image alt="fullscreen icon" width={24} height={24} src={fullscreen as StaticImageData} />
+              <Image alt="fullscreen icon" width={24} height={24} src="/assets/svg/fullscreen.svg" />
             </IconButton>
             <IconButton aria-label="reduce" sx={{ p: 0 }}>
-              <Image alt="reduce icon" width={24} height={24} src={reduce as StaticImageData} />
+              <Image alt="reduce icon" width={24} height={24} src="/assets/svg/reduce.svg" />
             </IconButton>
             <IconButton aria-label="stats" sx={{ p: 0 }}>
-              <Image alt="stats icon" width={24} height={24} src={stats as StaticImageData} />
+              <Image alt="stats icon" width={24} height={24} src="/assets/svg/stats.svg" />
             </IconButton>
             <IconButton aria-label="favoris" sx={{ p: 0 }}>
-              <Image alt="favoris icon" width={24} height={24} src={favoris as StaticImageData} />
+              <Image alt="favoris icon" width={24} height={24} src="/assets/svg/favoris.svg" />
             </IconButton>
             <IconButton aria-label="share" sx={{ p: 0 }}>
-              <Image alt="share icon" width={24} height={24} src={share as StaticImageData} />
+              <Image alt="share icon" width={24} height={24} src="/assets/svg/share.svg" />
             </IconButton>
             <Box pl={6}>
               <Select
@@ -86,25 +73,25 @@ const Game: FC<StackProps> = (props) => {
               >
                 <MenuItem value="bitcoin">
                   <Stack direction="row" alignItems="center" spacing={0.5}>
-                    <Image alt="bitcoin icon" width={20} height={20} src={bitcoin as StaticImageData} />
+                    <Image alt="bitcoin icon" width={20} height={20} src="/assets/svg/bitcoin.svg" />
                     <Typography variant="textLight">Bitcoin</Typography>
                   </Stack>
                 </MenuItem>
                 <MenuItem value="etherium">
                   <Stack direction="row" alignItems="center" spacing={0.5}>
-                    <Image alt="etherium icon" width={20} height={20} src={etherium as StaticImageData} />
+                    <Image alt="etherium icon" width={20} height={20} src="/assets/svg/etherium.svg" />
                     <Typography variant="textLight">Etherium</Typography>
                   </Stack>
                 </MenuItem>
                 <MenuItem value="dollar">
                   <Stack direction="row" alignItems="center" spacing={0.5}>
-                    <Image alt="dollar icon" width={20} height={20} src={dollar as StaticImageData} />
+                    <Image alt="dollar icon" width={20} height={20} src="/assets/svg/dollar.svg" />
                     <Typography variant="textLight">Dollar</Typography>
                   </Stack>
                 </MenuItem>
                 <MenuItem value="coin">
                   <Stack direction="row" alignItems="center" spacing={0.5}>
-                    <Image alt="coin icon" width={20} height={20} src={coin as StaticImageData} />
+                    <Image alt="coin icon" width={20} height={20} src="/assets/svg/coin.svg" />
                     <Typography variant="textLight">Coin</Typography>
                   </Stack>
                 </MenuItem>
@@ -130,9 +117,9 @@ const Game: FC<StackProps> = (props) => {
           sx={{ height: 60 }}
           expandIcon={
             isExpanded ? (
-              <Image src={carat_down_light as StaticImageData} alt="Expand" />
+              <Image src="/assets/svg/carat_down_light.svg" alt="Expand" width={24} height={24} />
             ) : (
-              <Image src={carat_down_dark as StaticImageData} alt="Expand" />
+              <Image src="/assets/svg/carat_down_dark.svg" alt="Expand" width={24} height={24} />
             )
           }
         >
@@ -143,7 +130,7 @@ const Game: FC<StackProps> = (props) => {
             </Stack>
             <Box p={1.2} borderRadius="10px" bgcolor="backgroundLevels.2">
               <Stack direction="row" alignItems="center" spacing={1}>
-                <Image src={vip_club as StaticImageData} alt="VIP Club" />
+                <Image src="/assets/svg/vip_club.svg" alt="VIP Club" width={24} height={24} />
                 <Typography variant="textDark">15,000.00×</Typography>
                 <Typography variant="textLight">VeeMay77</Typography>
               </Stack>
@@ -156,15 +143,6 @@ const Game: FC<StackProps> = (props) => {
           tenetur quasi suscipit!
         </AccordionDetails>
       </Accordion>
-      {/* <Box bgcolor="backgroundLevels.1" p={1.2} borderRadius="10px">
-        <Stack direction="row" justifyContent="space-between">
-          <Stack direction="row" spacing={0.5} alignItems="center">
-            <Typography variant="titleLight">Angel vs Sinner Eternal Battle Enhanced RTP</Typography>
-            <Typography variant="titleDark">Pragmatic Play</Typography>
-          </Stack>
-          <Stack></Stack>
-        </Stack>
-      </Box> */}
     </Stack>
   )
 }

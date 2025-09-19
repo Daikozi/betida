@@ -1,23 +1,19 @@
 import { FC } from 'react'
 
-import bitcoin from '@/assets/svg/bitcoin.svg'
-import coin from '@/assets/svg/coin.svg'
-import dummy from '@/assets/svg/dummy.svg'
-import etherium from '@/assets/svg/etherium.svg'
 import { Box, Stack, TableBody, TableContainer, TableContainerProps, TableHead } from '@mui/material'
 import MUITable from '@mui/material/Table'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 
 import { StyledTableCell, StyledTableRow } from './Table.styles'
 
-const getCurrencyIcon = (currency: string): StaticImageData => {
+const getCurrencyIcon = (currency: string): string => {
   switch (currency) {
     case 'bitcoin':
-      return bitcoin as StaticImageData
+      return '/assets/svg/bitcoin.svg'
     case 'etherium':
-      return etherium as StaticImageData
+      return '/assets/svg/etherium.svg'
     default:
-      return coin as StaticImageData
+      return '/assets/svg/coin.svg'
   }
 }
 
@@ -88,7 +84,7 @@ const Table: FC<TableProps> = ({ tableView, tables, ...tableContainerProps }) =>
                     justifyContent={index === cells.length - 1 ? 'flex-end' : 'flex-start'}
                   >
                     {(index === 0 || index === 1) && (
-                      <Image src={dummy as StaticImageData} alt="Game Icon" width={16} height={16} />
+                      <Image src="/assets/svg/dummy.svg" alt="Game Icon" width={16} height={16} />
                     )}
                     <Box>{cell}</Box>
                     {(index === 3 || index === 5) && (

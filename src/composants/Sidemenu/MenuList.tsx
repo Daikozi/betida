@@ -1,16 +1,15 @@
 import { FC, useState } from 'react'
 
 import { Box, List } from '@mui/material'
-import { StaticImageData } from 'next/image'
 
 import MenuItem from './MenuItem'
 
 type MenuItemProps = {
-  icon: StaticImageData
+  icon: string
   gradient?: string
   text: string
   showWhenOpen: boolean
-  subMenu?: { text: string; link: string; icon: StaticImageData }[]
+  subMenu?: { text: string; link: string; icon: string }[]
 }
 
 type MenuListProps = {
