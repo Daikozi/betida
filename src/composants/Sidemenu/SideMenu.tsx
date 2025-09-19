@@ -99,7 +99,7 @@ const SideMenu: FC<SideMenuProps> = ({ forceOpen }) => {
           sx={{ width: '100%' }}
         >
           <IconButton onClick={() => setOpen(!open)} sx={{ mr: open ? 2 : 0, p: 0 }}>
-            <Image src={header.menu.icon} alt={header.menu.text} width={24} height={24} />
+            <Image src={header.menu.icon} alt={header.menu.text} width={22} height={14} />
           </IconButton>
           {open && <ViewModeSelector />}
         </Stack>

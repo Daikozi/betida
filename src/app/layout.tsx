@@ -23,7 +23,7 @@ const RootLayout: FC<
       <link rel="manifest" href="/manifest.json" />
       <meta name="theme-color" content="#0A2540" />
       <link rel="preload" as="image" href="/assets/images/casino.webp" />
-      <link rel="preload" as="image" href="/assets/images/sports.webp" />
+      <link rel="preload" as="image" href="/assets/images/sport.webp" />
     </head>
     <body>
       <Providers>

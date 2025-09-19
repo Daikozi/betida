@@ -10,9 +10,17 @@ type TrendingCardProps = {
   quantityPlaying?: number
   rank?: number
   link: string
+  isSmall?: boolean
 }
 
-const TrendingCard: FC<TrendingCardProps & StackProps> = ({ image, quantityPlaying, rank, link, ...stackProps }) => (
+const TrendingCard: FC<TrendingCardProps & StackProps> = ({
+  image,
+  quantityPlaying,
+  rank,
+  link,
+  isSmall,
+  ...stackProps
+}) => (
   <Stack spacing={1} {...stackProps}>
     <Card>
       <CardActionArea href={link}>
@@ -28,9 +36,9 @@ const TrendingCard: FC<TrendingCardProps & StackProps> = ({ image, quantityPlayi
           src={image.startsWith('/assets/images/') ? image : `/assets/images/${image}`}
           alt={`trending game ${rank}`}
           width={144}
-          height={0}
+          height={isSmall ? 60 : 189}
           sizes="144px"
-          style={{ width: 144, height: 'auto', objectFit: 'contain', borderRadius: 8, display: 'block' }}
+          style={{ width: 144, objectFit: 'cover', borderRadius: 8, display: 'block' }}
           priority
         />
       </CardActionArea>

@@ -56,7 +56,13 @@ const Casino: FC = () => {
         </Carousel>
         <Carousel title={publishers.title} mb={4}>
           {publishers.items.map((game) => (
-            <TrendingCard key={game.rank} image={game.src} quantityPlaying={game.quantityPlaying} link={game.link} />
+            <TrendingCard
+              key={game.rank}
+              image={game.src}
+              quantityPlaying={game.quantityPlaying}
+              link={game.link}
+              isSmall
+            />
           ))}
         </Carousel>
         <Carousel title={live_casino.title} mb={4}>
