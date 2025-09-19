@@ -85,3 +85,35 @@ Betida uses a custom [Material UI (MUI)](https://mui.com/) theme, defined in [`s
 ## Deployment
 
 Deploy easily on [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
+
+## Environment Variables
+
+Copy the `.env.template` file to `.env` at the root of the project and fill in the required values:
+
+```env
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+NEXT_PUBLIC_ENV=local
+NEXT_PUBLIC_ROBOTS_ALLOW=false
+CHROMATIC_PROJECT_TOKEN=<your-chromatic-project-token>
+```
+
+Refer to `.env.template` for all required variables. Do not commit your real `.env` file.
+
+---
+
+## Chromatic (Visual Testing)
+
+This project uses [Chromatic](https://www.chromatic.com/) for visual regression testing and UI review.
+
+- The Chromatic project token is stored in your `.env` file as `CHROMATIC_PROJECT_TOKEN`.
+- To publish your Storybook to Chromatic, simply run:
+
+```bash
+pnpm chromatic
+# or
+npx chromatic
+```
+
+Chromatic will provide a link to review UI changes and visual diffs after each run.
+
+---
