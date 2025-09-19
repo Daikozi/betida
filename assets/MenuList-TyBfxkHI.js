@@ -1,0 +1,7 @@
+import{r as l,j as n}from"./iframe-BKa3Civw.js";import{M as p}from"./MenuItem-BPHtj_rx.js";import{B as g}from"./Box-CIIZF0s1.js";import{L as d}from"./List-CXg7nf55.js";const c=({isSideMenuOpen:r,menuItems:s})=>{const[i,a]=l.useState(null);return n.jsx(g,{sx:{borderRadius:1.2,bgcolor:r?"#0F0F10":"transparent",my:1,mx:r?2:0},children:n.jsx(d,{sx:{py:0},children:s.map(({icon:o,showWhenOpen:u,text:e,subMenu:m,gradient:t})=>n.jsx(p,{icon:o,text:e,showWhenOpen:u,gradient:t,subitems:m,isSideMenuOpen:r,isSelected:!t&&i===e,onClick:()=>a(e)},e))})})};c.__docgenInfo={description:"",methods:[],displayName:"MenuList",props:{isSideMenuOpen:{required:!1,tsType:{name:"boolean"},description:""},menuItems:{required:!0,tsType:{name:"Array",elements:[{name:"signature",type:"object",raw:`{
+  icon: string
+  gradient?: string
+  text: string
+  showWhenOpen: boolean
+  subMenu?: { text: string; link: string; icon: string }[]
+}`,signature:{properties:[{key:"icon",value:{name:"string",required:!0}},{key:"gradient",value:{name:"string",required:!1}},{key:"text",value:{name:"string",required:!0}},{key:"showWhenOpen",value:{name:"boolean",required:!0}},{key:"subMenu",value:{name:"Array",elements:[{name:"signature",type:"object",raw:"{ text: string; link: string; icon: string }",signature:{properties:[{key:"text",value:{name:"string",required:!0}},{key:"link",value:{name:"string",required:!0}},{key:"icon",value:{name:"string",required:!0}}]}}],raw:"{ text: string; link: string; icon: string }[]",required:!1}}]}}],raw:"MenuItemProps[]"},description:""}}};export{c as M};
