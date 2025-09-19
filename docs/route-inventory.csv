@@ -1,0 +1,29 @@
+route,text
+/,Home
+/games,Lobby
+/category/[categoryId],Category
+/provider/[providerId],Provider
+/search,Search
+/promotions,Promotions
+/promotions/[promotionId],Promotion detail
+/vip,VIP
+/legal/terms,Terms
+/legal/privacy,Privacy
+/legal/responsible-gaming,Responsible Gaming
+/legal/cookies,Cookies
+/404,Not Found
+/500,Error
+/maintenance,Maintenance
+/login,Login
+/register,Register
+/forgot-password,Forgot Password
+/reset-password,Reset Password
+/profile,Profile
+/settings,Settings
+/affiliate,Affiliate
+/vip-club,VIP Club
+/blog,Blog
+/forum,Forum
+/sponsorships,Sponsorships
+/live-support,Live Support
+/language,Language
