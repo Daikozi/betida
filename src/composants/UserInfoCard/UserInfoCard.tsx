@@ -5,10 +5,8 @@ import bronze from '@/assets/svg/bronze.svg'
 import info from '@/assets/svg/info.svg'
 import none from '@/assets/svg/none.svg'
 import { main } from '@/data/main'
-import { Box, BoxProps, Stack, Typography } from '@mui/material'
+import { Box, BoxProps, LinearProgress, Stack, Typography } from '@mui/material'
 import Image, { StaticImageData } from 'next/image'
-
-import ProgressBar from '../ProgressBar/ProgressBar'
 
 const UserInfoCard: FC<BoxProps> = (props) => {
   const {
@@ -49,7 +47,7 @@ const UserInfoCard: FC<BoxProps> = (props) => {
         </Stack>
       </Stack>
 
-      <ProgressBar variant="determinate" value={userInfo.progress.value} aria-label="Progression VIP utilisateur" />
+      <LinearProgress variant="determinate" value={userInfo.progress.value} aria-label="Progression VIP utilisateur" />
       <Stack
         direction="row"
         justifyContent="space-between"

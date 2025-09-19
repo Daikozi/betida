@@ -132,7 +132,11 @@ const secondMenuItems = [
   { text: 'Live Support', icon: live_support as StaticImageData, showWhenOpen: true },
 ]
 
-const SideMenu: FC = () => {
+type SideMenuProps = {
+  forceOpen?: boolean
+}
+
+const SideMenu: FC<SideMenuProps> = ({ forceOpen }) => {
   const { open, setOpen } = useDrawerStore()
   const [promotionsOpen, setPromotionsOpen] = useState(false)
   const [sponsorshipsOpen, setSponsorshipsOpen] = useState(false)
@@ -140,6 +144,11 @@ const SideMenu: FC = () => {
   const { displayMode, setDisplayMode } = useDisplayMode()
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+
+  if (forceOpen !== undefined) {
+    if (forceOpen && !open) setOpen(true)
+    if (!forceOpen && open) setOpen(false)
+  }
 
   const displayModeList = [
     {
@@ -493,7 +502,6 @@ const SideMenu: FC = () => {
     </>
   )
 
-  // Affichage Drawer permanent sur desktop, Drawer temporaire plein écran sur mobile
   if (isMobile) {
     return (
       <MuiDrawer

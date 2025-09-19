@@ -1,9 +1,11 @@
-import React, { FC, ReactNode, useLayoutEffect, useRef, useState } from 'react'
+import { FC, MouseEvent, ReactNode, useLayoutEffect, useRef, useState } from 'react'
 
 import back_light from '@/assets/svg/back_light.svg'
 import next from '@/assets/svg/next.svg'
 import { Box, BoxProps, IconButton, Stack, Typography } from '@mui/material'
 import Image, { StaticImageData } from 'next/image'
+
+import { CarouselContainer, CarouselContent, ShadowLeft, ShadowRight } from './Carousel.styles'
 
 type CarouselProps = {
   children: ReactNode
@@ -16,7 +18,7 @@ const Carousel: FC<CarouselProps> = ({ children, title, ...boxProps }) => {
   const startX = useRef(0)
   const scrollLeft = useRef(0)
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault()
     isDown.current = true
     startX.current = e.pageX - (scrollRef.current?.offsetLeft || 0)
@@ -31,6 +33,36 @@ const Carousel: FC<CarouselProps> = ({ children, title, ...boxProps }) => {
 
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(false)
+
+  const handleMouseUp = () => {
+    isDown.current = false
+    document.body.style.cursor = ''
+  }
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (!isDown.current) return
+    e.preventDefault()
+    const x = e.pageX - (scrollRef.current?.offsetLeft || 0)
+    const walk = x - startX.current
+    if (scrollRef.current) scrollRef.current.scrollLeft = scrollLeft.current - walk
+  }
+
+  const handleNext = () => {
+    const el = scrollRef.current
+    if (el) {
+      const maxScroll = el.scrollWidth - el.clientWidth
+      const target = Math.min(el.scrollLeft + 300, maxScroll)
+      el.scrollTo({ left: target, behavior: 'smooth' })
+    }
+  }
+
+  const handlePrev = () => {
+    const el = scrollRef.current
+    if (el) {
+      const target = Math.max(el.scrollLeft - 300, 0)
+      el.scrollTo({ left: target, behavior: 'smooth' })
+    }
+  }
 
   useLayoutEffect(() => {
     const updateScroll = () => {
@@ -50,30 +82,6 @@ const Carousel: FC<CarouselProps> = ({ children, title, ...boxProps }) => {
       window.removeEventListener('resize', updateScroll)
     }
   }, [])
-  const handleMouseUp = () => {
-    isDown.current = false
-    document.body.style.cursor = ''
-  }
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDown.current) return
-    e.preventDefault()
-    const x = e.pageX - (scrollRef.current?.offsetLeft || 0)
-    const walk = x - startX.current
-    if (scrollRef.current) scrollRef.current.scrollLeft = scrollLeft.current - walk
-  }
-
-  const handleNext = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' })
-    }
-  }
-
-  const handlePrev = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' })
-    }
-  }
 
   return (
     <Box {...boxProps}>
@@ -110,63 +118,23 @@ const Carousel: FC<CarouselProps> = ({ children, title, ...boxProps }) => {
           </IconButton>
         </Stack>
       </Stack>
-      <Box
-        sx={{
-          width: 'calc(100vw - (100vw - 100%))',
-          overflow: 'hidden',
-          position: 'relative',
-        }}
-      >
-        {canScrollPrev && (
-          <Box
-            sx={{
-              position: 'absolute',
-              left: 0,
-              top: 0,
-              bottom: 0,
-              width: 32,
-              pointerEvents: 'none',
-              zIndex: 2,
-              background: 'linear-gradient(to right, #0F0F10 0%, rgba(240,240,240,0) 100%)',
-            }}
-          />
-        )}
+      <CarouselContainer>
+        {canScrollPrev && <ShadowLeft />}
 
-        <Stack
+        <CarouselContent
           direction="row"
           justifyContent="flex-start"
           spacing={1}
           ref={scrollRef}
-          sx={{
-            overflowX: 'auto',
-            cursor: 'grab',
-            scrollBehavior: 'smooth',
-            width: '100%',
-            userSelect: 'none',
-            '&::-webkit-scrollbar': { display: 'none' },
-          }}
           onMouseDown={handleMouseDown}
           onMouseLeave={handleMouseLeave}
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
         >
           {children}
-        </Stack>
-        {canScrollNext && (
-          <Box
-            sx={{
-              position: 'absolute',
-              right: 0,
-              top: 0,
-              bottom: 0,
-              width: 32,
-              pointerEvents: 'none',
-              zIndex: 2,
-              background: 'linear-gradient(to left, #0F0F10 0%, rgba(240,240,240,0) 100%)',
-            }}
-          />
-        )}
-      </Box>
+        </CarouselContent>
+        {canScrollNext && <ShadowRight />}
+      </CarouselContainer>
     </Box>
   )
 }

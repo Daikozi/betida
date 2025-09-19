@@ -8,9 +8,7 @@ import SearchBar from '@/composants/SearchBar/SearchBar'
 import Table from '@/composants/Table/Table'
 import TrendingCard from '@/composants/TrendingCard/TrendingCard'
 import { main } from '@/data/main'
-import { Box, InputLabel, Stack, ToggleButton } from '@mui/material'
-
-import ToggleButtonGroup from '../ToggleButtonGroup/ToggleButtonGroup'
+import { Box, InputLabel, Stack, ToggleButton, ToggleButtonGroup } from '@mui/material'
 
 const CasinoPage: FC = () => {
   const {

@@ -11,10 +11,10 @@ const Box = styled(MUIBox)(({ theme }) => ({
   bottom: 0,
   left: 0,
   right: 0,
-  borderTop: `1px solid ${theme.palette.divider}`,
+  borderTop: `1 solid ${theme.palette.divider}`,
   zIndex: 1300,
   display: 'block',
-  [`@media (min-width:${theme.breakpoints.values.md}px)`]: {
+  [theme.breakpoints.up('sm')]: {
     display: 'none',
   },
 }))
@@ -28,8 +28,8 @@ const BottomNavigation = styled(MUIBottomNavigation)(({ theme }) => ({
 
 const BottomNavigationAction = styled(MUIBottomNavigationAction)(({ theme }) => ({
   [`& .${bottomNavigationActionClasses.label}`]: {
-    marginTop: '4px',
-    fontSize: '14px',
+    marginTop: 4,
+    fontSize: 14,
     fontWeight: 500,
     color: theme.palette.text.primary,
     '&.Mui-selected': { color: theme.palette.text.secondary },

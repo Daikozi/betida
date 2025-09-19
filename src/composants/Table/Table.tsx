@@ -4,43 +4,11 @@ import bitcoin from '@/assets/svg/bitcoin.svg'
 import coin from '@/assets/svg/coin.svg'
 import dummy from '@/assets/svg/dummy.svg'
 import etherium from '@/assets/svg/etherium.svg'
-import {
-  Box,
-  Stack,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  tableCellClasses,
-  tableRowClasses,
-} from '@mui/material'
+import { Box, Stack, TableBody, TableContainer, TableContainerProps, TableHead } from '@mui/material'
 import MUITable from '@mui/material/Table'
-import { styled } from '@mui/material/styles'
 import Image, { StaticImageData } from 'next/image'
 
-const StyledTableCell = styled(TableCell)(() => ({
-  [`&.${tableCellClasses.root}`]: {
-    fontSize: 16,
-    padding: '14px 16px',
-    border: 'none',
-  },
-  [`&.${tableCellClasses.body}`]: {
-    color: '#FFFFFF',
-  },
-}))
-
-const StyledTableRow = styled(TableRow)(() => ({
-  [`&.${tableRowClasses.root}`]: {
-    '&:nth-of-type(odd)': {
-      backgroundColor: '#252427',
-    },
-  },
-
-  [`&.${tableRowClasses.head}`]: {
-    backgroundColor: '#0F0F10 !important',
-  },
-}))
+import { StyledTableCell, StyledTableRow } from './Table.styles'
 
 const getCurrencyIcon = (currency: string): StaticImageData => {
   switch (currency) {
@@ -65,11 +33,11 @@ type Tables = {
 type TableProps = {
   tableView: 'casino_bets' | 'sports_bets' | 'race_leaderboard' | 'all_bets' | 'high_rollers'
   tables: Tables
-}
+} & TableContainerProps
 
-const Table: FC<TableProps> = ({ tableView, tables }) => (
-  <TableContainer sx={{ mb: '36px' }}>
-    <MUITable aria-label="simple table">
+const Table: FC<TableProps> = ({ tableView, tables, ...tableContainerProps }) => (
+  <TableContainer {...tableContainerProps}>
+    <MUITable aria-label={tableContainerProps['aria-label']}>
       <TableHead>
         <StyledTableRow>
           {tables.headers.map((header, index) => (
@@ -116,15 +84,15 @@ const Table: FC<TableProps> = ({ tableView, tables }) => (
                   <Stack
                     direction="row"
                     alignItems="center"
-                    spacing="10px"
+                    spacing={1.2}
                     justifyContent={index === cells.length - 1 ? 'flex-end' : 'flex-start'}
                   >
                     {(index === 0 || index === 1) && (
-                      <Image src={dummy as StaticImageData} alt="Game Icon" width={24} height={24} />
+                      <Image src={dummy as StaticImageData} alt="Game Icon" width={16} height={16} />
                     )}
                     <Box>{cell}</Box>
                     {(index === 3 || index === 5) && (
-                      <Image src={getCurrencyIcon(currency)} alt="Game Icon" width={24} height={24} />
+                      <Image src={getCurrencyIcon(currency)} alt="Game Icon" width={16} height={16} />
                     )}
                   </Stack>
                 </StyledTableCell>

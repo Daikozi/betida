@@ -148,13 +148,40 @@ const theme = createTheme({
         },
       },
     },
-    // MuiPaper: {
-    //   styleOverrides: {
-    //     root: {
-    //       padding: 24,
-    //     },
-    //   },
-    // },
+    MuiLinearProgress: {
+      styleOverrides: {
+        root: {
+          height: 10,
+          borderRadius: 5,
+          background: colors.background['2'],
+        },
+        bar: {
+          background: colors.primary.gradient,
+        },
+      },
+    },
+    MuiToggleButtonGroup: {
+      styleOverrides: {
+        grouped: {
+          textTransform: 'none',
+          color: colors.white['3'],
+          border: 0,
+          padding: '10px 14px',
+          height: 36,
+          lineHeight: 1,
+          borderRadius: 10,
+          marginRight: 8,
+          width: 'fit-content',
+          '&.Mui-disabled': {
+            border: 0,
+          },
+          '&.Mui-selected': {
+            backgroundColor: colors.white['2'],
+            color: colors.white['1'],
+          },
+        },
+      },
+    },
   },
 })
 

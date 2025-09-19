@@ -18,18 +18,20 @@ type FAQProps = {
 const FAQ: FC<FAQProps> = ({ accordionItems, ...stackProps }) => {
   const [isExpanded, setIsExpanded] = useState<boolean[]>(Array(accordionItems.length).fill(false))
 
+  const handleAccordionToggle = (index: number) => {
+    const newExpanded = [...isExpanded]
+    newExpanded[index] = !newExpanded[index]
+    setIsExpanded(newExpanded)
+  }
+
   return (
-    <Stack spacing="10px" {...stackProps}>
+    <Stack spacing={1.2} {...stackProps}>
       {accordionItems.map(({ question, answer }, index) => (
         <MUIAccordion
           disableGutters
           key={question}
           expanded={isExpanded[index]}
-          onChange={() => {
-            const newExpanded = [...isExpanded]
-            newExpanded[index] = !newExpanded[index]
-            setIsExpanded(newExpanded)
-          }}
+          onChange={() => handleAccordionToggle(index)}
         >
           <AccordionSummary
             expandIcon={
@@ -42,12 +44,16 @@ const FAQ: FC<FAQProps> = ({ accordionItems, ...stackProps }) => {
             aria-controls={`panel${index}-content`}
             id={`panel${index}-header`}
           >
-            <Typography component="span" color={isExpanded[index] ? 'text.secondary' : 'text.primary'} fontWeight={600}>
+            <Typography
+              variant="titleDark"
+              component="span"
+              color={isExpanded[index] ? 'text.secondary' : 'text.primary'}
+            >
               {question}
             </Typography>
           </AccordionSummary>
           <AccordionDetails sx={{ pt: 0 }}>
-            <Typography fontSize={14}>{answer}</Typography>
+            <Typography variant="textDark">{answer}</Typography>
           </AccordionDetails>
         </MUIAccordion>
       ))}

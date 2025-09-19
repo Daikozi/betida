@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material'
 import { Meta, StoryObj } from '@storybook/nextjs-vite'
 
 import BottomBar from './BottomBar'
@@ -6,7 +7,6 @@ const meta = {
   title: 'Components/BottomBar',
   component: BottomBar,
   parameters: {
-    // layout: 'centered',
     viewport: {
       defaultViewport: 'mobile1',
     },
@@ -16,4 +16,15 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
+export const Default: Story = {
+  render: () => (
+    <>
+      <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Typography variant="h5" gutterBottom>
+          BottomBar visible only on mobile
+        </Typography>
+      </div>
+      <BottomBar />
+    </>
+  ),
+}

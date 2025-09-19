@@ -16,7 +16,6 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Box,
   Divider,
   Grid,
   IconButton,
@@ -24,6 +23,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Paper,
   Stack,
   Typography,
 } from '@mui/material'
@@ -33,39 +33,38 @@ import { footerContent } from './Footer.content'
 
 const Footer: FC = () => {
   const [isExpanded, setIsExpanded] = useState<boolean[]>(Array(footerContent.length).fill(false))
+
+  const handleAccordionChange = (index: number) => {
+    const newExpanded = [...isExpanded]
+    newExpanded[index] = !newExpanded[index]
+    setIsExpanded(newExpanded)
+  }
+
   return (
-    <Box
-      component="footer"
-      sx={{
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        marginTop: 3,
-        mb: 6,
-      }}
-    >
-      <Box
+    <Stack component="footer" direction="row" justifyContent="center">
+      <Paper
         sx={{
           maxWidth: 1200,
           width: '100%',
           bgcolor: { lg: 'background.paper', xs: 'transparent' },
           padding: { xs: 0, lg: 3 },
           pb: { xs: 0, lg: 2 },
-          borderRadius: '10px',
           mx: 2,
         }}
       >
         <Grid container spacing={2} sx={{ display: { xs: 'none', lg: 'flex' } }}>
           {footerContent.map(({ links, title }) => (
             <Grid size={{ sm: 6, md: 4, lg: 2 }} key={title}>
-              <Typography variant="body2" color="text.secondary" fontWeight={600}>
+              <Typography variant="textLight" fontWeight={600}>
                 {title}
               </Typography>
               <List dense>
                 {links.map(({ label, url }) => (
                   <ListItem sx={{ p: 0 }} key={label}>
-                    <Link href={url} sx={{ textDecoration: 'none', color: 'text.primary' }}>
-                      <ListItemText primary={label} />
+                    <Link href={url}>
+                      <Typography variant="textDark">
+                        <ListItemText primary={label} />
+                      </Typography>
                     </Link>
                   </ListItem>
                 ))}
@@ -74,24 +73,20 @@ const Footer: FC = () => {
           ))}
         </Grid>
         <Divider sx={{ mt: 2, mb: 1, display: { xs: 'none', lg: 'block' } }} />
-        <Stack alignItems="center" spacing={3} sx={{ mb: 3, display: { xs: 'flex', lg: 'none' } }}>
-          <Stack direction="row" alignItems="center" gap={1.5} sx={{ flexGrow: 1 }}>
+        <Stack alignItems="center" spacing={3} sx={{ mb: 3, display: { lg: 'none' } }}>
+          <Stack direction="row" alignItems="center" gap={1.5} flexGrow={1}>
             <Image src={logo as StaticImageData} alt="Logo" />
-            <Typography variant="subtitle1" component="div" fontWeight={600} sx={{ color: 'white' }}>
+            <Typography variant="titleLight" component="div">
               BRAND NAME
             </Typography>
           </Stack>
 
-          <Stack spacing="10px" sx={{ width: '100%' }}>
+          <Stack spacing={1.2} width="100%">
             {footerContent.map(({ title, links }, index) => (
               <Accordion
                 key={title}
                 disableGutters
-                onChange={() => {
-                  const newExpanded = [...isExpanded]
-                  newExpanded[index] = !newExpanded[index]
-                  setIsExpanded(newExpanded)
-                }}
+                onChange={() => handleAccordionChange(index)}
                 expanded={isExpanded[index]}
               >
                 <AccordionSummary
@@ -107,8 +102,8 @@ const Footer: FC = () => {
                 >
                   <Typography
                     component="span"
+                    variant="titleDark"
                     color={isExpanded[index] ? 'text.secondary' : 'text.primary'}
-                    fontWeight={600}
                   >
                     {title}
                   </Typography>
@@ -117,14 +112,10 @@ const Footer: FC = () => {
                   <List dense>
                     {links.map(({ label, url }) => (
                       <ListItem sx={{ p: 0 }} key={label}>
-                        <Link
-                          href={url}
-                          sx={{
-                            textDecoration: 'none',
-                            color: 'text.primary',
-                          }}
-                        >
-                          <ListItemText primary={label} />
+                        <Link href={url}>
+                          <Typography variant="textDark">
+                            <ListItemText primary={label} />
+                          </Typography>
                         </Link>
                       </ListItem>
                     ))}
@@ -140,7 +131,7 @@ const Footer: FC = () => {
             spacing={1}
             alignItems="center"
             justifyContent="space-evenly"
-            sx={{ width: { xs: '100%', lg: 'auto' } }}
+            width={{ xs: '100%', lg: 'auto' }}
           >
             <IconButton aria-label="delete">
               <Image src={social_1 as StaticImageData} alt="Social Icon 1" />
@@ -170,8 +161,8 @@ const Footer: FC = () => {
             <Typography variant="caption">All Rights Reserved.</Typography>
           </Stack>
         </Stack>
-      </Box>
-    </Box>
+      </Paper>
+    </Stack>
   )
 }
 
