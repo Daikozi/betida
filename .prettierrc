@@ -9,7 +9,7 @@
     "^server-only$",
     "^(react|react-dom)$",
     "<THIRD_PARTY_MODULES>",
-    "^@(App|Constants|Components|Hooks|Images|Lib|Mocks|Models|Providers|Server|Services|Storybook|Styles)(/.*)?$",
+    "^@/(app|constants|components|hooks|images|lib|mocks|models|providers|server|services|storybook|styles|assets|store|theme|providers|data)(/.*)?$",
     "^[./]"
   ],
   "overrides": [

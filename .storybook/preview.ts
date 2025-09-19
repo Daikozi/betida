@@ -4,6 +4,11 @@ import { ThemeProviderDecorator } from './decorators'
 
 const preview: Preview = {
   parameters: {
+    options: {
+      storySort: {
+        order: ['Pages', 'Layout', 'Common'],
+      },
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

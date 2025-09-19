@@ -1,6 +1,7 @@
+import { MetadataRoute } from 'next'
+
 import { NEXT_ROUTES } from '@/constants/routes'
 import { publicConfig } from '@/services/config'
-import { MetadataRoute } from 'next'
 
 const PLACEHOLDER_ROUTES = Object.values(NEXT_ROUTES).filter((route) => !['/', '/games'].includes(route))
 

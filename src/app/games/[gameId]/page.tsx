@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import GameDetail from '@/composants/Pages/GameDetail/GameDetail'
+import GameDetail from '@/components/Pages/GameDetail/GameDetail'
 
 export const metadata = {
   title: 'Betida - Game Details',

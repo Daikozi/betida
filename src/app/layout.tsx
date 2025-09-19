@@ -1,12 +1,13 @@
 import { FC } from 'react'
 
-import BottomBar from '@/composants/BottomBar/BottomBar'
-import Footer from '@/composants/Footer/Footer'
-import Header from '@/composants/Header/Header'
-import SideMenu from '@/composants/Sidemenu/SideMenu'
-import { Providers } from '@/providers'
 import { Box, Toolbar } from '@mui/material'
 import { Metadata } from 'next'
+
+import BottomBar from '@/components/Layout/BottomBar/BottomBar'
+import Footer from '@/components/Layout/Footer/Footer'
+import Header from '@/components/Layout/Header/Header'
+import SideMenu from '@/components/Layout/Sidemenu/SideMenu'
+import { Providers } from '@/providers'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
