@@ -9,7 +9,7 @@ const meta = {
   component: Carousel,
   args: {
     children: null,
-    title: 'Exemple',
+    title: 'Title Example',
   },
   parameters: {
     layout: 'padded',

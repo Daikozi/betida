@@ -91,7 +91,7 @@ const Carousel: FC<CarouselProps> = ({ children, title, ...boxProps }) => {
           <IconButton aria-label="delete" size="small" onClick={handlePrev} disabled={!canScrollPrev}>
             {canScrollPrev ? (
               <Image
-                src="/assets/svg/back_light.svg"
+                src="/assets/svg/next.svg"
                 alt="previous"
                 width={24}
                 height={24}
