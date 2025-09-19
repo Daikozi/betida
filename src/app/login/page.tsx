@@ -1,10 +1,7 @@
 import { FC } from 'react'
 
-const Login: FC = () => (
-  <main style={{ textAlign: 'center', padding: '4rem' }}>
-    <h1>Connexion</h1>
-    <p>Page de connexion (à venir).</p>
-  </main>
-)
+import ComingSoon from '@/components/Common/ComingSoon/ComingSoon'
+
+const Login: FC = () => <ComingSoon />
 
 export default Login

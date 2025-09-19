@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
-const WalletPage: FC = () => <div>Wallet Page</div>
+import ComingSoon from '@/components/Common/ComingSoon/ComingSoon'
+
+const WalletPage: FC = () => <ComingSoon />
 
 export default WalletPage

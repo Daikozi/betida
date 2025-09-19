@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
-const VIPPage: FC = () => <div>VIP Page</div>
+import ComingSoon from '@/components/Common/ComingSoon/ComingSoon'
+
+const VIPPage: FC = () => <ComingSoon />
 
 export default VIPPage

@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
-const PromotionDetailsPage: FC = () => <div>Promotion Details Page</div>
+import ComingSoon from '@/components/Common/ComingSoon/ComingSoon'
+
+const PromotionDetailsPage: FC = () => <ComingSoon />
 
 export default PromotionDetailsPage

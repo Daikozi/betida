@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
-const ResponsibleGamingPage: FC = () => <div>Responsible Gaming Page</div>
+import ComingSoon from '@/components/Common/ComingSoon/ComingSoon'
+
+const ResponsibleGamingPage: FC = () => <ComingSoon />
 
 export default ResponsibleGamingPage

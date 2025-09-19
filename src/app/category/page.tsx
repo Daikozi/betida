@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
-const CategoryPage: FC = () => <div>Category Page</div>
+import ComingSoon from '@/components/Common/ComingSoon/ComingSoon'
+
+const CategoryPage: FC = () => <ComingSoon />
 
 export default CategoryPage

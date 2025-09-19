@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
-const PrivacyPage: FC = () => <div>Privacy Page</div>
+import ComingSoon from '@/components/Common/ComingSoon/ComingSoon'
+
+const PrivacyPage: FC = () => <ComingSoon />
 
 export default PrivacyPage

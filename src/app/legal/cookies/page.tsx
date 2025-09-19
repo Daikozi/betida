@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
-const CookiesPage: FC = () => <div>Cookies Page</div>
+import ComingSoon from '@/components/Common/ComingSoon/ComingSoon'
+
+const CookiesPage: FC = () => <ComingSoon />
 
 export default CookiesPage

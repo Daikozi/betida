@@ -1,7 +1,9 @@
+'use client'
+
 import { FC } from 'react'
 
 import ComingSoon from '@/components/Common/ComingSoon/ComingSoon'
 
-const ProviderDetailsPage: FC = () => <ComingSoon />
+const NotFoundPage: FC = () => <ComingSoon />
 
-export default ProviderDetailsPage
+export default NotFoundPage

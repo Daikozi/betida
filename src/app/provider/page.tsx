@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
-const ProviderPage: FC = () => <div>Provider Page</div>
+import ComingSoon from '@/components/Common/ComingSoon/ComingSoon'
+
+const ProviderPage: FC = () => <ComingSoon />
 
 export default ProviderPage

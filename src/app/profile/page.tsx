@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
-const ProfilePage: FC = () => <div>Profile Page</div>
+import ComingSoon from '@/components/Common/ComingSoon/ComingSoon'
+
+const ProfilePage: FC = () => <ComingSoon />
 
 export default ProfilePage
