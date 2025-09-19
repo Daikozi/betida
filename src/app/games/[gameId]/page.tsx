@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
-const GamesDetailsPage: FC = () => <div>Games Details Page</div>
+import GameDetail from '@/pages/GameDetail/GameDetail'
+
+const GamesDetailsPage: FC = () => <GameDetail />
 
 export default GamesDetailsPage

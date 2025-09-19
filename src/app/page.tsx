@@ -2,19 +2,19 @@
 
 import { FC } from 'react'
 
-import CasinoPage from '@/composants/CasinoPage/CasinoPage'
-import MainPage from '@/composants/MainPage/MainPage'
-import SportPage from '@/composants/Sport/Sport'
+import Casino from '@/pages/Casino/Casino'
+import Main from '@/pages/Main/Main'
+import Sport from '@/pages/Sports/Sports'
 import { useDisplayMode } from '@/store/displayModeStore'
 
 const Home: FC = () => {
   const { displayMode } = useDisplayMode()
 
   if (!displayMode) {
-    return <MainPage />
+    return <Main />
   }
 
-  return displayMode === 'casino' ? <CasinoPage /> : <SportPage />
+  return displayMode === 'casino' ? <Casino /> : <Sport />
 }
 
 export default Home

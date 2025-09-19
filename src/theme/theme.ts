@@ -57,6 +57,7 @@ const theme = createTheme({
   shape: {
     borderRadius: 10,
   },
+
   components: {
     MuiAppBar: {
       styleOverrides: {
@@ -178,6 +179,51 @@ const theme = createTheme({
           '&.Mui-selected': {
             backgroundColor: colors.white['2'],
             color: colors.white['1'],
+          },
+        },
+      },
+    },
+    MuiSwitch: {
+      styleOverrides: {
+        root: {
+          width: 54,
+          height: 32,
+          padding: 0,
+          '& .MuiSwitch-thumb': {
+            boxSizing: 'border-box',
+            width: 24,
+            height: 24,
+            boxShadow: 'none',
+          },
+          '& .MuiSwitch-track': {
+            borderRadius: 56 / 2,
+            backgroundColor: colors.white['2'],
+            opacity: 1,
+          },
+        },
+        switchBase: {
+          padding: 0,
+          margin: 4,
+          transitionDuration: '300ms',
+          '&.Mui-checked': {
+            transform: 'translateX(22px)',
+            color: '#fff',
+            '& + .MuiSwitch-track': {
+              backgroundColor: '#65C466',
+              opacity: 1,
+              border: 0,
+            },
+            '&.Mui-disabled + .MuiSwitch-track': {
+              opacity: 0.5,
+            },
+          },
+          '&.Mui-focusVisible .MuiSwitch-thumb': {
+            color: '#33cf4d',
+            border: '6px solid #fff',
+          },
+          '&.Mui-disabled .MuiSwitch-thumb': {},
+          '&.Mui-disabled + .MuiSwitch-track': {
+            opacity: 0.7,
           },
         },
       },

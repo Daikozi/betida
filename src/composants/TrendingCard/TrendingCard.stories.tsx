@@ -7,6 +7,7 @@ const meta = {
   component: TrendingCard,
   args: {
     image: '/assets/images/trending_games_1.webp',
+    link: 'https://example.com',
   },
   parameters: {
     layout: 'centered',

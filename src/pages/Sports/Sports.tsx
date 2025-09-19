@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { Box } from '@mui/material'
 
-const SportPage: FC = () => (
+const Sports: FC = () => (
   <Box
     sx={{
       display: 'flex',
@@ -16,4 +16,4 @@ const SportPage: FC = () => (
   </Box>
 )
 
-export default SportPage
+export default Sports

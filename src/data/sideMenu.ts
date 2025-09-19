@@ -2,7 +2,6 @@ import affiliate from '@/assets/svg/affiliate.svg'
 import blog from '@/assets/svg/blog.svg'
 import branche from '@/assets/svg/branche.svg'
 import branche_end from '@/assets/svg/branche_end.svg'
-import casino_gradient from '@/assets/svg/casino_gradient.svg'
 import casino_unselected from '@/assets/svg/casino_unselected.svg'
 import forum from '@/assets/svg/forum.svg'
 import live_support from '@/assets/svg/live_support.svg'
@@ -10,11 +9,11 @@ import menu from '@/assets/svg/menu.svg'
 import promotion from '@/assets/svg/promotions.svg'
 import responsible_gambling from '@/assets/svg/responsible_gambling.svg'
 import sponsorships from '@/assets/svg/sponsorships.svg'
-import sports_gradient from '@/assets/svg/sports_gradient.svg'
 import sports_unselected from '@/assets/svg/sports_unselected.svg'
 import tr_flag from '@/assets/svg/tr_flag.svg'
 import uk_flag from '@/assets/svg/uk_flag.svg'
 import vip_club from '@/assets/svg/vip_club.svg'
+import { colors } from '@/theme/tokens'
 import { StaticImageData } from 'next/image'
 
 type SideMenu = {
@@ -32,13 +31,14 @@ type SideMenu = {
     }
     select: {
       label: string
+      name: string
       option: { text: string; value: string }[]
     }
   }
   list: {
     text: string
     icon: StaticImageData
-    iconActive?: StaticImageData
+    gradient?: string
     showWhenOpen: boolean
     subMenu?: { text: string; link: string; icon: StaticImageData }[]
   }[][]
@@ -59,6 +59,7 @@ export const sideMenu: SideMenu = {
     },
     select: {
       label: 'Category',
+      name: 'category',
       option: [
         { text: 'Casino', value: 'casino' },
         { text: 'Sports', value: 'sports' },
@@ -70,13 +71,13 @@ export const sideMenu: SideMenu = {
       {
         text: 'Casino',
         icon: casino_unselected as StaticImageData,
-        iconActive: casino_gradient as StaticImageData,
         showWhenOpen: false,
+        gradient: colors.casino.gradient,
       },
       {
         text: 'Sports',
         icon: sports_unselected as StaticImageData,
-        iconActive: sports_gradient as StaticImageData,
+        gradient: colors.sports.gradient,
         showWhenOpen: false,
       },
     ],

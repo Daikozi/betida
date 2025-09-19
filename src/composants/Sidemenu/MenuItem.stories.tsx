@@ -11,7 +11,9 @@ const meta = {
     icon: sideMenu.list[1][1].icon,
     showWhenOpen: true,
     isSideMenuOpen: true,
-    onClick: () => {},
+    onClick: () => {
+      /* empty */
+    },
   },
   argTypes: {
     onClick: { action: 'onClick' },

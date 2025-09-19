@@ -4,34 +4,21 @@ import { FC, useState } from 'react'
 
 import Carousel from '@/composants/Carousel/Carousel'
 import FAQ from '@/composants/FAQ/FAQ'
-import LargeTrendingCard from '@/composants/LargeTrendingCard/LargeTrendingCard'
+import Hero from '@/composants/Hero/Hero'
 import PromotionCard from '@/composants/PromotionCard/PromotionCard'
 import SearchBar from '@/composants/SearchBar/SearchBar'
 import Table from '@/composants/Table/Table'
-import ToggleButtonGroup from '@/composants/ToggleButtonGroup/ToggleButtonGroup'
 import TrendingCard from '@/composants/TrendingCard/TrendingCard'
 import { main } from '@/data/main'
-import { useDisplayMode } from '@/store/displayModeStore'
-import { Box, Grid, InputLabel, MenuItem, Select, Stack, ToggleButton, Typography } from '@mui/material'
+import { Box, InputLabel, MenuItem, Select, Stack, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material'
 
-import Hero from '../Hero/Hero'
-import UserInfoCard from '../UserInfoCard/UserInfoCard'
-
-const MainPage: FC = () => {
+const Main: FC = () => {
   const {
-    default: {
-      hero: { casino, sport },
-      promotions,
-      tables,
-      trendingGames,
-      trendingSports,
-      faq,
-    },
+    default: { promotions, tables, trendingGames, trendingSports, faq },
   } = main
 
   const [betType, setBetType] = useState<'Casino' | 'Sport'>('Casino')
   const [tableView, setTableView] = useState<'casino_bets' | 'sports_bets' | 'race_leaderboard'>('casino_bets')
-  const { displayMode, setDisplayMode } = useDisplayMode()
 
   return (
     <Box
@@ -63,7 +50,13 @@ const MainPage: FC = () => {
         </Stack>
         <Carousel title={trendingGames.title} mb={4}>
           {trendingGames.items.map((game) => (
-            <TrendingCard key={game.rank} image={game.src} rank={game.rank} quantityPlaying={game.quantityPlaying} />
+            <TrendingCard
+              key={game.rank}
+              image={game.src}
+              rank={game.rank}
+              quantityPlaying={game.quantityPlaying}
+              link={game.link}
+            />
           ))}
         </Carousel>
         <Carousel title={trendingSports.title} mb={4}>
@@ -73,6 +66,7 @@ const MainPage: FC = () => {
               image={sport.src}
               rank={sport.rank}
               quantityPlaying={sport.quantityPlaying}
+              link={sport.link}
             />
           ))}
         </Carousel>
@@ -84,6 +78,7 @@ const MainPage: FC = () => {
               title={promo.title}
               subtitle={promo.subtitle}
               image={promo.image}
+              link={promo.actions[0].link}
             />
           ))}
         </Carousel>
@@ -111,8 +106,8 @@ const MainPage: FC = () => {
             ))}
           </ToggleButtonGroup>
         </Box>
-        <Table tableView={tableView} tables={tables} />
-        <Stack>
+        <Table tableView={tableView} tables={tables} sx={{ mb: 4.5 }} />
+        <Stack mb={4.5}>
           <Typography variant="subtitle1" mb={2} fontWeight={600}>
             {faq.title}
           </Typography>
@@ -123,4 +118,4 @@ const MainPage: FC = () => {
   )
 }
 
-export default MainPage
+export default Main

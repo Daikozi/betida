@@ -11,7 +11,7 @@ type HeroProps = {
   hasUserInfoCard?: boolean
 } & GridProps
 
-const Hero: FC<HeroProps> = ({ hasUserInfoCard = false }) => {
+const Hero: FC<HeroProps> = ({ hasUserInfoCard = false, ...gridProps }) => {
   const {
     default: {
       hero: { casino, sport },
@@ -21,7 +21,7 @@ const Hero: FC<HeroProps> = ({ hasUserInfoCard = false }) => {
   const { displayMode, setDisplayMode } = useDisplayMode()
 
   return (
-    <Grid container spacing={2} alignItems="center">
+    <Grid container spacing={2} alignItems="center" {...gridProps}>
       {hasUserInfoCard && (
         <Grid size={{ xs: 12, sm: 12, lg: 4 }}>
           <UserInfoCard />

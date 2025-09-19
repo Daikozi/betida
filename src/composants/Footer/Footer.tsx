@@ -41,7 +41,7 @@ const Footer: FC = () => {
   }
 
   return (
-    <Stack component="footer" direction="row" justifyContent="center">
+    <Stack component="footer" direction="row" justifyContent="center" mb={4.5}>
       <Paper
         sx={{
           maxWidth: 1200,

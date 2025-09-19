@@ -8,12 +8,13 @@ type PromotionCardProps = {
   title: string
   subtitle: string
   image: string
+  link: string
 }
 
-const PromotionCard: FC<PromotionCardProps> = ({ chipLabel, title, subtitle, image }) => (
+const PromotionCard: FC<PromotionCardProps> = ({ chipLabel, title, subtitle, image, link }) => (
   <Card
     sx={{
-      minWidth: { xs: '100%', sm: 'calc(50% - 4px)', md: 'calc(33% - 8px)' },
+      minWidth: { xs: '100%', sm: 'calc(50% - 4px)', md: 'calc(33% - 1.5px)' },
     }}
   >
     <Stack spacing={2} flex={1} justifyContent="space-between" alignItems="center" direction="row" p={2}>
@@ -30,7 +31,7 @@ const PromotionCard: FC<PromotionCardProps> = ({ chipLabel, title, subtitle, ima
           </Stack>
         </CardContent>
         <CardActions sx={{ padding: 0, marginTop: 'auto' }}>
-          <Link href="#">
+          <Link href={link}>
             <Typography variant="textLight" fontWeight={600}>
               Read More
             </Typography>

@@ -41,7 +41,10 @@ const ListItemButton = styled(MUIListItemButton, {
   [`&.${listItemButtonClasses.root}`]: {
     backgroundColor: isSelected ? theme.palette.backgroundLevels[2] : 'transparent',
     justifyContent: isSideMenuOpen ? 'initial' : 'center',
+    borderRadius: 10,
     height: 44,
+    width: isSideMenuOpen ? '100%' : 44,
+    margin: 'auto',
     padding: 10,
     '&:hover': {
       backgroundColor: theme.palette.backgroundLevels[1],

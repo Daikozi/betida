@@ -4,6 +4,7 @@ import { FC, useEffect, useState } from 'react'
 
 import carat_down_dark from '@/assets/svg/carat_down_dark.svg'
 import carat_up_light from '@/assets/svg/carat_up_light.svg'
+import { useDisplayMode } from '@/store/displayModeStore'
 import { colors } from '@/theme/tokens'
 import { Collapse, List, ListItemProps } from '@mui/material'
 import Image, { StaticImageData } from 'next/image'
@@ -19,6 +20,7 @@ type MenuItemProps = {
   isSelected?: boolean
   onClick: VoidFunction
   subitems?: { text: string; link: string; icon: StaticImageData }[]
+  gradient?: string
 } & ListItemProps
 
 const MenuItem: FC<MenuItemProps> = ({
@@ -30,10 +32,14 @@ const MenuItem: FC<MenuItemProps> = ({
   isSelected = false,
   onClick,
   subitems,
+  gradient,
   ...listItemProps
 }) => {
   const [openSubMenu, setOpenSubMenu] = useState(false)
+  const { displayMode, setDisplayMode } = useDisplayMode()
+
   const hasSubMenu = subitems && subitems.length > 0
+  const iconBackground = gradient ?? colors.primary.gradient
 
   useEffect(() => {
     if (hasSubMenu && openSubMenu && !isSelected) {
@@ -49,8 +55,12 @@ const MenuItem: FC<MenuItemProps> = ({
           if (hasSubMenu) {
             setOpenSubMenu(!openSubMenu)
           }
+
+          if (text.toLowerCase() === 'casino' || text.toLowerCase() === 'sports') {
+            setDisplayMode(text.toLowerCase() === displayMode ? null : (text.toLowerCase() as 'casino' | 'sports'))
+          }
         }}
-        isSelected={isSelected || (hasSubMenu && openSubMenu)}
+        isSelected={isSelected || (hasSubMenu && openSubMenu) || displayMode === text.toLowerCase()}
         isSideMenuOpen={isSideMenuOpen}
       >
         <ListItemIcon isSideMenuOpen={isSideMenuOpen}>
@@ -62,7 +72,8 @@ const MenuItem: FC<MenuItemProps> = ({
             style={{
               padding: isSideMenuOpen ? 0 : '4px',
               borderRadius: isSideMenuOpen ? 0 : '8px',
-              background: isSelected && !isSideMenuOpen ? colors.primary.gradient : 'transparent',
+              background:
+                (isSelected && !isSideMenuOpen) || displayMode === text.toLowerCase() ? iconBackground : 'transparent',
             }}
           />
         </ListItemIcon>
@@ -81,7 +92,7 @@ const MenuItem: FC<MenuItemProps> = ({
       </ListItemButton>
       {hasSubMenu && (
         <Collapse in={openSubMenu} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
+          <List component="div" disablePadding sx={{ mb: 1 }}>
             {subitems.map(({ text, icon }) => (
               <SubMenuListItemButton key={text}>
                 <ListItemIcon isSideMenuOpen={openSubMenu}>

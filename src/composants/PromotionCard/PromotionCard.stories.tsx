@@ -10,6 +10,7 @@ const meta = {
     chipLabel: 'New',
     title: 'New Games',
     subtitle: 'Explore the latest additions to our gaming library and discover your next favorite game.',
+    link: '#',
   },
   parameters: {
     layout: 'centered',

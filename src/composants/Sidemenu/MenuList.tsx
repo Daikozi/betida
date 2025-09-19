@@ -7,6 +7,7 @@ import MenuItem from './MenuItem'
 
 type MenuItemProps = {
   icon: StaticImageData
+  gradient?: string
   text: string
   showWhenOpen: boolean
   subMenu?: { text: string; link: string; icon: StaticImageData }[]
@@ -23,23 +24,23 @@ const MenuList: FC<MenuListProps> = ({ isSideMenuOpen, menuItems }) => {
   return (
     <Box
       sx={{
-        borderRadius: '10px',
+        borderRadius: 1.2,
         bgcolor: isSideMenuOpen ? '#0F0F10' : 'transparent',
-        mt: 2,
-        mb: isSideMenuOpen ? 1 : 0,
+        my: 1,
         mx: isSideMenuOpen ? 2 : 0,
       }}
     >
       <List sx={{ py: 0 }}>
-        {menuItems.map(({ icon, showWhenOpen, text, subMenu }) => (
+        {menuItems.map(({ icon, showWhenOpen, text, subMenu, gradient }) => (
           <MenuItem
             key={text}
             icon={icon}
             text={text}
             showWhenOpen={showWhenOpen}
+            gradient={gradient}
             subitems={subMenu}
             isSideMenuOpen={isSideMenuOpen}
-            isSelected={selected === text}
+            isSelected={!gradient && selected === text}
             onClick={() => setSelected(text)}
           />
         ))}

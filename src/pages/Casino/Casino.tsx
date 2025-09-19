@@ -10,7 +10,7 @@ import TrendingCard from '@/composants/TrendingCard/TrendingCard'
 import { main } from '@/data/main'
 import { Box, InputLabel, Stack, ToggleButton, ToggleButtonGroup } from '@mui/material'
 
-const CasinoPage: FC = () => {
+const Casino: FC = () => {
   const {
     casino: { brand_name_originals, live_casino, slots, promotions, tables, publishers, searchBar },
   } = main
@@ -88,10 +88,10 @@ const CasinoPage: FC = () => {
             ))}
           </ToggleButtonGroup>
         </Box>
-        <Table tableView={tableView} tables={tables} />
+        <Table tableView={tableView} tables={tables} sx={{ mb: 4.5 }} />
       </Box>
     </Box>
   )
 }
 
-export default CasinoPage
+export default Casino

@@ -13,7 +13,7 @@ export const main = {
           actions: [
             {
               label: 'Play Now',
-              link: '#',
+              link: '/promotions/angel-vs-sinner',
               variante: 'dark',
             },
             {
@@ -31,7 +31,7 @@ export const main = {
           actions: [
             {
               label: 'Play Now',
-              link: '#',
+              link: '/promotions/multiplier-mayhem',
               variante: 'dark',
             },
             {
@@ -49,7 +49,7 @@ export const main = {
           actions: [
             {
               label: 'Play Now',
-              link: '#',
+              link: '/promotions/weekly-raffle',
               variante: 'dark',
             },
             {
@@ -69,41 +69,49 @@ export const main = {
       items: [
         {
           src: '/assets/images/brand_name_originals_1.webp',
+          link: '/games/1',
           quantityPlaying: 365,
           rank: 1,
         },
         {
           src: '/assets/images/brand_name_originals_2.webp',
+          link: '/games/2',
           quantityPlaying: 365,
           rank: 2,
         },
         {
           src: '/assets/images/brand_name_originals_3.webp',
+          link: '/games/3',
           quantityPlaying: 365,
           rank: 3,
         },
         {
           src: '/assets/images/brand_name_originals_4.webp',
+          link: '/games/4',
           quantityPlaying: 365,
           rank: 4,
         },
         {
           src: '/assets/images/brand_name_originals_5.webp',
+          link: '/games/5',
           quantityPlaying: 365,
           rank: 5,
         },
         {
           src: '/assets/images/brand_name_originals_6.webp',
+          link: '/games/6',
           quantityPlaying: 365,
           rank: 6,
         },
         {
           src: '/assets/images/brand_name_originals_7.webp',
+          link: '/games/7',
           quantityPlaying: 365,
           rank: 7,
         },
         {
           src: '/assets/images/brand_name_originals_8.webp',
+          link: '/games/8',
           quantityPlaying: 365,
           rank: 8,
         },
@@ -114,41 +122,49 @@ export const main = {
       items: [
         {
           src: '/assets/images/slots_1.webp',
+          link: '/games/1',
           quantityPlaying: 365,
           rank: 1,
         },
         {
           src: '/assets/images/slots_2.webp',
+          link: '/games/2',
           quantityPlaying: 365,
           rank: 2,
         },
         {
           src: '/assets/images/slots_3.webp',
+          link: '/games/3',
           quantityPlaying: 365,
           rank: 3,
         },
         {
           src: '/assets/images/slots_4.webp',
+          link: '/games/4',
           quantityPlaying: 365,
           rank: 4,
         },
         {
           src: '/assets/images/slots_5.webp',
+          link: '/games/5',
           quantityPlaying: 365,
           rank: 5,
         },
         {
           src: '/assets/images/slots_6.webp',
+          link: '/games/6',
           quantityPlaying: 365,
           rank: 6,
         },
         {
           src: '/assets/images/slots_7.webp',
+          link: '/games/7',
           quantityPlaying: 365,
           rank: 7,
         },
         {
           src: '/assets/images/slots_8.webp',
+          link: '/games/8',
           quantityPlaying: 365,
           rank: 8,
         },
@@ -159,41 +175,49 @@ export const main = {
       items: [
         {
           src: '/assets/images/publishers_1.webp',
+          link: '/provider/1',
           quantityPlaying: 365,
           rank: 1,
         },
         {
           src: '/assets/images/publishers_2.webp',
+          link: '/provider/2',
           quantityPlaying: 365,
           rank: 2,
         },
         {
           src: '/assets/images/publishers_3.webp',
+          link: '/provider/3',
           quantityPlaying: 365,
           rank: 3,
         },
         {
           src: '/assets/images/publishers_4.webp',
+          link: '/provider/4',
           quantityPlaying: 365,
           rank: 4,
         },
         {
           src: '/assets/images/publishers_5.webp',
+          link: '/provider/5',
           quantityPlaying: 365,
           rank: 5,
         },
         {
           src: '/assets/images/publishers_6.webp',
+          link: '/provider/6',
           quantityPlaying: 365,
           rank: 6,
         },
         {
           src: '/assets/images/publishers_7.webp',
+          link: '/provider/7',
           quantityPlaying: 365,
           rank: 7,
         },
         {
           src: '/assets/images/publishers_8.webp',
+          link: '/provider/8',
           quantityPlaying: 365,
           rank: 8,
         },
@@ -204,41 +228,49 @@ export const main = {
       items: [
         {
           src: '/assets/images/live_casino_1.webp',
+          link: '/games/1',
           quantityPlaying: 365,
           rank: 1,
         },
         {
           src: '/assets/images/live_casino_2.webp',
+          link: '/games/2',
           quantityPlaying: 365,
           rank: 2,
         },
         {
           src: '/assets/images/live_casino_3.webp',
+          link: '/games/3',
           quantityPlaying: 365,
           rank: 3,
         },
         {
           src: '/assets/images/live_casino_4.webp',
+          link: '/games/4',
           quantityPlaying: 365,
           rank: 4,
         },
         {
           src: '/assets/images/live_casino_5.webp',
+          link: '/games/5',
           quantityPlaying: 365,
           rank: 5,
         },
         {
           src: '/assets/images/live_casino_6.webp',
+          link: '/games/6',
           quantityPlaying: 365,
           rank: 6,
         },
         {
           src: '/assets/images/live_casino_7.webp',
+          link: '/games/7',
           quantityPlaying: 365,
           rank: 7,
         },
         {
           src: '/assets/images/live_casino_8.webp',
+          link: '/games/8',
           quantityPlaying: 365,
           rank: 8,
         },
@@ -330,41 +362,49 @@ export const main = {
           src: '/assets/images/trending_games_1.webp',
           rank: 1,
           quantityPlaying: 365,
+          link: '/games/1',
         },
         {
           src: '/assets/images/trending_games_2.webp',
           rank: 2,
           quantityPlaying: 365,
+          link: '/games/2',
         },
         {
           src: '/assets/images/trending_games_3.webp',
           rank: 3,
           quantityPlaying: 365,
+          link: '/games/3',
         },
         {
           src: '/assets/images/trending_games_4.webp',
           rank: 4,
           quantityPlaying: 365,
+          link: '/games/4',
         },
         {
           src: '/assets/images/trending_games_5.webp',
           rank: 5,
           quantityPlaying: 365,
+          link: '/games/5',
         },
         {
           src: '/assets/images/trending_games_6.webp',
           rank: 6,
           quantityPlaying: 365,
+          link: '/games/6',
         },
         {
           src: '/assets/images/trending_games_7.webp',
           rank: 7,
           quantityPlaying: 365,
+          link: '/games/7',
         },
         {
           src: '/assets/images/trending_games_8.webp',
           rank: 8,
           quantityPlaying: 365,
+          link: '/games/8',
         },
       ],
     },
@@ -375,41 +415,49 @@ export const main = {
           src: '/assets/images/trending_sports_1.webp',
           rank: 1,
           quantityPlaying: 365,
+          link: '/sports/1',
         },
         {
           src: '/assets/images/trending_sports_2.webp',
           rank: 2,
           quantityPlaying: 365,
+          link: '/sports/2',
         },
         {
           src: '/assets/images/trending_sports_3.webp',
           rank: 3,
           quantityPlaying: 365,
+          link: '/sports/3',
         },
         {
           src: '/assets/images/trending_sports_4.webp',
           rank: 4,
           quantityPlaying: 365,
+          link: '/sports/4',
         },
         {
           src: '/assets/images/trending_sports_5.webp',
           rank: 5,
           quantityPlaying: 365,
+          link: '/sports/5',
         },
         {
           src: '/assets/images/trending_sports_6.webp',
           rank: 6,
           quantityPlaying: 365,
+          link: '/sports/6',
         },
         {
           src: '/assets/images/trending_sports_7.webp',
           rank: 7,
           quantityPlaying: 365,
+          link: '/sports/7',
         },
         {
           src: '/assets/images/trending_sports_8.webp',
           rank: 8,
           quantityPlaying: 365,
+          link: '/sports/8',
         },
       ],
     },
@@ -424,7 +472,7 @@ export const main = {
           actions: [
             {
               label: 'Read More',
-              link: '#',
+              link: '/promotions/team-vitality',
               variante: 'default',
             },
           ],
@@ -437,7 +485,7 @@ export const main = {
           actions: [
             {
               label: 'Read More',
-              link: '#',
+              link: '/promotions/angel-vs-sinner',
               variante: 'default',
             },
           ],
@@ -450,7 +498,7 @@ export const main = {
           actions: [
             {
               label: 'Read More',
-              link: '#',
+              link: '/promotions/frankies-ebor-raffle',
               variante: 'default',
             },
           ],

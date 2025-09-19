@@ -16,7 +16,7 @@ import * as localRules from './scripts/eslint/local-rules.js'
 const { flatConfig: next } = pkg
 
 export default defineConfig(
-  globalIgnores(['./dist', './.next', './coverage', '**/*.generated.d.ts']),
+  globalIgnores(['./dist', './.next', './coverage', '**/*.generated.d.ts', 'next-env.d.ts']),
 
   eslint.configs.recommended,
 
