@@ -51,7 +51,7 @@ const LargeTrendingCard: FC<LargeTrendingCardProps> = ({
           alt={`trending game ${rank}`}
           width={385}
           height={260}
-          style={{ width: '100%', objectFit: 'cover' }}
+          style={{ width: '100%', height: 'auto', aspectRatio: '385/260' }}
           priority
         />
       </CardActionArea>
