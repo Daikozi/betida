@@ -5,6 +5,7 @@ import { FC, ReactNode } from 'react'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter'
 import { StyledEngineProvider } from '@mui/material/styles'
 
+import ReactQueryProvider from './ReactQueryProvider'
 import ThemeProvider from './ThemeProvider'
 
 type ProvidersProps = {
@@ -14,7 +15,9 @@ type ProvidersProps = {
 export const Providers: FC<ProvidersProps> = ({ children }) => (
   <StyledEngineProvider injectFirst>
     <AppRouterCacheProvider>
-      <ThemeProvider>{children}</ThemeProvider>
+      <ThemeProvider>
+        <ReactQueryProvider>{children}</ReactQueryProvider>
+      </ThemeProvider>
     </AppRouterCacheProvider>
   </StyledEngineProvider>
 )
