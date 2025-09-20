@@ -1,6 +1,6 @@
 import { HttpResponse, http } from 'msw'
 
-export const handlers = [
+const handlers = [
   http.get('https://api.example.com/user', () =>
     HttpResponse.json({
       id: 'abc-123',
@@ -9,3 +9,5 @@ export const handlers = [
     }),
   ),
 ]
+
+export default handlers
