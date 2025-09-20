@@ -101,7 +101,15 @@ const SideMenu: FC<SideMenuProps> = ({ forceOpen }) => {
 
   const menuContent = (
     <>
-      <DrawerHeader sx={{ height: '76px', justifyContent: 'center', px: 2, display: { xs: 'none', md: 'flex' } }}>
+      <DrawerHeader
+        sx={{
+          height: 76,
+          minHeight: '76px !important',
+          justifyContent: 'center',
+          px: 2,
+          display: { xs: 'none', md: 'flex' },
+        }}
+      >
         <Stack
           direction="row"
           alignItems="center"
