@@ -6,6 +6,6 @@ type DrawerState = {
 }
 
 export const useDrawerStore = create<DrawerState>((set: (state: Partial<DrawerState>) => void) => ({
-  open: false,
+  open: true,
   setOpen: (open: boolean) => set({ open }),
 }))

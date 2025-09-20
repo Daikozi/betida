@@ -3,16 +3,16 @@
 import { FC, useState } from 'react'
 
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
-import { useDisplayMode } from '@/store/displayModeStore'
 import { useDrawerStore } from '@/store/drawerStore'
 
 import { bottomBarContent } from './BottomBar.content'
 import { BottomNavigation, BottomNavigationAction, Box } from './BottomBar.styles'
 
 const BottomBar: FC = () => {
-  const { setDisplayMode } = useDisplayMode()
   const { setOpen } = useDrawerStore()
+  const router = useRouter()
 
   const [selectedValue, setSelectedValue] = useState<string | null>(null)
 
@@ -23,12 +23,10 @@ const BottomBar: FC = () => {
     if (value === 'browse') {
       setOpen(true)
     }
-    if (value === 'casino') {
-      setDisplayMode(value)
-    } else if (value === 'sports') {
-      setDisplayMode(value)
+    if (value === 'casino' || value === 'sports') {
+      router.push(`/${value}`)
     } else {
-      setDisplayMode(null)
+      router.push(`/`)
     }
   }
 

@@ -13,6 +13,7 @@ const meta = {
     quantityPlaying: 365,
     rank: 1,
     title: 'Casino',
+    url: '#',
   },
 } satisfies Meta<typeof LargeTrendingCard>
 

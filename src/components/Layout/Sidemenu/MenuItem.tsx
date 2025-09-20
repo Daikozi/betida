@@ -4,8 +4,8 @@ import { FC, useEffect, useState } from 'react'
 
 import { Collapse, List, ListItemProps } from '@mui/material'
 import Image from 'next/image'
+import { usePathname, useRouter } from 'next/navigation'
 
-import { useDisplayMode } from '@/store/displayModeStore'
 import { colors } from '@/theme/tokens'
 
 import { ListItem, ListItemButton, ListItemIcon, ListItemText, SubMenuListItemButton } from './MenuItem.styles'
@@ -20,11 +20,13 @@ type MenuItemProps = {
   onClick: VoidFunction
   subitems?: { text: string; link: string; icon: string }[]
   gradient?: string
+  url: string
 } & ListItemProps
 
 const MenuItem: FC<MenuItemProps> = ({
   text,
   icon,
+  url,
   showWhenOpen = false,
   isSideMenuOpen = false,
   isOpen = false,
@@ -34,8 +36,12 @@ const MenuItem: FC<MenuItemProps> = ({
   gradient,
   ...listItemProps
 }) => {
+  const router = useRouter()
+  const pathname = usePathname()
+
+  const displayMode = pathname.includes('/casino') ? 'casino' : pathname.includes('/sports') ? 'sports' : null
+
   const [openSubMenu, setOpenSubMenu] = useState(false)
-  const { displayMode, setDisplayMode } = useDisplayMode()
 
   const hasSubMenu = subitems && subitems.length > 0
   const iconBackground = gradient ?? colors.primary.gradient
@@ -56,7 +62,7 @@ const MenuItem: FC<MenuItemProps> = ({
           }
 
           if (text.toLowerCase() === 'casino' || text.toLowerCase() === 'sports') {
-            setDisplayMode(text.toLowerCase() === displayMode ? null : (text.toLowerCase() as 'casino' | 'sports'))
+            router.push(url)
           }
         }}
         isSelected={isSelected || (hasSubMenu && openSubMenu) || displayMode === text.toLowerCase()}

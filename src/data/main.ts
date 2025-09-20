@@ -1,3 +1,4 @@
+import { NEXT_ROUTES } from '@/constants/routes'
 import theme from '@/theme/theme'
 
 export const main = {
@@ -345,6 +346,7 @@ export const main = {
         playing: 'playing',
         rank: 1,
         highlightColor: theme.palette.casino.main,
+        url: NEXT_ROUTES.casino,
       },
       sport: {
         image: 'sport.webp',
@@ -353,6 +355,7 @@ export const main = {
         playing: 'playing',
         rank: 2,
         highlightColor: theme.palette.sports.main,
+        url: NEXT_ROUTES.sports,
       },
     },
     trendingGames: {

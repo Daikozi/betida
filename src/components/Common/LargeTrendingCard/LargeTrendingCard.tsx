@@ -9,7 +9,7 @@ type LargeTrendingCardProps = {
   rank: number
   title: string
   highlightColor?: string
-  onClick?: VoidFunction
+  url: string
 }
 
 const LargeTrendingCard: FC<LargeTrendingCardProps> = ({
@@ -18,7 +18,7 @@ const LargeTrendingCard: FC<LargeTrendingCardProps> = ({
   rank,
   title,
   highlightColor = 'transparent',
-  onClick,
+  url,
 }) => (
   <Stack spacing={1}>
     <Card
@@ -38,7 +38,7 @@ const LargeTrendingCard: FC<LargeTrendingCardProps> = ({
       }}
     >
       <CardActionArea
-        onClick={onClick}
+        href={url}
         sx={{
           display: 'flex',
           justifyContent: 'center',

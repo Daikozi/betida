@@ -14,7 +14,7 @@ const Box = styled(MUIBox)(({ theme }) => ({
   borderTop: `1 solid ${theme.palette.divider}`,
   zIndex: 1300,
   display: 'block',
-  [theme.breakpoints.up('sm')]: {
+  [theme.breakpoints.up('md')]: {
     display: 'none',
   },
 }))

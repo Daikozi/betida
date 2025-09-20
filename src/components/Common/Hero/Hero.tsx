@@ -5,7 +5,6 @@ import { Grid, GridProps } from '@mui/material'
 import LargeTrendingCard from '@/components/Common/LargeTrendingCard/LargeTrendingCard'
 import UserInfoCard from '@/components/Common/UserInfoCard/UserInfoCard'
 import { main } from '@/data/main'
-import { useDisplayMode } from '@/store/displayModeStore'
 
 type HeroProps = {
   hasUserInfoCard?: boolean
@@ -17,8 +16,6 @@ const Hero: FC<HeroProps> = ({ hasUserInfoCard = false, ...gridProps }) => {
       hero: { casino, sport },
     },
   } = main
-
-  const { displayMode, setDisplayMode } = useDisplayMode()
 
   return (
     <Grid container spacing={2} alignItems="center" {...gridProps}>
@@ -34,7 +31,7 @@ const Hero: FC<HeroProps> = ({ hasUserInfoCard = false, ...gridProps }) => {
           rank={casino.rank}
           title={casino.label}
           highlightColor={casino.highlightColor}
-          onClick={() => setDisplayMode(displayMode === 'casino' ? null : 'casino')}
+          url={casino.url}
         />
       </Grid>
       <Grid size={{ xs: 6, sm: 6, lg: hasUserInfoCard ? 4 : 6 }}>
@@ -44,7 +41,7 @@ const Hero: FC<HeroProps> = ({ hasUserInfoCard = false, ...gridProps }) => {
           rank={sport.rank}
           title={sport.label}
           highlightColor={sport.highlightColor}
-          onClick={() => setDisplayMode(displayMode === 'sports' ? null : 'sports')}
+          url={sport.url}
         />
       </Grid>
     </Grid>

@@ -2,16 +2,22 @@ import { FC, MouseEvent } from 'react'
 
 import { ToggleButtonGroupProps } from '@mui/material'
 import ToggleButton from '@mui/material/ToggleButton'
-
-import { useDisplayMode } from '@/store/displayModeStore'
+import { usePathname, useRouter } from 'next/navigation'
 
 import { ToggleButtonGroup } from './ViewModeSelector.styles'
 
 const ViewModeSelector: FC<ToggleButtonGroupProps> = (props) => {
-  const { displayMode, setDisplayMode } = useDisplayMode()
+  const router = useRouter()
+  const pathname = usePathname()
+
+  const displayMode = pathname.includes('/casino') ? 'casino' : pathname.includes('/sports') ? 'sports' : null
 
   const handleViewModeChange = (_event: MouseEvent<HTMLElement>, newDisplayMode: 'casino' | 'sports' | null) => {
-    setDisplayMode(newDisplayMode)
+    if (newDisplayMode) {
+      router.push(`/${newDisplayMode}`)
+    } else {
+      router.push('/')
+    }
   }
 
   return (

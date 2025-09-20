@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, Fragment, useState } from 'react'
+import { FC, Fragment, useLayoutEffect, useState } from 'react'
 
 import { Box, InputLabel, MenuItem, Select, Stack } from '@mui/material'
 import Divider from '@mui/material/Divider'
@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton'
 import { CSSObject, Theme, styled, useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 import SearchBar from '@/components/Common/SearchBar/SearchBar'
 import ViewModeSelector from '@/components/Common/ViewModeSelector/ViewModeSelector'
@@ -81,6 +82,8 @@ const SideMenu: FC<SideMenuProps> = ({ forceOpen }) => {
   const { open, setOpen } = useDrawerStore()
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+  const pathname = usePathname()
+
   const [betType, setBetType] = useState<'Casino' | 'Sport'>('Casino')
 
   if (forceOpen !== undefined) {
@@ -88,7 +91,13 @@ const SideMenu: FC<SideMenuProps> = ({ forceOpen }) => {
     if (!forceOpen && open) setOpen(false)
   }
 
-  const { header, searchBar, list } = sideMenu
+  useLayoutEffect(() => {
+    if (isMobile && open) {
+      setOpen(false)
+    }
+  }, [isMobile, open, setOpen])
+
+  const { header, searchBar, list, loggedIn } = sideMenu
 
   const menuContent = (
     <>
@@ -139,6 +148,12 @@ const SideMenu: FC<SideMenuProps> = ({ forceOpen }) => {
           }}
         />
       </Box>
+      {pathname !== '/' && loggedIn.length > 0 && (
+        <>
+          <Divider sx={{ display: { xs: 'none', md: 'flex' } }} />
+          <MenuList isSideMenuOpen={open} menuItems={loggedIn} transparent />
+        </>
+      )}
       {list.map((menuItems, index) => {
         if (index === 0 && open) {
           return

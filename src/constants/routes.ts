@@ -27,6 +27,8 @@ export const NEXT_ROUTES = {
   sponsorships: '/sponsorships',
   liveSupport: '/live-support',
   language: '/language',
+  casino: '/casino',
+  sports: '/sports',
 } as const
 
 export const PUBLIC_ROUTES: string[] = [

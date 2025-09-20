@@ -9,28 +9,30 @@ type MenuItemProps = {
   gradient?: string
   text: string
   showWhenOpen: boolean
+  url: string
   subMenu?: { text: string; link: string; icon: string }[]
 }
 
 type MenuListProps = {
   isSideMenuOpen?: boolean
   menuItems: MenuItemProps[]
+  transparent?: boolean
 }
 
-const MenuList: FC<MenuListProps> = ({ isSideMenuOpen, menuItems }) => {
+const MenuList: FC<MenuListProps> = ({ isSideMenuOpen, menuItems, transparent = false }) => {
   const [selected, setSelected] = useState<string | null>(null)
 
   return (
     <Box
       sx={{
         borderRadius: 1.2,
-        bgcolor: isSideMenuOpen ? '#0F0F10' : 'transparent',
+        bgcolor: isSideMenuOpen && !transparent ? '#0F0F10' : 'transparent',
         my: 1,
         mx: isSideMenuOpen ? 2 : 0,
       }}
     >
       <List sx={{ py: 0 }}>
-        {menuItems.map(({ icon, showWhenOpen, text, subMenu, gradient }) => (
+        {menuItems.map(({ icon, showWhenOpen, text, subMenu, gradient, url }) => (
           <MenuItem
             key={text}
             icon={icon}
@@ -41,6 +43,7 @@ const MenuList: FC<MenuListProps> = ({ isSideMenuOpen, menuItems }) => {
             isSideMenuOpen={isSideMenuOpen}
             isSelected={!gradient && selected === text}
             onClick={() => setSelected(text)}
+            url={url}
           />
         ))}
       </List>

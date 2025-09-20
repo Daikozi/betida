@@ -12,6 +12,7 @@ const meta = {
     icon: sideMenu.list[1][1].icon,
     showWhenOpen: true,
     isSideMenuOpen: true,
+    url: '#',
     onClick: () => {
       /* empty */
     },
