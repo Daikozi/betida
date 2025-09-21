@@ -12,11 +12,14 @@ import SearchBar from '@/components/Common/SearchBar/SearchBar'
 import Table from '@/components/Common/Table/Table'
 import TrendingCard from '@/components/Common/TrendingCard/TrendingCard'
 import { main } from '@/data/main'
+import { useUserGetExemple } from '@/hooks/userGetExemple'
 
 const Main: FC = () => {
   const {
     default: { promotions, tables, trendingGames, trendingSports, faq },
   } = main
+
+  useUserGetExemple()
 
   const [betType, setBetType] = useState<'Casino' | 'Sport'>('Casino')
   const [tableView, setTableView] = useState<'casino_bets' | 'sports_bets' | 'race_leaderboard'>('casino_bets')
