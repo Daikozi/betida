@@ -18,11 +18,12 @@ const BottomBar: FC = () => {
 
   const handleNavigationChange = (value: string | null) => {
     setSelectedValue(value)
-    setOpen(false)
-
     if (value === 'browse') {
       setOpen(true)
+      return
     }
+
+    setOpen(false)
     if (value === 'casino' || value === 'sports') {
       router.push(`/${value}`)
     } else {

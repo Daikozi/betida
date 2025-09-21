@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, Fragment, useLayoutEffect, useState } from 'react'
+import { FC, Fragment, useEffect, useState } from 'react'
 
 import { Box, InputLabel, MenuItem, Select, Stack } from '@mui/material'
 import Divider from '@mui/material/Divider'
@@ -51,27 +51,22 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme }) => ({
+})<{
+  open?: boolean
+}>(({ theme, open }) => ({
   width: drawerWidth,
   flexShrink: 0,
   whiteSpace: 'nowrap',
   boxSizing: 'border-box',
-  variants: [
-    {
-      props: ({ open }) => open,
-      style: {
+  ...(open
+    ? {
         ...openedMixin(theme),
         '& .MuiDrawer-paper': openedMixin(theme),
-      },
-    },
-    {
-      props: ({ open }) => !open,
-      style: {
+      }
+    : {
         ...closedMixin(theme),
         '& .MuiDrawer-paper': closedMixin(theme),
-      },
-    },
-  ],
+      }),
 }))
 
 type SideMenuProps = {
@@ -91,11 +86,12 @@ const SideMenu: FC<SideMenuProps> = ({ forceOpen }) => {
     if (!forceOpen && open) setOpen(false)
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (isMobile && open) {
       setOpen(false)
     }
-  }, [isMobile, open, setOpen])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMobile])
 
   const { header, searchBar, list, loggedIn } = sideMenu
 
@@ -185,7 +181,6 @@ const SideMenu: FC<SideMenuProps> = ({ forceOpen }) => {
         open={open}
         onClose={() => setOpen(false)}
         variant="temporary"
-        ModalProps={{ keepMounted: true }}
         sx={{
           display: { xs: 'block', md: 'none' },
           zIndex: 1099,
