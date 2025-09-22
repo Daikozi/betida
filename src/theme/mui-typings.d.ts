@@ -38,6 +38,7 @@ declare module '@mui/material/styles' {
     textDark: React.CSSProperties
     captionLight: React.CSSProperties
     captionDark: React.CSSProperties
+    visuallyHidden: React.CSSProperties
   }
   interface TypographyVariantsOptions {
     titleLight?: React.CSSProperties
@@ -46,6 +47,7 @@ declare module '@mui/material/styles' {
     textDark?: React.CSSProperties
     captionLight?: React.CSSProperties
     captionDark?: React.CSSProperties
+    visuallyHidden?: React.CSSProperties
   }
 }
 
@@ -63,5 +65,6 @@ declare module '@mui/material/Typography' {
     textDark: true
     captionLight: true
     captionDark: true
+    visuallyHidden: true
   }
 }

@@ -32,6 +32,7 @@ const PromotionCard: FC<PromotionCardProps> = ({ chipLabel, title, subtitle, ima
         </CardContent>
         <CardActions sx={{ padding: 0, marginTop: 'auto' }}>
           <Link href={link}>
+            <Typography variant="visuallyHidden">Read more about {title}</Typography>
             <Typography variant="textLight" fontWeight={600}>
               Read More
             </Typography>

@@ -43,7 +43,14 @@ const BottomBar: FC = () => {
             key={value}
             label={label}
             value={value}
-            icon={<Image src={selectedValue === value ? selected : unselected} alt={label} width={24} height={24} />}
+            icon={
+              <Image
+                src={selectedValue === value ? selected : unselected}
+                alt={`${label} icon`}
+                width={24}
+                height={24}
+              />
+            }
           />
         ))}
       </BottomNavigation>
